@@ -134,6 +134,9 @@
 
 (defn summarize-raings1 [candidate-id]
   (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (summarize-ratings candidate-id)))) (get-ratings candidate-id)))
+;OVO JE NORMALIZACIJA! --- nije dobro!!!!!
+;NE RADI SE SABIRANJE PO SVIM KRITERIJUMIMA ZA JEDNOG KANDIDATA
+;NEGO SABIRANJE JEDNOG KRITERIJUMA ZA SVE KANDIDATE!!! 
 
 
 (summarize-raings1 2)
