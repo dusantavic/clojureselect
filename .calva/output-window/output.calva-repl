@@ -211,3 +211,6 @@ clj꞉clojureselect.data꞉> 
  {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
  {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
 clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
