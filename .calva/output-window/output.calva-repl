@@ -1,0 +1,633 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:59822 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.core꞉>  ; Use `alt+enter` to evaluate
+clj꞉clojureselect.core꞉> 
+; Jack-in done.
+clj꞉clojureselect.core꞉> 
+#'clojureselect.data/candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/jobs
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/qualifications
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/rating-for-candidate?
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+; Execution error (ArityException) at clojureselect.data/get-ratings (form-init4069701613469250708.clj:92).
+; Wrong number of args (3) passed to: clojure.core/filter
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+()
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-jobs-criteria
+clj꞉clojureselect.data꞉> 
+({:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidates
+clj꞉clojureselect.data꞉> 
+()
+clj꞉clojureselect.data꞉> 
+()
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/candidates
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :candidatestatus "unrated",
+  :job-id 1})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidates
+clj꞉clojureselect.data꞉> 
+[{:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :candidatestatus "unrated",
+  :job-id 1}]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-jobs-criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:111:14).
+; Wrong number of args (1) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:111:16).
+; Wrong number of args (3) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:111:15).
+; Wrong number of args (3) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:112:17).
+; Wrong number of args (5) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:112:17).
+; Wrong number of args (5) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:112:17).
+; Wrong number of args (5) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/total
+clj꞉clojureselect.data꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (5) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (3) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+(0 1 2)
+clj꞉clojureselect.data꞉> 
+(10 10 10)
+clj꞉clojureselect.data꞉> 
+(#'clojureselect.data/total #'clojureselect.data/total #'clojureselect.data/total)
+clj꞉clojureselect.data꞉> 
+30
+clj꞉clojureselect.data꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (0) passed to: clojure.core/for
+clj꞉user꞉> 
+; Syntax error macroexpanding clojure.core/let at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:122:5).
+; total - failed: vector? at: [:bindings] spec: :clojure.core.specs.alpha/bindings
+clj꞉clojureselect.data꞉> 
+; Error printing return value (ClassCastException) at clojure.lang.Numbers/add (Numbers.java:155).
+; clojure.lang.Atom cannot be cast to java.lang.Number
+clj꞉clojureselect.data꞉> 
+(10 20 30)
+clj꞉clojureselect.data꞉> 
+#atom[0 0x1a8abc2]
+nil
+clj꞉clojureselect.data꞉> 
+0
+nil
+clj꞉clojureselect.data꞉> 
+; Error printing return value (ClassCastException) at clojure.core/swap! (core.clj:2362).
+; java.lang.Long cannot be cast to clojure.lang.IAtom
+clj꞉clojureselect.data꞉> 
+(10 20 30)
+clj꞉clojureselect.data꞉> 
+0
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:121:3).
+; Wrong number of args (3) passed to: clojure.core/for
+clj꞉clojureselect.data꞉> 
+0
+clj꞉clojureselect.data꞉> 
+1
+clj꞉clojureselect.data꞉> 
+; Syntax error macroexpanding for at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:128:2).
+; for requires an even number of forms in binding vector in clojureselect.data:128
+clj꞉clojureselect.data꞉> 
+0
+clj꞉clojureselect.data꞉> 
+(1 2 3 4 5 6 7 8 9 10)
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/total
+clj꞉clojureselect.data꞉> 
+#function[clojure.core/filter/fn--5958]
+clj꞉clojureselect.data꞉> 
+nil
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:1:7984).
+; Unable to resolve symbol: koko in this context
+clj꞉clojureselect.data꞉> 
+#function[clojure.core/filter/fn--5958]
+clj꞉clojureselect.data꞉> 
+0
+clj꞉clojureselect.data꞉> 
+nil
+clj꞉clojureselect.data꞉> 
+; Syntax error reading source at (REPL:118:34).
+; Unmatched delimiter: )
+clj꞉clojureselect.data꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10}]
+clj꞉clojureselect.data꞉> 
+(10 10 10)
+clj꞉clojureselect.data꞉> 
+30
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings
+clj꞉clojureselect.data꞉> 
+30
+clj꞉clojureselect.data꞉> 
+24.1
+clj꞉clojureselect.data꞉> 
+0
+clj꞉clojureselect.data꞉> 
+{:name "dusan", :age 23}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/personanongrata
+clj꞉clojureselect.data꞉> 
+"tavic"
+clj꞉clojureselect.data꞉> 
+{:name "dusan", :age 23}
+clj꞉clojureselect.data꞉> 
+"tavic"
+clj꞉clojureselect.data꞉> 
+; Execution error (ArityException) at clojureselect.data/eval8218 (form-init4069701613469250708.clj:126).
+; Wrong number of args (2) passed to: clojure.core/assoc--5481
+clj꞉clojureselect.data꞉> 
+{:name "dusan", :age 23, :lastname "tavic"}
+clj꞉clojureselect.data꞉> 
+{:name "dusan", :age 23}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/personanongrata
+clj꞉clojureselect.data꞉> 
+{:name "dusan", :age 23, :lastname "tavic"}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings2
+clj꞉clojureselect.data꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :final-score 30}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :final-score 30}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :final-score 30})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidate
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings2
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1,
+  :final-score 30})
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:126:1).
+; Unable to resolve symbol: summarize-ratings2 in this context
+clj꞉user꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:126:1).
+; Unable to resolve symbol: summarize-ratings2 in this context
+clj꞉user꞉> 
+#'clojureselect.data/summarize-ratings2
+clj꞉clojureselect.data꞉> 
+; Execution error (ClassCastException) at clojureselect.data/summarize-ratings2 (form-init4069701613469250708.clj:123).
+; clojure.lang.LazySeq cannot be cast to clojure.lang.Associative
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidate
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings2
+clj꞉clojureselect.data꞉> 
+{:id 1,
+ :firstname "dusan",
+ :lastname "tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :candidatestatus "rated",
+ :job-id 1,
+ :final-score 30}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings3
+clj꞉clojureselect.data꞉> 
+; Execution error (ClassCastException) at clojureselect.data/summarize-ratings3 (form-init4069701613469250708.clj:129).
+; java.lang.Long cannot be cast to clojure.lang.IFn
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings3
+clj꞉clojureselect.data꞉> 
+; Execution error (ClassCastException) at clojureselect.data/summarize-ratings3 (form-init4069701613469250708.clj:129).
+; java.lang.Long cannot be cast to clojure.lang.IFn
+clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:59070 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.core꞉> 
+clj꞉clojureselect.core꞉> 
+; Jack-in done.
+clj꞉clojureselect.core꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:128:18).
+; Unable to resolve symbol: summarize-ratings2 in this context
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/jobs
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/qualifications
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidate
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-jobs-criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings2
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings3
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1,
+  :final-score 30}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :candidatestatus "rated",
+  :job-id 1,
+  :final-score 24.1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :candidatestatus "unrated",
+  :job-id 1,
+  :final-score 0})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/personanongrata
+clj꞉clojureselect.data꞉> 
+{:name "mariofil", :age 23}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-raings1
+clj꞉clojureselect.data꞉> 
+#function[clojure.core/map/fn--5931]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-raings1
+clj꞉clojureselect.data꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 1/3}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 1/3}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 1/3})
+clj꞉clojureselect.data꞉> 
+({:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 0.33195020746887965}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 0.37759336099585056}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 0.2904564315352697})
+clj꞉clojureselect.data꞉> 
+; Syntax error (ArityException) compiling double at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:124:39).
+; Wrong number of args (2) passed to: clojure.core/double--inliner--6125
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-raings1
+clj꞉clojureselect.data꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 0.3333333333333333}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 0.3333333333333333}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 0.3333333333333333})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-raings1
+clj꞉clojureselect.data꞉> 
+({:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.33195020746887965}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.37759336099585056}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.2904564315352697})
+clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:49155 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.core꞉> 
+clj꞉clojureselect.core꞉> 
+; Jack-in done.
+clj꞉clojureselect.core꞉> 
+#'clojureselect.data/candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/jobs
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/qualifications
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/qualifications
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidate
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-jobs-criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-jobs-criteria
+clj꞉clojureselect.data꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-raings1
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings2
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/summarize-ratings3
+clj꞉clojureselect.data꞉> 
+({:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.33195020746887965}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.37759336099585056}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.2904564315352697})
+clj꞉clojureselect.data꞉> 
+; Syntax error macroexpanding clojure.core/defn at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:164:1).
+; 1 - failed: vector? at: [:fn-tail :arity-n :bodies :params] spec: :clojure.core.specs.alpha/param-list
+; (1 2 3) - failed: Extra input at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/niz1
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/niz2
+clj꞉clojureselect.data꞉> 
+26
+clj꞉clojureselect.data꞉> 
+(3 8 15)
+clj꞉clojureselect.data꞉> 
+[3 8 15]
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:113:31).
+; Unable to resolve symbol: job-id in this context
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+#function[clojure.core/filter/fn--5958]
+clj꞉clojureselect.data꞉> 
+#function[clojure.core/filter/fn--5958]
+clj꞉clojureselect.data꞉> 
+; Execution error (ClassCastException) at clojureselect.data/eval7964 (form-init7475196591388854637.clj:115).
+; clojure.core$filter$fn__5958 cannot be cast to java.lang.Number
+clj꞉clojureselect.data꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.data/eval7969 (form-init7475196591388854637.clj:115).
+; Don't know how to create ISeq from: clojure.core$filter$fn__5958
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+({:job-id 1, :qualification-id 1, :ponder 0.5})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+nil
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+({:job-id 1, :qualification-id 1, :ponder 0.5})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+{:job-id 1, :qualification-id 1, :ponder 0.5}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+0.5
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+0.5
+clj꞉clojureselect.data꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.data꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.3333333333333333}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.3333333333333333}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.3333333333333333})
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:163:19).
+; Unable to resolve symbol: candidate-id in this context
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/aggregation1
+clj꞉clojureselect.data꞉> 
+#function[clojure.core/map/fn--5931]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/aggregation1
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 1,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :agggregated-score 0.16666666666666666}
+ {:id 2,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 2,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :agggregated-score 0.09999999999999999}
+ {:id 3,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 3,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :agggregated-score 0.06666666666666667})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/weighted-sum
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 1,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :agggregated-score 0.16666666666666666}
+ {:id 2,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 2,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :agggregated-score 0.09999999999999999}
+ {:id 3,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 3,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :agggregated-score 0.06666666666666667})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/weighted-sum
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 1,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :weighted-sum 0.16666666666666666}
+ {:id 2,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 2,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :weighted-sum 0.09999999999999999}
+ {:id 3,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 3,
+  :value 10,
+  :normalized-value 0.3333333333333333,
+  :weighted-sum 0.06666666666666667})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/maps
+clj꞉clojureselect.data꞉> 
+(1 100 200)
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/aggregated-score
+clj꞉clojureselect.data꞉> 
+0.3333333333333333
+clj꞉clojureselect.data꞉> 
+0.33734439834024893
+clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
