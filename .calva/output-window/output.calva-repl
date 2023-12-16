@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:60056 ...
+; Using host:port 127.0.0.1:63701 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -40,177 +40,216 @@ clj꞉clojureselect.data꞉> 
 clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-ratings
 clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-jobs-criteria
-clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-candidates
 clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-jobs-criteria
 clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-ponder
 clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-ponder
-clj꞉clojureselect.data꞉> 
-[{:job-id 1, :qualification-id 1, :ponder 0.5}
- {:job-id 1, :qualification-id 2, :ponder 0.3}
- {:job-id 1, :qualification-id 3, :ponder 0.2}]
-clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-#function[clojure.core/filter/fn--5958]
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8})
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8})
 clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-ratings-of-job
 clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7})
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8})
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8}]
-clj꞉clojureselect.data꞉> 
-18
-clj꞉clojureselect.data꞉> 
 #'clojureselect.data/sum-of-all-ratings
-clj꞉clojureselect.data꞉> 
-18
-clj꞉clojureselect.data꞉> 
-19.1
-clj꞉clojureselect.data꞉> 
-17
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/summarize-ratings1
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444})
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/summarize-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444})
-clj꞉clojureselect.data꞉> 
-[{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}]
-clj꞉clojureselect.data꞉> 
-[{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}]
-clj꞉clojureselect.data꞉> 
-[{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7}]
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444})
-clj꞉clojureselect.data꞉> 
-({:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162})
-clj꞉clojureselect.data꞉> 
-({:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162})
-clj꞉clojureselect.data꞉> 
-({:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/summarize-ratings-of-criteria
-clj꞉clojureselect.data꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}]
 clj꞉clojureselect.data꞉> 
 #'clojureselect.data/get-normalized-ratings-of-criteria
 clj꞉clojureselect.data꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}]
+#'clojureselect.data/get-normalized-rating
 clj꞉clojureselect.data꞉> 
-[{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}]
+#'clojureselect.data/normalize-job-ratings
 clj꞉clojureselect.data꞉> 
-[{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529}]
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
 clj꞉clojureselect.data꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:151:17).
+; Syntax error macroexpanding clojure.core/let at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:177:3).
+; [normalized-ratings] - failed: even-number-of-forms? at: [:bindings] spec: :clojure.core.specs.alpha/bindings
+clj꞉clojureselect.data꞉> 
+; Syntax error reading source at (REPL:177:60).
+; Unmatched delimiter: ]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/add-ponder-to-normalized-ratings
+clj꞉clojureselect.data꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5}
+ {:id 5,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 2,
+  :value 9.1,
+  :normalized-value 0.4764397905759162,
+  :ponder 0.3}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.2})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/add-ponder-to-normalized-ratings
+clj꞉clojureselect.data꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5}
+ {:id 5,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 2,
+  :value 9.1,
+  :normalized-value 0.4764397905759162,
+  :ponder 0.3}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.2}]
+clj꞉clojureselect.data꞉> 
+(0.2777777777777778 0.15706806282722513 0.11764705882352942)
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/aggregate-candidate
+clj꞉clojureselect.data꞉> 
+{:id 1,
+ :firstname "dusan",
+ :lastname "tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.5524928994285323}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/aggregate-candidate
+clj꞉clojureselect.data꞉> 
+{:id 1,
+ :firstname "dusan",
+ :lastname "tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.5524928994285323}
+clj꞉clojureselect.data꞉> 
+{:id 2,
+ :firstname "nenad",
+ :lastname "panovic",
+ :active true,
+ :email "nenadpann@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.44750710057146764}
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/decision-support
+clj꞉clojureselect.data꞉> 
+({:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.0})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/decision-support
+clj꞉clojureselect.data꞉> 
+[{:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.0}]
+clj꞉clojureselect.data꞉> 
+(1 2 4 5 5 7 8)
+clj꞉clojureselect.data꞉> 
+({:name "aleksa", :age 31, :number 44}
+ {:name "mila", :age 24, :number 51}
+ {:name "dusan", :age 23, :number 144}
+ {:name "arsenije", :age 20, :number 250}
+ {:name "bela", :age 17, :number 300})
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/decision-support
+clj꞉clojureselect.data꞉> 
+[{:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.0}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.5524928994285323}]
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:206:20).
 ; Unable to resolve symbol: job-id in this context
 clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7})
+#'clojureselect.data/decision-support
 clj꞉clojureselect.data꞉> 
-[{:job-id 1, :qualification-id 1, :ponder 0.5}
- {:job-id 1, :qualification-id 2, :ponder 0.3}
- {:job-id 1, :qualification-id 3, :ponder 0.2}]
+[{:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.0}]
 clj꞉clojureselect.data꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:151:81).
-; Unable to resolve symbol: job-id in this context
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-normalized-rating
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/normalize-job-ratings
-clj꞉clojureselect.data꞉> 
-; Error printing return value (NullPointerException) at clojure.lang.RT/doubleCast (RT.java:1353).
-; null
-clj꞉clojureselect.data꞉> 
-; Execution error (NullPointerException) at clojureselect.data/get-normalized-rating$fn (form-init2323843461450665289.clj:151).
-; null
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-normalized-rating
-clj꞉clojureselect.data꞉> 
-; Error printing return value (NullPointerException) at clojure.lang.RT/doubleCast (RT.java:1353).
-; null
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-normalized-rating
-clj꞉clojureselect.data꞉> 
-{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-normalized-rating
-clj꞉clojureselect.data꞉> 
-{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/normalize-job-ratings
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/get-normalized-rating
-clj꞉clojureselect.data꞉> 
-#'clojureselect.data/normalize-job-ratings
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
-clj꞉clojureselect.data꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
-clj꞉clojureselect.data꞉> 
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed

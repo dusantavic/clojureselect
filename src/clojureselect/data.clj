@@ -3,6 +3,19 @@
 
 
 ;***********************************************************
+;            ALATI I METODE VESTACKE INTELIGENCIJE         *
+;                I SOFTVERSKOG INZENJERSTVA                *
+;                          2023.                           *
+;             --------------------------------             *
+;                      Clojure Select                      *
+;              ~Decision Support Clojure App~              *
+;             --------------------------------             *
+;                        Dusan Tavic                       *
+;                         2023/3801                        *
+;***********************************************************
+
+
+;***********************************************************
 ;                 SIMULACIJA PODATAKA U BAZI 
 ;***********************************************************
 
@@ -11,21 +24,21 @@
                   :lastname "tavic"
                   :active true
                   :email "dusantavic1@gmail.com"
-                  :candidatestatus "rated"
+                  :status "rated"
                   :job-id 1},
                  {:id 2
                   :firstname "nenad"
                   :lastname "panovic"
                   :active true
                   :email "nenadpann@gmail.com"
-                  :candidatestatus "rated"
+                  :status "rated"
                   :job-id 1},
                  {:id 3
                   :firstname "arsenije"
                   :lastname "pavlovic"
                   :active true
                   :email "arseenijee00@gmail.com"
-                  :candidatestatus "unrated"
+                  :status "unrated"
                   :job-id 1}])
 
 (def jobs [{:id 1
@@ -108,7 +121,9 @@
 
 (get-jobs-criteria 1)
 
-(defn get-ponder [job-id qualification-id]
+(defn get-ponder
+  "Returns a ponder value (criteria weight) for a specific criteria"
+  [job-id qualification-id]
   (double (:ponder (into {} (filter (fn [criteria] (and (= (:job-id criteria) job-id) (= (:qualification-id criteria) qualification-id))) criteria)))))
 
 (get-ponder 1 1)
@@ -165,6 +180,44 @@
 
 (normalize-job-ratings 1)
 
+
+;***********************************************************
+;                     AGREGACIJA OCENA 
+;***********************************************************
+
+(defn add-ponder-to-normalized-ratings
+  [job-id]
+  (let [normalized-ratings (normalize-job-ratings job-id)]
+    (into [] (map (fn [row] (assoc row :ponder (get-ponder job-id (:qualification-id row)))) normalized-ratings))))
+
+(add-ponder-to-normalized-ratings 1)
+
+;; (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) 1)) (add-ponder-to-normalized-ratings 1)))
+
+
+(defn aggregate-candidate [candidate-id]
+  (let [candidate (get-candidate candidate-id)
+        ratings (add-ponder-to-normalized-ratings (:job-id candidate))]
+    (let [candidates-ratings (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings)]
+      (assoc candidate :final-score (double (reduce + (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings))))))))
+
+(aggregate-candidate 1)
+(aggregate-candidate 2)
+
+
+;***********************************************************
+;                   PODRSKA U ODLUCIVANJU 
+;***********************************************************
+
+
+(defn decision-support
+  "Applies the method of multi-criteria decision-making and provides
+   advices for the most suitable candidates for a specific job"
+  [job-id]
+  (let [candidates (get-candidates job-id)]
+    (into [] (sort-by :final-score (comparator >) (map (fn [row] (aggregate-candidate (:id row))) candidates)))))
+
+(decision-support 1)
 
 
 ;***********************************************************
