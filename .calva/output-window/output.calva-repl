@@ -253,3 +253,299 @@ clj꞉clojureselect.data꞉> 
   :job-id 1,
   :final-score 0.0}]
 clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:62897 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.core꞉> 
+clj꞉clojureselect.core꞉> 
+; Jack-in done.
+clj꞉clojureselect.core꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\repository.clj:41:1).
+; Unable to resolve symbol: get-candidates in this context
+clj꞉clojureselect.repository꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\repository.clj:1:7982).
+; Unable to resolve symbol: get-candidates in this context
+clj꞉clojureselect.repository꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\repository.clj:41:1).
+; Unable to resolve symbol: get-jobs in this context
+clj꞉clojureselect.repository꞉> 
+nil
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/db-spec
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/db
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidate
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidate
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidates
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-jobs
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-ratings
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-criteria
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-qualifications
+clj꞉clojureselect.repository꞉> 
+{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+clj꞉clojureselect.repository꞉> 
+{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/ratings
+clj꞉clojureselect.repository꞉> 
+{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+clj꞉clojureselect.repository꞉> 
+5
+clj꞉clojureselect.repository꞉> 
+{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidates
+clj꞉clojureselect.repository꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.repository/get-candidates (form-init79238915542556086.clj:22).
+; Key must be integer
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidates
+clj꞉clojureselect.repository꞉> 
+{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+clj꞉clojureselect.repository꞉> 
+7
+clj꞉clojureselect.repository꞉> 
+7
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidates
+clj꞉clojureselect.repository꞉> 
+7
+clj꞉clojureselect.repository꞉> 
+{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidates
+clj꞉clojureselect.repository꞉> 
+[[:id 1]
+ [:firstname "Dusan"]
+ [:lastname "Tavic"]
+ [:active true]
+ [:email "dusantavic1@gmail.com"]
+ [:status 0]
+ [:job-id 1]]
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-candidates
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-jobs
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-ratings
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-criteria
+clj꞉clojureselect.repository꞉> 
+#'clojureselect.repository/get-qualifications
+clj꞉clojureselect.repository꞉> 
+[{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+ {:id 2, :firstname "Nenad", :lastname "Panovic", :active true, :email "nenadpann@gmail.com", :status 0, :job-id 1}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1}]
+clj꞉clojureselect.repository꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
+clj꞉clojureselect.repository꞉> 
+nil
+clj꞉clojureselect.data꞉> 
+[{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+ {:id 2, :firstname "Nenad", :lastname "Panovic", :active true, :email "nenadpann@gmail.com", :status 0, :job-id 1}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1}]
+clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:59553 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.core꞉> 
+clj꞉clojureselect.core꞉> 
+; Jack-in done.
+clj꞉clojureselect.core꞉> 
+nil
+clj꞉clojureselect.data꞉> 
+nil
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:99:1).
+; Unable to resolve symbol: get-candidates in this context
+clj꞉clojureselect.data꞉> 
+[{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+ {:id 2, :firstname "Nenad", :lastname "Panovic", :active true, :email "nenadpann@gmail.com", :status 0, :job-id 1}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1}]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/jobs
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/qualifications
+clj꞉clojureselect.data꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\data.clj:1:7984).
+; Unable to resolve symbol: criteria in this context
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidate
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-jobs-criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ponder
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings-of-criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings-of-job
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/sum-of-all-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-normalized-ratings-of-criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-normalized-rating
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/normalize-job-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/add-ponder-to-normalized-ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/aggregate-candidate
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/decision-support
+clj꞉clojureselect.data꞉> 
+[{:id 1,
+  :firstname "Dusan",
+  :lastname "Tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "Nenad",
+  :lastname "Panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.0}]
+clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:59637 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.core꞉> 
+clj꞉clojureselect.core꞉> 
+; Jack-in done.
+clj꞉clojureselect.core꞉> 
+#'clojureselect.data/candidates
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/jobs
+clj꞉clojureselect.data꞉> 
+#function[clojureselect.repository/get-qualifications]
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/criteria
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/ratings
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-candidate
+clj꞉clojureselect.data꞉> 
+#'clojureselect.data/get-ratings
+clj꞉clojureselect.data꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}]
+clj꞉clojureselect.data꞉> 
+[{:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
+clj꞉clojureselect.data꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
