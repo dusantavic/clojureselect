@@ -1,4 +1,4 @@
-(ns clojureselect.data
+(ns clojureselect.business-logic
   (:require [clojureselect.repository :as repository])
   (:gen-class))
 
@@ -248,68 +248,3 @@
       (str "You should also consider " (:firstname second-candidate) " " (:lastname second-candidate) " with final score of " (round-to-decimal-places (:final-score second-candidate) 4) " for " (get-jobs-name job-id))])))
 
 (selection-advice 1)
-
-
-;***********************************************************
-;                 NEKI DELOVI STAROG KODA 
-;***********************************************************
-
-;; (defn summarize-ratings [candidate-id]
-;;  (reduce + (map (fn [row] (:value row)) (get-ratings candidate-id)))) ;daje sumu svih ocena za jednog kandidata
-
-;; (defn summarize-raings1 [candidate-id]
-;;   (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (summarize-ratings candidate-id)))) (get-ratings candidate-id)))
-;OVO JE NORMALIZACIJA! --- nije dobro!!!!!
-;NE RADI SE SABIRANJE PO SVIM KRITERIJUMIMA ZA JEDNOG KANDIDATA
-;NEGO SABIRANJE JEDNOG KRITERIJUMA ZA SVE KANDIDATE!!! 
-
-
-;; (summarize-raings1 2)
-
-;; (defn summarize-ratings2 [candidate-id] 
-;;   (let [candidate (get-candidate candidate-id)]
-;;     (assoc candidate :final-score (summarize-ratings candidate-id))))
-
-;; (defn summarize-ratings3 []
-;;   (map (fn [row] (summarize-ratings2 (:id row))) candidates)) ;radi za sve kandidate!
-
-;; (summarize-ratings3)
-;; (summarize-ratings2 1)
-
-;; (summarize-ratings 1)
-;; (summarize-ratings 2)
-;; (summarize-ratings 3)
-
-
-
-;radi otezanu sumu za jednog kandidata
-;; (defn weighted-sum [candidate-id]
-;;   (let [candidate (get-candidate candidate-id)]
-;;     (let [criteria (get-jobs-criteria (:job-id candidate))
-;;           normalized-candidate (summarize-raings1 candidate-id)]
-;;       (map (fn [row] (assoc row :weighted-sum (* (:normalized-value row) (get-ponder (:job-id row) (:qualification-id row)))))
-;;            normalized-candidate )
-;;       )))
-
-
-;; (weighted-sum 1)
-
-;; (defn aggregated-score [candidate-id]
-;;   (let [weighted-candidate (weighted-sum candidate-id)]
-;;     (reduce + (map :weighted-sum weighted-candidate))))
-
-;; (aggregated-score 1)
-;; (aggregated-score 2)
-
-
-;; (def niz1 [1 2 3])
-;; (def niz2 [3 4 5])
-;; ;rezultat - [3 8 15]
-
-;; (into [] (map * niz1 niz2))
-
-(def maps [{:id 1 :number 1}
-           {:id 2 :number 100}
-           {:id 3 :number 200}])
-
-(map :number maps)

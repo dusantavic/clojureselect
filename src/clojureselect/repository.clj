@@ -37,3 +37,6 @@
   (jdbc-next/execute! db
                           ["SELECT * FROM qualifications"] {:builder-fn rs/as-unqualified-maps}))
 
+(defn get-employments []
+  (jdbc-next/execute! db
+                      ["SELECT * FROM employments"] {:builder-fn rs/as-unqualified-maps}))
