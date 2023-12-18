@@ -1,6 +1,6 @@
-(ns clojureselect.business-logic-test
-  (:require [midje.sweet :refer :all]
-            [clojureselect.business-logic :refer :all]))
+;; (ns clojureselect.business-logic-test
+;;   (:require [midje.sweet :refer [fact facts]]
+;;             [clojureselect.business-logic :refer :all]))
 
 
 ;; (fact "Test for get-rating function"

@@ -2,9 +2,6 @@
   (:require [clojure.test :refer :all]
             [clojureselect.business-logic :refer :all]))
 
-;; (deftest a-test
-;;   (testing "FIXME, I fail."
-;;     (is (= 0 1))))
 
 ;***********************************************************
 ;                     OSNOVNE FUNKCIJE 
@@ -61,3 +58,48 @@
 (deftest jobs-criteria-test2
   (testing "Testing get-jobs-criteria function"
     (is (= (get-jobs-criteria -10) []))))
+
+
+(deftest job-name-test
+  (testing "Testing get-jobs-name function"
+    (is (= (get-jobs-name -40) nil))))
+
+(deftest job-name-test2
+  (testing "Testing get-jobs-name function"
+    (is (= (get-jobs-name 1) "C# Junior Developer"))))
+
+(deftest ponder-test
+  (testing "Testing get-ponder function"
+    (is (= (get-ponder 1 1) 0.5))))
+
+(deftest ponder-test2
+  (testing "Testing get-ponder function"
+    (is (> (get-ponder 1 1) 0))))
+
+(deftest ponder-test3
+  (testing "Testing get-ponder function"
+    (is (= (get-ponder -1 -1) "error. please insert valid id values"))))
+
+
+(deftest ratings-of-criteria-test
+  (testing "Testing get-ratings-of-criteria function"
+    (is (= (get-ratings-of-criteria 1 1) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+                                          {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}]))))
+
+(deftest ratings-of-criteria-test2
+  (testing "Testing get-ratings-of-criteria function"
+    (is (= (get-ratings-of-criteria -1 -1) []))))
+
+(deftest ratings-of-job-test
+  (testing "Testing get-ratings-of-job function"
+    (is (= (get-ratings-of-job -1) []))))
+
+
+(deftest ratings-of-job-test2
+  (testing "Testing get-ratings-of-job function"
+    (is (= (get-ratings-of-job 1) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+                                   {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
+                                   {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}
+                                   {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
+                                   {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
+                                   {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]))))

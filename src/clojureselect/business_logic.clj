@@ -140,7 +140,9 @@
 (defn get-ponder
   "Returns a ponder value (criteria weight) for a specific criteria"
   [job-id qualification-id]
-  (double (:ponder (into {} (filter (fn [criteria] (and (= (:job-id criteria) job-id) (= (:qualification-id criteria) qualification-id))) criteria)))))
+  (if (or (<= job-id 0) (<= qualification-id 0))
+    (str "error." " please insert valid id values")
+    (double (:ponder (into {} (filter (fn [criteria] (and (= (:job-id criteria) job-id) (= (:qualification-id criteria) qualification-id))) criteria))))))
 
 (get-ponder 1 1)
 
@@ -156,7 +158,7 @@
 (defn get-ratings-of-job
   "Gets ratings of all candidates according to all criteria for a specific job"
   [job-id]
-  (filter (fn [rating] (= (:job-id rating) job-id)) ratings))
+  (into [] (filter (fn [rating] (= (:job-id rating) job-id)) ratings)))
 
 (get-ratings-of-job 1)
 
