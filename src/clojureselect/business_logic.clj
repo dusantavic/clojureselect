@@ -19,81 +19,83 @@
 ;                 SIMULACIJA PODATAKA U BAZI 
 ;***********************************************************
 
-;; (def candidates [{:id 1
-;;                   :firstname "dusan"
-;;                   :lastname "tavic"
-;;                   :active true
-;;                   :email "dusantavic1@gmail.com"
-;;                   :status "rated"
-;;                   :job-id 1},
-;;                  {:id 2
-;;                   :firstname "nenad"
-;;                   :lastname "panovic"
-;;                   :active true
-;;                   :email "nenadpann@gmail.com"
-;;                   :status "rated"
-;;                   :job-id 1},
-;;                  {:id 3
-;;                   :firstname "arsenije"
-;;                   :lastname "pavlovic"
-;;                   :active true
-;;                   :email "arseenijee00@gmail.com"
-;;                   :status "unrated"
-;;                   :job-id 1}])
+(defn database-simulation
+  []
+  (def candidates [{:id 1
+                    :firstname "dusan"
+                    :lastname "tavic"
+                    :active true
+                    :email "dusantavic1@gmail.com"
+                    :status "rated"
+                    :job-id 1},
+                   {:id 2
+                    :firstname "nenad"
+                    :lastname "panovic"
+                    :active true
+                    :email "nenadpann@gmail.com"
+                    :status "rated"
+                    :job-id 1},
+                   {:id 3
+                    :firstname "arsenije"
+                    :lastname "pavlovic"
+                    :active true
+                    :email "arseenijee00@gmail.com"
+                    :status "unrated"
+                    :job-id 1}])
 
-;; (def jobs [{:id 1
-;;             :name "C# Junior Developer"
-;;             :active true
-;;             :positions 1}])
+  (def jobs [{:id 1
+              :name "C# Junior Developer"
+              :active true
+              :positions 1}])
 
-;; (def qualifications [{:id 1
-;;                       :name "C# Test"},
-;;                      {:id 2
-;;                       :name "Education"},
-;;                      {:id 3
-;;                       :name "Abstract thinking"}])
+  (def qualifications [{:id 1
+                        :name "C# Test"},
+                       {:id 2
+                        :name "Education"},
+                       {:id 3
+                        :name "Abstract thinking"}])
 
-;; (def criteria [{:job-id 1
-;;                 :qualification-id 1
-;;                 :ponder 0.5},
-;;                {:job-id 1
-;;                 :qualification-id 2
-;;                 :ponder 0.3},
-;;                {:job-id 1
-;;                 :qualification-id 3
-;;                 :ponder 0.2}])
+  (def criteria [{:job-id 1
+                  :qualification-id 1
+                  :ponder 0.5},
+                 {:job-id 1
+                  :qualification-id 2
+                  :ponder 0.3},
+                 {:job-id 1
+                  :qualification-id 3
+                  :ponder 0.2}])
 
-;; (def ratings [{:id 1
-;;                :candidate-id 1
-;;                :job-id 1
-;;                :qualification-id 1
-;;                :value 10},
-;;               {:id 2
-;;                :candidate-id 1
-;;                :job-id 1
-;;                :qualification-id 2
-;;                :value 10},
-;;               {:id 3
-;;                :candidate-id 1
-;;                :job-id 1
-;;                :qualification-id 3
-;;                :value 10},
+  (def ratings [{:id 1
+                 :candidate-id 1
+                 :job-id 1
+                 :qualification-id 1
+                 :value 10},
+                {:id 2
+                 :candidate-id 1
+                 :job-id 1
+                 :qualification-id 2
+                 :value 10},
+                {:id 3
+                 :candidate-id 1
+                 :job-id 1
+                 :qualification-id 3
+                 :value 10},
 
-;;               {:id 4
-;;                :candidate-id 2
-;;                :job-id 1
-;;                :qualification-id 1
-;;                :value 8},
-;;               {:id 5
-;;                :candidate-id 2
-;;                :job-id 1
-;;                :qualification-id 2
-;;                :value 9.1},
-;;               {:id 6
-;;                :candidate-id 2
-;;                :job-id 1
-;;                :qualification-id 3
-;;                :value 7}])
+                {:id 4
+                 :candidate-id 2
+                 :job-id 1
+                 :qualification-id 1
+                 :value 8},
+                {:id 5
+                 :candidate-id 2
+                 :job-id 1
+                 :qualification-id 2
+                 :value 9.1},
+                {:id 6
+                 :candidate-id 2
+                 :job-id 1
+                 :qualification-id 3
+                 :value 7}]))
 
 
 ;***********************************************************
@@ -110,10 +112,15 @@
 ;                     OSNOVNE FUNKCIJE 
 ;***********************************************************
 
-(defn get-candidate [candidate-id]
+(defn get-candidate 
+  "Returns the candidate's object that contains all relevant information, 
+   based on the entered id."
+  [candidate-id]
   (into {} (filter (fn [candidate] (= (:id candidate) candidate-id)) candidates)))
 
 (defn get-ratings
+  "Returns all of the candidate's ratings. 
+   Candidates are rated based on selection criteria defined for the job."
   [candidate-id]
   (into [] (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings)))
 
@@ -122,17 +129,22 @@
 
 
 (defn get-candidates
+  "Returns all candidates who applied for a specific job"
   [job-id]
   (into [] (filter (fn [candidate] (= (:job-id candidate) job-id)) candidates)))
 
 (get-candidates 1)
 
-(defn get-jobs-criteria [job-id]
+(defn get-jobs-criteria 
+  "Returns all selection criteria for a specific job"
+  [job-id]
   (into [] (filter (fn [criteria] (= (:job-id criteria) job-id)) criteria)))
 
 (get-jobs-criteria 1)
 
-(defn get-jobs-name [job-id]
+(defn get-jobs-name 
+  "Returns the job name based on the entered id"
+  [job-id]
   (:name (into {} (filter (fn [job] (= (:id job) job-id)) jobs))))
 
 (get-jobs-name 1)
@@ -204,6 +216,7 @@
 ;***********************************************************
 
 (defn add-ponder-to-normalized-ratings
+  "Adds a ponder to the normalized ratings of all candidates who applied for a specific job"
   [job-id]
   (let [normalized-ratings (normalize-job-ratings job-id)]
     (into [] (map (fn [row] (assoc row :ponder (get-ponder job-id (:qualification-id row)))) normalized-ratings))))
@@ -213,7 +226,9 @@
 ;; (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) 1)) (add-ponder-to-normalized-ratings 1)))
 
 
-(defn aggregate-candidate [candidate-id]
+(defn aggregate-candidate 
+  "Aggregates the overall rating of the candidate by using a weighted sum"
+  [candidate-id]
   (let [candidate (get-candidate candidate-id)
         ratings (add-ponder-to-normalized-ratings (:job-id candidate))]
     (let [candidates-ratings (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings)]
