@@ -54,7 +54,8 @@
 (get-candidates 1)
 
 (defn get-jobs-criteria 
-  "Returns all selection criteria for a specific job"
+  "Returns all selection criteria for a spec
+   ific job"
   [job-id]
   (into [] (filter (fn [criteria] (= (:job-id criteria) job-id)) criteria)))
 
@@ -121,8 +122,9 @@
   (into {} (assoc rating :normalized-value (/ (double (:value rating)) (sum-of-all-ratings (:job-id rating) (:qualification-id rating))))))
 
 
-(defn normalize-job-ratings [job-id]
+(defn normalize-job-ratings 
   "Normalizes all ratings of all candidates for a specific job"
+  [job-id] 
   (let [ratings (get-ratings-of-job job-id)]
     (map (fn [row] (get-normalized-rating row)) ratings)))
 

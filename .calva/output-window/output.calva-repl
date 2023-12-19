@@ -136,3 +136,161 @@ clj꞉clojureselect.business-logic꞉> 
 clj꞉clojureselect.business-logic꞉> 
 [{:id 1, :name "C# Test"} {:id 2, :name "Education"} {:id 3, :name "Abstract thinking"}]
 clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/candidates
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/jobs
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/qualifications
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/criteria
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/ratings
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-candidate
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ratings
+clj꞉clojureselect.business-logic꞉> 
+[{:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-candidates
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-jobs-criteria
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-jobs-name
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ponder
+clj꞉clojureselect.business-logic꞉> 
+"C# Junior Developer"
+clj꞉clojureselect.business-logic꞉> 
+0.5
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ratings-of-criteria
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ratings-of-job
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/sum-of-all-ratings
+clj꞉clojureselect.business-logic꞉> 
+17.0
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-normalized-ratings-of-criteria
+clj꞉clojureselect.business-logic꞉> 
+[{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-normalized-rating
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/normalize-job-ratings
+clj꞉clojureselect.business-logic꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0, :normalized-value 0.5555555555555556}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0, :normalized-value 0.5235602094240838}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0, :normalized-value 0.4444444444444444}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529})
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/add-ponder-to-normalized-ratings
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 1,
+  :value 10.0,
+  :normalized-value 0.5555555555555556,
+  :ponder 0.5}
+ {:id 2,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 2,
+  :value 10.0,
+  :normalized-value 0.5235602094240838,
+  :ponder 0.3}
+ {:id 3,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 3,
+  :value 10.0,
+  :normalized-value 0.5882352941176471,
+  :ponder 0.2}
+ {:id 4,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 1,
+  :value 8.0,
+  :normalized-value 0.4444444444444444,
+  :ponder 0.5}
+ {:id 5,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 2,
+  :value 9.1,
+  :normalized-value 0.4764397905759162,
+  :ponder 0.3}
+ {:id 6,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 3,
+  :value 7.0,
+  :normalized-value 0.4117647058823529,
+  :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/aggregate-candidate
+clj꞉clojureselect.business-logic꞉> 
+{:id 2,
+ :firstname "Nenad",
+ :lastname "Panovic",
+ :active true,
+ :email "nenadpann@gmail.com",
+ :status 0,
+ :job-id 1,
+ :final-score 0.44750710057146764}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/decision-support
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1,
+  :firstname "Dusan",
+  :lastname "Tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "Nenad",
+  :lastname "Panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.0}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/round-to-decimal-places
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/selection-advice
+clj꞉clojureselect.business-logic꞉> 
+["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.5525"
+ "You should also consider Nenad Panovic with final score of 0.4475 for C# Junior Developer"]
+clj꞉clojureselect.business-logic꞉> 
