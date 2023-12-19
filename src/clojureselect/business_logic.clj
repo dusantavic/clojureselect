@@ -15,88 +15,6 @@
 ;***********************************************************
 
 
-;***********************************************************
-;                 SIMULACIJA PODATAKA U BAZI 
-;***********************************************************
-
-(defn database-simulation
-  []
-  (def candidates [{:id 1
-                    :firstname "dusan"
-                    :lastname "tavic"
-                    :active true
-                    :email "dusantavic1@gmail.com"
-                    :status "rated"
-                    :job-id 1},
-                   {:id 2
-                    :firstname "nenad"
-                    :lastname "panovic"
-                    :active true
-                    :email "nenadpann@gmail.com"
-                    :status "rated"
-                    :job-id 1},
-                   {:id 3
-                    :firstname "arsenije"
-                    :lastname "pavlovic"
-                    :active true
-                    :email "arseenijee00@gmail.com"
-                    :status "unrated"
-                    :job-id 1}])
-
-  (def jobs [{:id 1
-              :name "C# Junior Developer"
-              :active true
-              :positions 1}])
-
-  (def qualifications [{:id 1
-                        :name "C# Test"},
-                       {:id 2
-                        :name "Education"},
-                       {:id 3
-                        :name "Abstract thinking"}])
-
-  (def criteria [{:job-id 1
-                  :qualification-id 1
-                  :ponder 0.5},
-                 {:job-id 1
-                  :qualification-id 2
-                  :ponder 0.3},
-                 {:job-id 1
-                  :qualification-id 3
-                  :ponder 0.2}])
-
-  (def ratings [{:id 1
-                 :candidate-id 1
-                 :job-id 1
-                 :qualification-id 1
-                 :value 10},
-                {:id 2
-                 :candidate-id 1
-                 :job-id 1
-                 :qualification-id 2
-                 :value 10},
-                {:id 3
-                 :candidate-id 1
-                 :job-id 1
-                 :qualification-id 3
-                 :value 10},
-
-                {:id 4
-                 :candidate-id 2
-                 :job-id 1
-                 :qualification-id 1
-                 :value 8},
-                {:id 5
-                 :candidate-id 2
-                 :job-id 1
-                 :qualification-id 2
-                 :value 9.1},
-                {:id 6
-                 :candidate-id 2
-                 :job-id 1
-                 :qualification-id 3
-                 :value 7}]))
-
 
 ;***********************************************************
 ;          UCITAVANJE PERZISTENTNIH PODATAKA IZ BAZE
@@ -265,3 +183,85 @@
       (str "You should also consider " (:firstname second-candidate) " " (:lastname second-candidate) " with final score of " (round-to-decimal-places (:final-score second-candidate) 4) " for " (get-jobs-name job-id))])))
 
 (selection-advice 1)
+
+
+;***********************************************************
+;                 SIMULACIJA PODATAKA U BAZI 
+;***********************************************************
+
+(defn database-simulation []
+  (def candidates [{:id 1
+                    :firstname "dusan"
+                    :lastname "tavic"
+                    :active true
+                    :email "dusantavic1@gmail.com"
+                    :status "rated"
+                    :job-id 1},
+                   {:id 2
+                    :firstname "nenad"
+                    :lastname "panovic"
+                    :active true
+                    :email "nenadpann@gmail.com"
+                    :status "rated"
+                    :job-id 1},
+                   {:id 3
+                    :firstname "arsenije"
+                    :lastname "pavlovic"
+                    :active true
+                    :email "arseenijee00@gmail.com"
+                    :status "unrated"
+                    :job-id 1}])
+
+  (def jobs [{:id 1
+              :name "C# Junior Developer"
+              :active true
+              :positions 1}])
+
+  (def qualifications [{:id 1
+                        :name "C# Test"},
+                       {:id 2
+                        :name "Education"},
+                       {:id 3
+                        :name "Abstract thinking"}])
+
+  (def criteria [{:job-id 1
+                  :qualification-id 1
+                  :ponder 0.5},
+                 {:job-id 1
+                  :qualification-id 2
+                  :ponder 0.3},
+                 {:job-id 1
+                  :qualification-id 3
+                  :ponder 0.2}])
+
+  (def ratings [{:id 1
+                 :candidate-id 1
+                 :job-id 1
+                 :qualification-id 1
+                 :value 10},
+                {:id 2
+                 :candidate-id 1
+                 :job-id 1
+                 :qualification-id 2
+                 :value 10},
+                {:id 3
+                 :candidate-id 1
+                 :job-id 1
+                 :qualification-id 3
+                 :value 10},
+
+                {:id 4
+                 :candidate-id 2
+                 :job-id 1
+                 :qualification-id 1
+                 :value 8},
+                {:id 5
+                 :candidate-id 2
+                 :job-id 1
+                 :qualification-id 2
+                 :value 9.1},
+                {:id 6
+                 :candidate-id 2
+                 :job-id 1
+                 :qualification-id 3
+                 :value 7}]))
