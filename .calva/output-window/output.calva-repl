@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:50544 ...
+; Using host:port 127.0.0.1:57854 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -26,132 +26,113 @@ clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
 clj꞉clojureselect.business-logic꞉> 
 ; Jack-in done.
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/ponder-test
-clj꞉clojureselect.core-test꞉> 
-
-FAIL in (ponder-test) (form-init3148288042031991442.clj:68)
-Testing get-ponder function
-expected: (= (get-ponder 1 1) 10)
-  actual: (not (= 0.5 10))
-nil
-clj꞉clojureselect.core-test꞉> 
-0.5
+#'clojureselect.business-logic/database-simulation
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/ponder-test
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ponder-test2
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ponder-test2
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ponder-test2
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ponder-test3
-clj꞉clojureselect.core-test꞉> 
-
-ERROR in (ponder-test3) (RT.java:1353)
-Testing get-ponder function
-expected: (> (get-ponder -1 -1) nil)
-  actual: java.lang.NullPointerException: null
- at clojure.lang.RT.doubleCast (RT.java:1353)
-    clojureselect.business_logic$get_ponder.invokeStatic (business_logic.clj:143)
-    clojureselect.core_test$fn__7961.invokeStatic (form-init3148288042031991442.clj:74)
-    clojureselect.core_test/fn (form-init3148288042031991442.clj:74)
-    clojure.test$test_var$fn__9856.invoke (test.clj:717)
-    clojure.test$test_var.invokeStatic (test.clj:717)
-    clojure.test$test_var.invoke (test.clj:708)
-    clojureselect.core_test$ponder_test3.invokeStatic (form-init3148288042031991442.clj:74)
-    clojureselect.core_test$eval7966.invokeStatic (form-init3148288042031991442.clj:78)
-    clojureselect.core_test$eval7966.invoke (form-init3148288042031991442.clj:78)
-    clojure.lang.Compiler.eval (Compiler.java:7194)
-    clojure.lang.Compiler.eval (Compiler.java:7149)
-    clojure.core$eval.invokeStatic (core.clj:3215)
-    clojure.core$eval.invoke (core.clj:3211)
-    nrepl.middleware.interruptible_eval$evaluate$fn__1269$fn__1270.invoke (interruptible_eval.clj:87)
-    clojure.lang.AFn.applyToHelper (AFn.java:152)
-    clojure.lang.AFn.applyTo (AFn.java:144)
-    clojure.core$apply.invokeStatic (core.clj:667)
-    clojure.core$with_bindings_STAR_.invokeStatic (core.clj:1990)
-    clojure.core$with_bindings_STAR_.doInvoke (core.clj:1990)
-    clojure.lang.RestFn.invoke (RestFn.java:425)
-    nrepl.middleware.interruptible_eval$evaluate$fn__1269.invoke (interruptible_eval.clj:87)
-    clojure.main$repl$read_eval_print__9206$fn__9209.invoke (main.clj:437)
-    clojure.main$repl$read_eval_print__9206.invoke (main.clj:437)
-    clojure.main$repl$fn__9215.invoke (main.clj:458)
-    clojure.main$repl.invokeStatic (main.clj:458)
-    nrepl.middleware.interruptible_eval$evaluate.invokeStatic (interruptible_eval.clj:115)
-    nrepl.middleware.interruptible_eval$interruptible_eval$fn__1302$fn__1306.invoke (interruptible_eval.clj:150)
-    clojure.lang.AFn.run (AFn.java:22)
-    nrepl.middleware.session$session_exec$main_loop__1372$fn__1376.invoke (session.clj:218)
-    nrepl.middleware.session$session_exec$main_loop__1372.invoke (session.clj:217)
-    clojure.lang.AFn.run (AFn.java:22)
-    java.lang.Thread.run (:-1)
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.business-logic/get-ponder
+#'clojureselect.business-logic/ratings
 clj꞉clojureselect.business-logic꞉> 
-"error. please insert valid id values"
+[{:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1}]
 clj꞉clojureselect.business-logic꞉> 
-true
+#'clojureselect.business-logic/database-simulation
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/ponder-test3
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-"C# Junior Developer"
+[{:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1}]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/job-name-test
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/job-name-test2
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}]
+#'clojureselect.business-logic/database-simulation
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/ratings-of-criteria-test
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ratings-of-criteria-test
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ratings-of-criteria-test2
-clj꞉clojureselect.core-test꞉> 
-
-FAIL in (ratings-of-criteria-test2) (form-init3148288042031991442.clj:94)
-Testing get-ratings-of-criteria function
-expected: (= (get-ratings-of-criteria -1 -1) nil)
-  actual: (not (= [] nil))
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/ratings-of-criteria-test2
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0})
+[{:id 1,
+  :firstname "dusan",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1}]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/ratings-of-job-test
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.business-logic/get-ratings-of-job
+#'clojureselect.business-logic/database-simulation
 clj꞉clojureselect.business-logic꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
+#object[clojure.lang.Var$Unbound 0x14e404a "Unbound: #'clojureselect.business-logic/candidates-sim"]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.core-test/ratings-of-job-test2
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
+#'clojureselect.business-logic/database-simulation
+clj꞉clojureselect.business-logic꞉> 
+#object[clojure.lang.Var$Unbound 0x14e404a "Unbound: #'clojureselect.business-logic/candidates-sim"]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/database-simulation
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1,
+  :firstname "mario",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/database-simulation
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :name "C# Test"} {:id 2, :name "Education"} {:id 3, :name "Abstract thinking"}]
+clj꞉clojureselect.business-logic꞉> 

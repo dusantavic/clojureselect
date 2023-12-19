@@ -189,9 +189,9 @@
 ;                 SIMULACIJA PODATAKA U BAZI 
 ;***********************************************************
 
-(defn database-simulation []
-  (def candidates [{:id 1
-                    :firstname "dusan"
+
+(def candidates-sim [{:id 1
+                    :firstname "mario"
                     :lastname "tavic"
                     :active true
                     :email "dusantavic1@gmail.com"
@@ -212,19 +212,19 @@
                     :status "unrated"
                     :job-id 1}])
 
-  (def jobs [{:id 1
+(def jobs-sim [{:id 1
               :name "C# Junior Developer"
               :active true
               :positions 1}])
 
-  (def qualifications [{:id 1
+(def qualifications-sim [{:id 1
                         :name "C# Test"},
                        {:id 2
                         :name "Education"},
                        {:id 3
                         :name "Abstract thinking"}])
 
-  (def criteria [{:job-id 1
+(def criteria-sim [{:job-id 1
                   :qualification-id 1
                   :ponder 0.5},
                  {:job-id 1
@@ -234,7 +234,7 @@
                   :qualification-id 3
                   :ponder 0.2}])
 
-  (def ratings [{:id 1
+(def ratings-sim [{:id 1
                  :candidate-id 1
                  :job-id 1
                  :qualification-id 1
@@ -264,4 +264,4 @@
                  :candidate-id 2
                  :job-id 1
                  :qualification-id 3
-                 :value 7}]))
+                 :value 7}])
