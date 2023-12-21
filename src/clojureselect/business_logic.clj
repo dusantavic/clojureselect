@@ -195,16 +195,47 @@
 
 (def ahp-ponders [{:job-id 1
                    :qualification-id-base 1
-                   :qualification-id-reference 2
+                   :qualification-id-reference 2 
+                    :position [0,1]
                    :significance 3},
                   {:job-id 1
                    :qualification-id-base 1
                    :qualification-id-reference 3
+                   :position [0,2]
                    :significance 2},
                   {:job-id 1
                    :qualification-id-base 2
                    :qualification-id-reference 3
+                   :position [1,2]
                    :significance 0.5}])
+
+(defn get-ahp-ponders
+  "Returns ahp ponders for a specific job"
+  [job-id]
+  (into [] (filter (fn [row] (= (:job-id row) job-id)) ahp-ponders)))
+
+(defn create-matrix
+  "Creates a matrix with specific number of rows and columns, initially filled with ones"
+  ([rows columns]
+  (vec (for [x (range rows)]
+         (vec (repeat columns 1)))))
+  ([rows-and-cols]
+   (vec (for [x (range rows-and-cols)]
+          (vec (repeat rows-and-cols 1))))
+   ))
+
+;za sada samo za jedan kriterijum radi 
+(defn create-ahp-matrix
+  "Creates AHP matrix of assessments for a specific job"
+  [job-id]
+  (let [ahp-ponders (get-ahp-ponders job-id)
+        rows-cols-count (count ahp-ponders)
+        init-matrix (create-matrix rows-cols-count)] 
+   (assoc-in init-matrix [(get (:position (get ahp-ponders 0)) 0) (get (:position (get ahp-ponders 0)) 1)] (:significance (get ahp-ponders 0)))
+  )) 
+
+(create-ahp-matrix 1)
+
 
 
 ;***********************************************************

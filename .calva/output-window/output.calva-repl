@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:57854 ...
+; Using host:port 127.0.0.1:51741 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -26,271 +26,68 @@ clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
 clj꞉clojureselect.business-logic꞉> 
 ; Jack-in done.
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+#'clojureselect.business-logic/get-ahp-ponders
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/ratings
+[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :significance 3}
+ {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :significance 2}
+ {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :significance 0.5}]
 clj꞉clojureselect.business-logic꞉> 
-[{:id 1,
-  :firstname "dusan",
-  :lastname "tavic",
-  :active true,
-  :email "dusantavic1@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 2,
-  :firstname "nenad",
-  :lastname "panovic",
-  :active true,
-  :email "nenadpann@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 3,
-  :firstname "arsenije",
-  :lastname "pavlovic",
-  :active true,
-  :email "arseenijee00@gmail.com",
-  :status "unrated",
-  :job-id 1}]
+#'clojureselect.business-logic/create-ones-matrix
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+[[1 1 1 1] [1 1 1 1] [1 1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-[{:id 1,
-  :firstname "dusan",
-  :lastname "tavic",
-  :active true,
-  :email "dusantavic1@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 2,
-  :firstname "nenad",
-  :lastname "panovic",
-  :active true,
-  :email "nenadpann@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 3,
-  :firstname "arsenije",
-  :lastname "pavlovic",
-  :active true,
-  :email "arseenijee00@gmail.com",
-  :status "unrated",
-  :job-id 1}]
+#'clojureselect.business-logic/matrica
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+[[1 1 1] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-[{:id 1,
-  :firstname "dusan",
-  :lastname "tavic",
-  :active true,
-  :email "dusantavic1@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 2,
-  :firstname "nenad",
-  :lastname "panovic",
-  :active true,
-  :email "nenadpann@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 3,
-  :firstname "arsenije",
-  :lastname "pavlovic",
-  :active true,
-  :email "arseenijee00@gmail.com",
-  :status "unrated",
-  :job-id 1}]
+3
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+[0]
 clj꞉clojureselect.business-logic꞉> 
-#object[clojure.lang.Var$Unbound 0x14e404a "Unbound: #'clojureselect.business-logic/candidates-sim"]
+; Execution error (ArityException) at clojureselect.business-logic/eval7924 (form-init6345035162816252067.clj:234).
+; Wrong number of args (1) passed to: clojure.core/get
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+1
 clj꞉clojureselect.business-logic꞉> 
-#object[clojure.lang.Var$Unbound 0x14e404a "Unbound: #'clojureselect.business-logic/candidates-sim"]
+; Execution error (ArityException) at clojureselect.business-logic/eval7928 (form-init6345035162816252067.clj:234).
+; Wrong number of args (2) passed to: clojure.core/assoc--5481
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+; Execution error (ArityException) at clojureselect.business-logic/eval7930 (form-init6345035162816252067.clj:234).
+; Wrong number of args (2) passed to: clojure.core/assoc--5481
 clj꞉clojureselect.business-logic꞉> 
-[{:id 1,
-  :firstname "mario",
-  :lastname "tavic",
-  :active true,
-  :email "dusantavic1@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 2,
-  :firstname "nenad",
-  :lastname "panovic",
-  :active true,
-  :email "nenadpann@gmail.com",
-  :status "rated",
-  :job-id 1}
- {:id 3,
-  :firstname "arsenije",
-  :lastname "pavlovic",
-  :active true,
-  :email "arseenijee00@gmail.com",
-  :status "unrated",
-  :job-id 1}]
+[[144 1 1] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/database-simulation
+[[1 1 1 144] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-[{:id 1, :name "C# Test"} {:id 2, :name "Education"} {:id 3, :name "Abstract thinking"}]
+[[1 1 144] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/candidates
+#'clojureselect.business-logic/create-matrix
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/jobs
+#'clojureselect.business-logic/create-matrix
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/qualifications
+[[1 1 1] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/criteria
+[[1 1 1] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/ratings
+[[1 1 1 1] [1 1 1 1] [1 1 1 1] [1 1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-candidate
+#'clojureselect.business-logic/ahp-ponders-raw
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-ratings
+#'clojureselect.business-logic/ahp-ponders
 clj꞉clojureselect.business-logic꞉> 
-[{:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:231:21).
+; Unable to resolve symbol: job-id in this context
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-candidates
+#'clojureselect.business-logic/create-ahp-matrix
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-jobs-criteria
+[[1 1 1] [1 1 3] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id 1, :ponder 0.5}
- {:job-id 1, :qualification-id 2, :ponder 0.3}
- {:job-id 1, :qualification-id 3, :ponder 0.2}]
+#'clojureselect.business-logic/ahp-ponders
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-jobs-name
+#'clojureselect.business-logic/create-ahp-matrix
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-ponder
+; Execution error (ArityException) at clojureselect.business-logic/eval7993 (form-init6345035162816252067.clj:237).
+; Wrong number of args (0) passed to: clojureselect.business-logic/create-ahp-matrix
 clj꞉clojureselect.business-logic꞉> 
-"C# Junior Developer"
-clj꞉clojureselect.business-logic꞉> 
-0.5
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-ratings-of-criteria
-clj꞉clojureselect.business-logic꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-ratings-of-job
-clj꞉clojureselect.business-logic꞉> 
-[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/sum-of-all-ratings
-clj꞉clojureselect.business-logic꞉> 
-17.0
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-normalized-ratings-of-criteria
-clj꞉clojureselect.business-logic꞉> 
-[{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/get-normalized-rating
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/normalize-job-ratings
-clj꞉clojureselect.business-logic꞉> 
-({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0, :normalized-value 0.5555555555555556}
- {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0, :normalized-value 0.5235602094240838}
- {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
- {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0, :normalized-value 0.4444444444444444}
- {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
- {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529})
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-ponder-to-normalized-ratings
-clj꞉clojureselect.business-logic꞉> 
-[{:id 1,
-  :candidate-id 1,
-  :job-id 1,
-  :qualification-id 1,
-  :value 10.0,
-  :normalized-value 0.5555555555555556,
-  :ponder 0.5}
- {:id 2,
-  :candidate-id 1,
-  :job-id 1,
-  :qualification-id 2,
-  :value 10.0,
-  :normalized-value 0.5235602094240838,
-  :ponder 0.3}
- {:id 3,
-  :candidate-id 1,
-  :job-id 1,
-  :qualification-id 3,
-  :value 10.0,
-  :normalized-value 0.5882352941176471,
-  :ponder 0.2}
- {:id 4,
-  :candidate-id 2,
-  :job-id 1,
-  :qualification-id 1,
-  :value 8.0,
-  :normalized-value 0.4444444444444444,
-  :ponder 0.5}
- {:id 5,
-  :candidate-id 2,
-  :job-id 1,
-  :qualification-id 2,
-  :value 9.1,
-  :normalized-value 0.4764397905759162,
-  :ponder 0.3}
- {:id 6,
-  :candidate-id 2,
-  :job-id 1,
-  :qualification-id 3,
-  :value 7.0,
-  :normalized-value 0.4117647058823529,
-  :ponder 0.2}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/aggregate-candidate
-clj꞉clojureselect.business-logic꞉> 
-{:id 2,
- :firstname "Nenad",
- :lastname "Panovic",
- :active true,
- :email "nenadpann@gmail.com",
- :status 0,
- :job-id 1,
- :final-score 0.44750710057146764}
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/decision-support
-clj꞉clojureselect.business-logic꞉> 
-[{:id 1,
-  :firstname "Dusan",
-  :lastname "Tavic",
-  :active true,
-  :email "dusantavic1@gmail.com",
-  :status 0,
-  :job-id 1,
-  :final-score 0.5524928994285323}
- {:id 2,
-  :firstname "Nenad",
-  :lastname "Panovic",
-  :active true,
-  :email "nenadpann@gmail.com",
-  :status 0,
-  :job-id 1,
-  :final-score 0.44750710057146764}
- {:id 4,
-  :firstname "Arsenije",
-  :lastname "Pavlovic",
-  :active true,
-  :email "arsenijee00@yahoo.com",
-  :status 0,
-  :job-id 1,
-  :final-score 0.0}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/round-to-decimal-places
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/selection-advice
-clj꞉clojureselect.business-logic꞉> 
-["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.5525"
- "You should also consider Nenad Panovic with final score of 0.4475 for C# Junior Developer"]
+[[1 3 1] [1 1 1] [1 1 1]]
 clj꞉clojureselect.business-logic꞉> 
