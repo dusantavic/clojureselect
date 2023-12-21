@@ -190,7 +190,7 @@
 ;***********************************************************
 ;                 SIMULACIJA PODATAKA U BAZI 
 ;***********************************************************
-
+; koristi se iskljucivo za potrebe testiranja funkcija
 
 (def candidates-sim [{:id 1
                     :firstname "mario"

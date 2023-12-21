@@ -80,6 +80,14 @@
   (testing "Testing get-ponder function"
     (is (= (get-ponder -1 -1) "error. please insert valid id values"))))
 
+(deftest ponder-test4
+  (testing "Testing get-ponder function"
+    (is (= (get-ponder -1 1) "error. please insert valid id values"))))
+
+
+(deftest ponder-test5
+  (testing "Testing get-ponder function"
+    (is (= (get-ponder 1 -1) "error. please insert valid id values"))))
 
 (deftest ratings-of-criteria-test
   (testing "Testing get-ratings-of-criteria function"
@@ -89,6 +97,15 @@
 (deftest ratings-of-criteria-test2
   (testing "Testing get-ratings-of-criteria function"
     (is (= (get-ratings-of-criteria -1 -1) []))))
+
+(deftest ratings-of-criteria-test3
+  (testing "Testing get-ratings-of-criteria function"
+    (is (= (get-ratings-of-criteria -1 1) []))))
+
+(deftest ratings-of-criteria-test4
+  (testing "Testing get-ratings-of-criteria function"
+    (is (= (get-ratings-of-criteria 1 -1) []))))
+
 
 (deftest ratings-of-job-test
   (testing "Testing get-ratings-of-job function"
