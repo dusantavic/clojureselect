@@ -188,6 +188,26 @@
 
 
 ;***********************************************************
+;        AHP - ODREDJIVANJE VAZNOSTI KRITERIJUMA
+;***********************************************************
+; u okviru ahp-ponders nalaze se preference donosilaca odluka 
+
+
+(def ahp-ponders [{:job-id 1
+                   :qualification-id-base 1
+                   :qualification-id-reference 2
+                   :significance 3},
+                  {:job-id 1
+                   :qualification-id-base 1
+                   :qualification-id-reference 3
+                   :significance 2},
+                  {:job-id 1
+                   :qualification-id-base 2
+                   :qualification-id-reference 3
+                   :significance 0.5}])
+
+
+;***********************************************************
 ;                 SIMULACIJA PODATAKA U BAZI 
 ;***********************************************************
 ; koristi se iskljucivo za potrebe testiranja funkcija
@@ -236,6 +256,7 @@
                   :qualification-id 3
                   :ponder 0.2}])
 
+
 (def ratings-sim [{:id 1
                  :candidate-id 1
                  :job-id 1
@@ -267,3 +288,6 @@
                  :job-id 1
                  :qualification-id 3
                  :value 7}])
+
+
+
