@@ -224,17 +224,29 @@
           (vec (repeat rows-and-cols 1))))
    ))
 
-;za sada samo za jedan kriterijum radi 
+(defn modify-ahp-matrix 
+  "Recursive function that modifies values in ahp matrix"
+  [matrix ponders]
+  (if-not (= (rest ponders) []) 
+    (let [current-ponder (first ponders)
+          mat (modify-ahp-matrix matrix (into [] (rest ponders)))]
+    (assoc-in mat [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder))) 
+    (let [current-ponder (first ponders)] 
+      (assoc-in matrix [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder)))
+    )
+  )
+
 (defn create-ahp-matrix
   "Creates AHP matrix of assessments for a specific job"
   [job-id]
   (let [ahp-ponders (get-ahp-ponders job-id)
         rows-cols-count (count ahp-ponders)
-        init-matrix (create-matrix rows-cols-count)] 
-   (assoc-in init-matrix [(get (:position (get ahp-ponders 0)) 0) (get (:position (get ahp-ponders 0)) 1)] (:significance (get ahp-ponders 0)))
-  )) 
+        init-matrix (create-matrix rows-cols-count)]
+    (modify-ahp-matrix init-matrix ahp-ponders))) 
 
 (create-ahp-matrix 1)
+(get-ahp-ponders 1)
+
 
 
 
