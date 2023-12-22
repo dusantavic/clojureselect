@@ -207,7 +207,18 @@
                    :qualification-id-base 2
                    :qualification-id-reference 3
                    :position [1,2]
-                   :significance 0.5}])
+                   :significance 0.5}]) ;treba da se cuva u bazi
+
+(defn inverse-ponders 
+  "Inverts AHP ponders. If significance value on a specific position is x, then significance value on inverted position must be 1/x"
+  [raw-ponders]
+  (into [] (map (fn [obj] (let [position1 (get (:position obj) 0)
+                       position2 (get (:position obj) 1)] (assoc obj :position [position2, position1] :significance (/ 1 (:significance obj))))) raw-ponders)))
+
+(defn add-inverse-ponders 
+  "Adds inverted ponders to an array of initially created ponders"
+  [raw-ponders]
+  (into [] (concat ahp-ponders (inverse-ponders raw-ponders))))
 
 (defn get-ahp-ponders
   "Returns ahp ponders for a specific job"
@@ -217,36 +228,39 @@
 (defn create-matrix
   "Creates a matrix with specific number of rows and columns, initially filled with ones"
   ([rows columns]
-  (vec (for [x (range rows)]
-         (vec (repeat columns 1)))))
+   (vec (for [x (range rows)]
+          (vec (repeat columns 1)))))
   ([rows-and-cols]
    (vec (for [x (range rows-and-cols)]
-          (vec (repeat rows-and-cols 1))))
-   ))
+          (vec (repeat rows-and-cols 1))))))
 
-(defn modify-ahp-matrix 
+(defn modify-ahp-matrix
   "Recursive function that modifies values in ahp matrix"
   [matrix ponders]
-  (if-not (= (rest ponders) []) 
+  (if-not (= (rest ponders) [])
     (let [current-ponder (first ponders)
           mat (modify-ahp-matrix matrix (into [] (rest ponders)))]
-    (assoc-in mat [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder))) 
-    (let [current-ponder (first ponders)] 
-      (assoc-in matrix [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder)))
-    )
-  )
+      (assoc-in mat [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder)))
+    (let [current-ponder (first ponders)]
+      (assoc-in matrix [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder)))))
+
+(defn print-matrix 
+  "Prints a matrix in a readable format"
+  [matrix]
+  (doseq [row matrix]
+    (println (apply str (interpose "\t" row)))))
 
 (defn create-ahp-matrix
   "Creates AHP matrix of assessments for a specific job"
   [job-id]
-  (let [ahp-ponders (get-ahp-ponders job-id)
+  (let [raw-ponders (get-ahp-ponders job-id)
+        final-ponders (add-inverse-ponders raw-ponders)
         rows-cols-count (count ahp-ponders)
         init-matrix (create-matrix rows-cols-count)]
-    (modify-ahp-matrix init-matrix ahp-ponders))) 
+    (modify-ahp-matrix init-matrix final-ponders)))
 
-(create-ahp-matrix 1)
-(get-ahp-ponders 1)
 
+(print-matrix (create-ahp-matrix 1))
 
 
 
