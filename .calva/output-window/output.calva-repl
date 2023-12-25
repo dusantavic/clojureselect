@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:59678 ...
+; Using host:port 127.0.0.1:60836 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -26,214 +26,35 @@ clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
 clj꞉clojureselect.business-logic꞉> 
 ; Jack-in done.
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 3 1] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-nil
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 1] [1 1 1]][[1 1 1] [1 1 1] [1 1 1]][[1 1 1] [1 1 1] [1 1 1]][[1 1 1] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-([[1 3 1] [1 1 1] [1 1 1]] [[1 1 2] [1 1 1] [1 1 1]] [[1 1 1] [1 1 0.5] [1 1 1]])
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-; Error printing return value (IllegalArgumentException) at clojure.lang.APersistentVector/assoc (APersistentVector.java:350).
-; Key must be integer
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-([[1 3 1] [1 1 1] [1 1 1]] [[1 1 2] [1 1 1] [1 1 1]] [[1 1 1] [1 1 0.5] [1 1 1]])
+[[1 3 2] [1/3 1 0.5] [1/2 2.0 1]]
 clj꞉clojureselect.business-logic꞉> 
 #'clojureselect.business-logic/matrica
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 144] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 1] [144 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-nil
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (StackOverflowError) at clojureselect.business-logic/modify-ahp-matrix (form-init6037671875810215495.clj:228).
-; null
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-#function[clojureselect.business-logic/modify-ahp-matrix]
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3} {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2} {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}]({:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2} {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5})({:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5})()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()(); Execution error (StackOverflowError) at clojureselect.business-logic/modify-ahp-matrix (form-init6037671875810215495.clj:227).
-; null
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3} {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2} {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}][{:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2} {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}][{:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]; Execution error (StackOverflowError) at clojureselect.business-logic/modify-ahp-matrix (form-init6037671875810215495.clj:227).
-; null
-clj꞉clojureselect.business-logic꞉> 
-(2 3)
-clj꞉clojureselect.business-logic꞉> 
-[2 3]
-clj꞉clojureselect.business-logic꞉> 
-[]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 1] [1 1 0.5] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/modify-ahp-matrix (form-init6037671875810215495.clj:230).
-; Wrong number of args (0) passed to: clojure.lang.PersistentVector
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/modify-ahp-matrix (form-init6037671875810215495.clj:230).
-; Wrong number of args (0) passed to: clojure.lang.PersistentVector
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/modify-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 3 2] [1 1 0.5] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
-clj꞉clojureselect.business-logic꞉> 
-[[1 3 2] [1 1 0.5] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/matrica
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7969 (form-init6037671875810215495.clj:254).
-; Wrong number of args (5) passed to: clojure.core/assoc-in
-clj꞉clojureselect.business-logic꞉> 
-[[1 1 100] [1 1 1] [1 1 1]]
-clj꞉clojureselect.business-logic꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:1:8014).
-; Unable to resolve symbol: position2 in this context
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-({:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 0.5})
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- ({:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 3}
-  {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 2}
-  {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 0.5})]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 3}
-  {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 2}
-  {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 0.5}]]
-clj꞉clojureselect.business-logic꞉> 
-#function[clojure.core/concat]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-({:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 0.5})
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 0.5}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/testmap
-clj꞉clojureselect.business-logic꞉> 
-{:name "DUSAN", :age 144, :fax "FON"}
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- 1/3
- 1/2
- 2.0]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/add-inverse-ponders
-clj꞉clojureselect.business-logic꞉> 
-[{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
- {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
- {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/create-ahp-matrix
 clj꞉clojureselect.business-logic꞉> 
 [[1 3 2] [1/3 1 0.5] [1/2 2.0 1]]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/print-matrix
+(6 1.833333333333333 3.5)
 clj꞉clojureselect.business-logic꞉> 
-1 3 2
-1/3 1 0.5
-1/2 2.0 1
-nil
+[6 1.833333333333333 3.5]
 clj꞉clojureselect.business-logic꞉> 
-\t
+11.333333333333332
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/print-matrix
+#'clojureselect.business-logic/suma
 clj꞉clojureselect.business-logic꞉> 
-1	3	2
-1/3	1	0.5
-1/2	2.0	1
-nil
+11.333333333333332
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/niz-suma
+clj꞉clojureselect.business-logic꞉> 
+[6 1.833333333333333 3.5]
+clj꞉clojureselect.business-logic꞉> 
+(0.5294117647058824 0.16176470588235292 0.3088235294117647)
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:273:19).
+; Unable to resolve symbol: job-id in this context
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp-criteria
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ArityException) at clojureselect.business-logic/eval7928 (form-init8157019291293674037.clj:279).
+; Wrong number of args (0) passed to: clojureselect.business-logic/calculate-ahp-criteria
+clj꞉clojureselect.business-logic꞉> 
+[0.5294117647058824 0.16176470588235292 0.3088235294117647]
 clj꞉clojureselect.business-logic꞉> 

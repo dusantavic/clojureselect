@@ -260,8 +260,18 @@
     (modify-ahp-matrix init-matrix final-ponders)))
 
 
-(print-matrix (create-ahp-matrix 1))
+(create-ahp-matrix 1)
 
+(defn calculate-ahp-criteria
+  "Calculates total weight of criteria using AHP methodology"
+  [job-id]
+  (let [ahp-matrix (create-ahp-matrix job-id)
+        array-sums (into [] (map (fn [arr] (reduce + arr)) ahp-matrix))
+        total-sum (reduce + array-sums)]
+    (into [] (map (fn [element] (/ element total-sum)) array-sums)))) 
+;todo: kom kriterijumu pripada koji ponder? 
+
+(calculate-ahp-criteria 1)
 
 
 ;***********************************************************
