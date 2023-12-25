@@ -58,3 +58,6 @@ clj꞉clojureselect.business-logic꞉> 
 clj꞉clojureselect.business-logic꞉> 
 [0.5294117647058824 0.16176470588235292 0.3088235294117647]
 clj꞉clojureselect.business-logic꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed

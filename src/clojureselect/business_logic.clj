@@ -195,17 +195,20 @@
 
 (def ahp-ponders [{:job-id 1
                    :qualification-id-base 1
-                   :qualification-id-reference 2 
-                    :position [0,1]
+                   :qualification-id-reference 2
+                   :number 1
+                   :position [0,1]
                    :significance 3},
                   {:job-id 1
                    :qualification-id-base 1
                    :qualification-id-reference 3
+                   :number 2
                    :position [0,2]
                    :significance 2},
                   {:job-id 1
                    :qualification-id-base 2
                    :qualification-id-reference 3
+                   :number 3
                    :position [1,2]
                    :significance 0.5}]) ;treba da se cuva u bazi
 
