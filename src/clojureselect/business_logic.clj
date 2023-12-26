@@ -93,6 +93,11 @@
 
 (get-ratings-of-job 1)
 
+(defn get-qualification
+  "Returns a specific qualification"
+  [qualification-id]
+  (into {} (filter (fn [qual] (= (:id qual) qualification-id)) qualifications)))
+
 
 ;***********************************************************
 ;                     NORMALIZACIJA 
@@ -212,6 +217,7 @@
                    :position [1,2]
                    :significance 0.5}]) ;treba da se cuva u bazi
 
+
 (defn inverse-ponders 
   "Inverts AHP ponders. If significance value on a specific position is x, then significance value on inverted position must be 1/x"
   [raw-ponders]
@@ -227,6 +233,10 @@
   "Returns ahp ponders for a specific job"
   [job-id]
   (into [] (filter (fn [row] (= (:job-id row) job-id)) ahp-ponders)))
+
+(defn get-nth-ahp-ponder [job-id n]
+  (let [ponders (get-ahp-ponders job-id)]
+  (into {} (filter (fn [ponder] (= (:number ponder) n)) ponders))))
 
 (defn create-matrix
   "Creates a matrix with specific number of rows and columns, initially filled with ones"
@@ -265,17 +275,16 @@
 
 (create-ahp-matrix 1)
 
-(defn calculate-ahp-criteria
+(defn calculate-total-array
   "Calculates total weight of criteria using AHP methodology"
   [job-id]
   (let [ahp-matrix (create-ahp-matrix job-id)
         array-sums (into [] (map (fn [arr] (reduce + arr)) ahp-matrix))
         total-sum (reduce + array-sums)]
     (into [] (map (fn [element] (/ element total-sum)) array-sums)))) 
-;todo: kom kriterijumu pripada koji ponder? 
+;kom kriterijumu pripada koji ponder u nizu? 
 
-(calculate-ahp-criteria 1)
-
+(calculate-total-array 1)
 
 ;***********************************************************
 ;                 SIMULACIJA PODATAKA U BAZI 
