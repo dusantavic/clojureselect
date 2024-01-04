@@ -200,20 +200,17 @@
 
 (def ahp-ponders [{:job-id 1
                    :qualification-id-base 1
-                   :qualification-id-reference 2
-                   :number 1
+                   :qualification-id-reference 2 
                    :position [0,1]
                    :significance 3},
                   {:job-id 1
                    :qualification-id-base 1
                    :qualification-id-reference 3
-                   :number 2
                    :position [0,2]
                    :significance 2},
                   {:job-id 1
                    :qualification-id-base 2
-                   :qualification-id-reference 3
-                   :number 3
+                   :qualification-id-reference 3 
                    :position [1,2]
                    :significance 0.5}]) ;treba da se cuva u bazi
 
@@ -276,15 +273,24 @@
 (create-ahp-matrix 1)
 
 (defn calculate-total-array
-  "Calculates total weight of criteria using AHP methodology"
+  "Calculates total array of weights for all criteria using AHP methodology"
   [job-id]
   (let [ahp-matrix (create-ahp-matrix job-id)
         array-sums (into [] (map (fn [arr] (reduce + arr)) ahp-matrix))
         total-sum (reduce + array-sums)]
     (into [] (map (fn [element] (/ element total-sum)) array-sums)))) 
-;kom kriterijumu pripada koji ponder u nizu? 
 
 (calculate-total-array 1)
+
+(defn calculate-ahp
+  "Calculates total ahp weights for criteria"
+  [job-id]
+  (let [ahp-array (calculate-total-array job-id)
+        criteria (get-jobs-criteria job-id)]
+    (into [] (map (fn [element] (assoc element :ahp-ponder (get ahp-array (.indexOf criteria element)))) criteria))
+      ))
+
+(calculate-ahp 1)
 
 ;***********************************************************
 ;                 SIMULACIJA PODATAKA U BAZI 

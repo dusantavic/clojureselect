@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:60836 ...
+; Using host:port 127.0.0.1:62397 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -26,38 +26,85 @@ clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
 clj꞉clojureselect.business-logic꞉> 
 ; Jack-in done.
 clj꞉clojureselect.business-logic꞉> 
-[[1 3 2] [1/3 1 0.5] [1/2 2.0 1]]
+#'clojureselect.business-logic/ahp-ponders
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/matrica
-clj꞉clojureselect.business-logic꞉> 
-[[1 3 2] [1/3 1 0.5] [1/2 2.0 1]]
-clj꞉clojureselect.business-logic꞉> 
-(6 1.833333333333333 3.5)
-clj꞉clojureselect.business-logic꞉> 
-[6 1.833333333333333 3.5]
-clj꞉clojureselect.business-logic꞉> 
-11.333333333333332
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/suma
-clj꞉clojureselect.business-logic꞉> 
-11.333333333333332
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/niz-suma
-clj꞉clojureselect.business-logic꞉> 
-[6 1.833333333333333 3.5]
-clj꞉clojureselect.business-logic꞉> 
-(0.5294117647058824 0.16176470588235292 0.3088235294117647)
-clj꞉clojureselect.business-logic꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:273:19).
-; Unable to resolve symbol: job-id in this context
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/calculate-ahp-criteria
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7928 (form-init8157019291293674037.clj:279).
-; Wrong number of args (0) passed to: clojureselect.business-logic/calculate-ahp-criteria
+#'clojureselect.business-logic/calculate-total-array
 clj꞉clojureselect.business-logic꞉> 
 [0.5294117647058824 0.16176470588235292 0.3088235294117647]
 clj꞉clojureselect.business-logic꞉> 
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:290:18).
+; Unable to resolve symbol: job-id in this context
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:288:18).
+; Unable to resolve symbol: job-id in this context
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ArityException) at clojureselect.business-logic/calculate-ahp$fn (form-init1642456523188403457.clj:291).
+; Wrong number of args (2) passed to: clojure.core/assoc--5481
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ClassCastException) at clojureselect.business-logic/calculate-ahp$fn (form-init1642456523188403457.clj:291).
+; clojure.lang.Keyword cannot be cast to clojure.lang.Associative
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[1 1 1]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[1 1 1]
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.5294117647058824}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.5294117647058824}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.5294117647058824}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.5294117647058824}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5}
+ {:job-id 1, :qualification-id 2, :ponder 0.3}
+ {:job-id 1, :qualification-id 3, :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/calculate-ahp
+clj꞉clojureselect.business-logic꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.16176470588235292}
+ {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}]
+clj꞉clojureselect.business-logic꞉> 
+[0.5294117647058824 0.16176470588235292 0.3088235294117647]
+clj꞉clojureselect.business-logic꞉> 
