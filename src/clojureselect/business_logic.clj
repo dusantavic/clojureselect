@@ -293,6 +293,88 @@
 (calculate-ahp 1)
 
 ;***********************************************************
+;                    STABLO ODLUCIVANJA
+;***********************************************************
+
+(def testpodaci [
+             {
+              :zaduzenje "kriticno"
+              :primanja "visoka"
+              :stan "da"
+              :otplata "ne"
+             }, 
+             {:zaduzenje "kriticno"
+              :primanja "srednja"
+              :stan "ne"
+              :otplata "ne"},
+             {:zaduzenje "kriticno"
+              :primanja "niska"
+              :stan "da"
+              :otplata "ne"},
+             {:zaduzenje "kriticno"
+              :primanja "visoka"
+              :stan "ne"
+              :otplata "ne"},
+             {:zaduzenje "prihvatljivo"
+              :primanja "visoka"
+              :stan "da"
+              :otplata "da"},
+             {:zaduzenje "prihvatljivo"
+              :primanja "niska"
+              :stan "da"
+              :otplata "da"},
+             {:zaduzenje "prihvatljivo"
+              :primanja "srednja"
+              :stan "da"
+              :otplata "da"},
+             {:zaduzenje "prihvatljivo"
+              :primanja "srednja"
+              :stan "ne"
+              :otplata "ne"},
+             {:zaduzenje "povoljno"
+              :primanja "niska"
+              :stan "ne"
+              :otplata "da"},
+             {:zaduzenje "povoljno"
+              :primanja "niska"
+              :stan "ne"
+              :otplata "ne"},
+             {:zaduzenje "povoljno"
+              :primanja "niska"
+              :stan "ne"
+              :otplata "ne"}
+])
+
+(defn log2 [x]
+  (/ (Math/log x) (Math/log 2)))
+
+(defn get-count-yes
+  "Returns total number of elements with positive value of output variable"
+  [data out yes-value]
+  (reduce (fn [acc element]
+            (if (= (out element) yes-value)
+                   (inc acc)
+                   acc)) 0 data))
+(defn entropy 
+  [data out yes-value]
+  (let [total (count data)
+        count-yes (get-count-yes data out yes-value)
+        count-no (- total count-yes)
+        probability-yes (/ count-yes total) 
+        probability-no (/ count-no total)]
+    (* -1 (+ (* probability-yes (log2 probability-yes))
+             (* probability-no (log2 probability-no)))
+    )
+  ))
+
+(entropy testpodaci :otplata "da")
+
+
+
+
+
+
+;***********************************************************
 ;                 SIMULACIJA PODATAKA U BAZI 
 ;***********************************************************
 ; koristi se iskljucivo za potrebe testiranja funkcija

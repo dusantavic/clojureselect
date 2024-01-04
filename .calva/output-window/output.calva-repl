@@ -108,3 +108,88 @@ clj꞉clojureselect.business-logic꞉> 
 clj꞉clojureselect.business-logic꞉> 
 [0.5294117647058824 0.16176470588235292 0.3088235294117647]
 clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/podaci
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error macroexpanding clojure.core/defn at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:352:1).
+; {:name "dusan", :age 23} - failed: vector? at: [:fn-tail :arity-n :bodies :params] spec: :clojure.core.specs.alpha/param-list
+; ({:name "dusan", :age 23} {:name "dejan", :age 23}) - failed: Extra input at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testpodaci
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testfunkcija
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/testfunkcija (form-init1642456523188403457.clj:363).
+; Key must be integer
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/testfunkcija (form-init1642456523188403457.clj:363).
+; Key must be integer
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/testfunkcija (form-init1642456523188403457.clj:363).
+; Key must be integer
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testpodaci
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testfunkcija
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/testfunkcija (form-init1642456523188403457.clj:363).
+; Key must be integer
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testfunkcija
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testfunkcija
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+{#function[clojure.core/name] "dusan", :age 23}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testpodaci
+clj꞉clojureselect.business-logic꞉> 
+{:name "dusan", :age 23}
+clj꞉clojureselect.business-logic꞉> 
+"dusan"
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/count-yes
+clj꞉clojureselect.business-logic꞉> 
+0
+clj꞉clojureselect.business-logic꞉> 
+0
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/podaci
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/count-yes
+clj꞉clojureselect.business-logic꞉> 
+0
+clj꞉clojureselect.business-logic꞉> 
+4
+clj꞉clojureselect.business-logic꞉> 
+7
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/count-yes
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-count-yes
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/log2
+clj꞉clojureselect.business-logic꞉> 
+2.0
+clj꞉clojureselect.business-logic꞉> 
+4.0
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ClassCastException) at clojureselect.business-logic/eval8019 (form-init1642456523188403457.clj:351).
+; java.lang.Long cannot be cast to clojure.lang.IFn
+clj꞉clojureselect.business-logic꞉> 
+-144
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/entropy
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/entropy
+clj꞉clojureselect.business-logic꞉> 
+0.9456603046006402
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/testpodaci
+clj꞉clojureselect.business-logic꞉> 
+0.9456603046006402
+clj꞉clojureselect.business-logic꞉> 
