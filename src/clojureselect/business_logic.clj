@@ -403,6 +403,11 @@
 ;;  (reduce +)
 ;;  (* -1))
 
+(defn index-of-max 
+  "Returns an index of the greatest number element in an array."
+  [arr]
+  (let [max-index (apply max-key (fn [i] (nth arr i)) (range (count arr)))]
+    max-index))
 
 (defn conditional-entropy 
   [data attribute out values counts]
@@ -427,6 +432,17 @@
 
 
 (information-gain testpodaci :stan :otplata)
+
+(defn best-attribute
+  [data out attributes]
+  (let [information-gains (map #(information-gain data % out) attributes)
+        best-attribute-index (index-of-max information-gains)
+        best-attribute (nth attributes best-attribute-index)]
+    best-attribute))
+
+
+(best-attribute testpodaci :otplata [:zaduzenje :primanja :stan])
+
 
 
 

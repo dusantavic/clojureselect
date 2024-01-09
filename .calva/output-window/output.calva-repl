@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:50765 ...
+; Using host:port 127.0.0.1:51674 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -26,207 +26,76 @@ clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
 clj꞉clojureselect.business-logic꞉> 
 ; Jack-in done.
 clj꞉clojureselect.business-logic꞉> 
-56
+#'clojureselect.business-logic/best-attribute
 clj꞉clojureselect.business-logic꞉> 
--44
+[{:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"}
+ {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"}
+ {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"}
+ {:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"}
+ {:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"}
+ {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"}
+ {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"}
+ {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}]
 clj꞉clojureselect.business-logic꞉> 
-144
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/best-attribute (form-init7258247459059838323.clj:431).
+; Don't know how to create ISeq from: clojure.lang.Keyword
 clj꞉clojureselect.business-logic꞉> 
-0.9456603046006402
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/best-attribute (form-init7258247459059838323.clj:431).
+; Don't know how to create ISeq from: java.lang.Double
 clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7908 (form-init6493301042555520555.clj:370).
-; Wrong number of args (2) passed to: clojure.core/frequencies
+#'clojureselect.business-logic/best-attribute
 clj꞉clojureselect.business-logic꞉> 
-{{:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"} 1,
- {:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"} 1,
- {:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"} 1,
- {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"} 1,
- {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"} 2,
- {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"} 1,
- {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"} 1,
- {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"} 1,
- {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"} 1,
- {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"} 1}
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/best-attribute (form-init7258247459059838323.clj:431).
+; Don't know how to create ISeq from: java.lang.Double
 clj꞉clojureselect.business-logic꞉> 
-{}
+#'clojureselect.business-logic/attributes
 clj꞉clojureselect.business-logic꞉> 
-; Execution error (IllegalArgumentException) at clojureselect.business-logic/eval7914 (form-init6493301042555520555.clj:370).
-; Key must be integer
+(0.4002057591460948 0.0034304885460694212 0.14976144076759756)
 clj꞉clojureselect.business-logic꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:370:14).
-; Unable to resolve symbol: primanja in this context
+#'clojureselect.business-logic/information-gains
 clj꞉clojureselect.business-logic꞉> 
-{}
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/eval8069 (form-init7258247459059838323.clj:444).
+; Don't know how to create ISeq from: java.lang.Double
 clj꞉clojureselect.business-logic꞉> 
-{}
+0.4002057591460948
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/testpodaci
+#'clojureselect.business-logic/my-array
 clj꞉clojureselect.business-logic꞉> 
-{}
+#'clojureselect.business-logic/index-of-max
 clj꞉clojureselect.business-logic꞉> 
-nil
+3
 clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7925 (form-init6493301042555520555.clj:371).
-; Wrong number of args (11) passed to: :stan
+#function[clojure.core/map-indexed/fn--8634]
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/key
-; WARNING: key already refers to: #'clojure.core/key in namespace: clojureselect.business-logic, being replaced by: #'clojureselect.business-logic/key
+#'clojureselect.business-logic/index-of-max
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/values
+#'clojureselect.business-logic/index-of-max
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/frequencies-map
+#'clojureselect.business-logic/my-array
 clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7927 (form-init6493301042555520555.clj:374).
-; Wrong number of args (0) passed to: clojure.lang.PersistentArrayMap
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/key
-clj꞉clojureselect.business-logic꞉> 
-:otplata
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/key
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/values
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/frequencies-map
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7929 (form-init6493301042555520555.clj:374).
-; Wrong number of args (0) passed to: clojure.lang.PersistentArrayMap
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/kljuc
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/values
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/frequencies-map
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/eval7931 (form-init6493301042555520555.clj:374).
-; Wrong number of args (0) passed to: clojure.lang.PersistentArrayMap
-clj꞉clojureselect.business-logic꞉> 
-{"ne" 7, "da" 4}
-clj꞉clojureselect.business-logic꞉> 
-{"ne" 7, "da" 4}
-clj꞉clojureselect.business-logic꞉> 
-:primanja
-clj꞉clojureselect.business-logic꞉> 
-:stan
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/frequencies-map
-clj꞉clojureselect.business-logic꞉> 
-{"da" 5, "ne" 6}
-clj꞉clojureselect.business-logic꞉> 
-{"visoka" 3, "srednja" 3, "niska" 5}
-clj꞉clojureselect.business-logic꞉> 
-("visoka" "srednja" "niska")
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ClassCastException) at clojureselect.business-logic/eval7948 (form-init6493301042555520555.clj:349).
-; clojure.lang.LazySeq cannot be cast to clojure.lang.IFn
-clj꞉clojureselect.business-logic꞉> 
-(3 3 5)
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/calculate-information-gain
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (IllegalArgumentException) at clojureselect.business-logic/calculate-information-gain (form-init6493301042555520555.clj:379).
-; Key must be integer
-clj꞉clojureselect.business-logic꞉> 
-; Syntax error (IllegalArgumentException) compiling . at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:379:24).
-; No matching method log found taking 2 args for class java.lang.Math
-clj꞉clojureselect.business-logic꞉> 
-; Syntax error (IllegalArgumentException) compiling . at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:379:24).
-; No matching method log found taking 2 args for class java.lang.Math
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/calculate-entropy
+3
 clj꞉clojureselect.business-logic꞉> 
 0
 clj꞉clojureselect.business-logic꞉> 
-nil
+#'clojureselect.business-logic/best-attribute
 clj꞉clojureselect.business-logic꞉> 
-("ne" "ne" "ne" "ne" "da" "da" "da" "ne" "da" "ne" "ne")
+:zaduzenje
 clj꞉clojureselect.business-logic꞉> 
-3.111508315216991
+#'clojureselect.business-logic/id3
 clj꞉clojureselect.business-logic꞉> 
-; Syntax error compiling def at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:382:1).
-; Too many arguments to def
+; Execution error (ArityException) at clojureselect.business-logic/index-of-max (form-init7258247459059838323.clj:409).
+; Wrong number of args (1) passed to: clojure.core/max-key
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/datatest
+; Execution error (ArityException) at clojureselect.business-logic/index-of-max (form-init7258247459059838323.clj:409).
+; Wrong number of args (1) passed to: clojure.core/max-key
 clj꞉clojureselect.business-logic꞉> 
-3.111508315216991
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:451:40).
+; Unable to resolve symbol: target-attribute in this context
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/datatest
+#'clojureselect.business-logic/id3
 clj꞉clojureselect.business-logic꞉> 
-("ne" "ne" "ne" "ne" "da" "da" "da" "ne" "da" "ne" "ne")
-clj꞉clojureselect.business-logic꞉> 
-{"ne" 7, "da" 4}
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ClassCastException) at clojureselect.business-logic/eval8188 (form-init6493301042555520555.clj:384).
-; clojure.lang.LazySeq cannot be cast to clojure.lang.IFn
-clj꞉clojureselect.business-logic꞉> 
-; Error printing return value (ClassCastException) at clojure.lang.APersistentMap$KeySeq/first (APersistentMap.java:168).
-; java.lang.String cannot be cast to java.util.Map$Entry
-clj꞉clojureselect.business-logic꞉> 
-("ne" "da")
-clj꞉clojureselect.business-logic꞉> 
-(7 4)
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/value-counts
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/values
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/counts
-clj꞉clojureselect.business-logic꞉> 
-11
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/total-count
-clj꞉clojureselect.business-logic꞉> 
-(7/11 4/11)
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/probabilities
-clj꞉clojureselect.business-logic꞉> 
-(7/11 4/11)
-clj꞉clojureselect.business-logic꞉> 
-#'user/information-gain
-clj꞉user꞉> 
-(-0.41495789782344117 -0.530702406777199)
-clj꞉clojureselect.business-logic꞉> 
--0.9456603046006402
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/calculate-entropy
-clj꞉clojureselect.business-logic꞉> 
-0.9456603046006402
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/entropy
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/entropy
-clj꞉clojureselect.business-logic꞉> 
-#'user/information-gain
-clj꞉user꞉> 
-0.9456603046006402
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/extract-column
-clj꞉clojureselect.business-logic꞉> 
-("ne" "ne" "ne" "ne" "da" "da" "da" "ne" "da" "ne" "ne")
-clj꞉clojureselect.business-logic꞉> 
-0.9456603046006402
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/information-gain
-clj꞉clojureselect.business-logic꞉> 
-0.7958988638330426
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/weighted-entropy
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/information-gain
-clj꞉clojureselect.business-logic꞉> 
-0.7958988638330426
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/information-gain
-clj꞉clojureselect.business-logic꞉> 
-0.7958988638330426
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/information-gain
-clj꞉clojureselect.business-logic꞉> 
-0.14976144076759756
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/conditional-entropy
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/information-gain
-clj꞉clojureselect.business-logic꞉> 
-0.14976144076759756
+{:zaduzenje {}}
 clj꞉clojureselect.business-logic꞉> 
