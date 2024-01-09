@@ -404,8 +404,30 @@
 ;;  (* -1))
 
 
-(defn information-gain []
-  )
+(defn conditional-entropy 
+  [data attribute out values counts]
+  (reduce +
+          (map (fn [i]
+                 (let [value (nth values i)
+                       subset (->> data
+                                   (filter #(= value (get % attribute))))
+                       subset-entropy (entropy (extract-column subset out))]
+                   (* (/ (nth counts i) (apply + counts)) subset-entropy)))
+               (range (count values)))))
+
+
+(defn information-gain 
+  [data attribute out]
+  (let [total-entropy (entropy (extract-column data out))]
+    (let [values-counts (frequencies (extract-column data attribute))
+          values (keys values-counts)
+          counts (vals values-counts)
+          conditional-entropy (conditional-entropy data attribute out values counts)]
+      (- total-entropy conditional-entropy))))
+
+
+(information-gain testpodaci :stan :otplata)
+
 
 
 
