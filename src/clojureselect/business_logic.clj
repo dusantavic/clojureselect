@@ -296,81 +296,116 @@
 ;                    STABLO ODLUCIVANJA
 ;***********************************************************
 
-(def testpodaci [
-             {
-              :zaduzenje "kriticno"
-              :primanja "visoka"
-              :stan "da"
-              :otplata "ne"
-             }, 
-             {:zaduzenje "kriticno"
-              :primanja "srednja"
-              :stan "ne"
-              :otplata "ne"},
-             {:zaduzenje "kriticno"
-              :primanja "niska"
-              :stan "da"
-              :otplata "ne"},
-             {:zaduzenje "kriticno"
-              :primanja "visoka"
-              :stan "ne"
-              :otplata "ne"},
-             {:zaduzenje "prihvatljivo"
-              :primanja "visoka"
-              :stan "da"
-              :otplata "da"},
-             {:zaduzenje "prihvatljivo"
-              :primanja "niska"
-              :stan "da"
-              :otplata "da"},
-             {:zaduzenje "prihvatljivo"
-              :primanja "srednja"
-              :stan "da"
-              :otplata "da"},
-             {:zaduzenje "prihvatljivo"
-              :primanja "srednja"
-              :stan "ne"
-              :otplata "ne"},
-             {:zaduzenje "povoljno"
-              :primanja "niska"
-              :stan "ne"
-              :otplata "da"},
-             {:zaduzenje "povoljno"
-              :primanja "niska"
-              :stan "ne"
-              :otplata "ne"},
-             {:zaduzenje "povoljno"
-              :primanja "niska"
-              :stan "ne"
-              :otplata "ne"}
-])
+(def testpodaci [{:zaduzenje "kriticno"
+                  :primanja "visoka"
+                  :stan "da"
+                  :otplata "ne"},
+                 {:zaduzenje "kriticno"
+                  :primanja "srednja"
+                  :stan "ne"
+                  :otplata "ne"},
+                 {:zaduzenje "kriticno"
+                  :primanja "niska"
+                  :stan "da"
+                  :otplata "ne"},
+                 {:zaduzenje "kriticno"
+                  :primanja "visoka"
+                  :stan "ne"
+                  :otplata "ne"},
+                 {:zaduzenje "prihvatljivo"
+                  :primanja "visoka"
+                  :stan "da"
+                  :otplata "da"},
+                 {:zaduzenje "prihvatljivo"
+                  :primanja "niska"
+                  :stan "da"
+                  :otplata "da"},
+                 {:zaduzenje "prihvatljivo"
+                  :primanja "srednja"
+                  :stan "da"
+                  :otplata "da"},
+                 {:zaduzenje "prihvatljivo"
+                  :primanja "srednja"
+                  :stan "ne"
+                  :otplata "ne"},
+                 {:zaduzenje "povoljno"
+                  :primanja "niska"
+                  :stan "ne"
+                  :otplata "da"},
+                 {:zaduzenje "povoljno"
+                  :primanja "niska"
+                  :stan "ne"
+                  :otplata "ne"},
+                 {:zaduzenje "povoljno"
+                  :primanja "niska"
+                  :stan "ne"
+                  :otplata "ne"}])
+
+
+(defn frequencies-map [data attribute]
+  (let [values (map attribute data)]
+    (frequencies values)))
+;keys vals
 
 (defn log2 [x]
   (/ (Math/log x) (Math/log 2)))
 
-(defn get-count-yes
-  "Returns total number of elements with positive value of output variable"
-  [data out yes-value]
-  (reduce (fn [acc element]
-            (if (= (out element) yes-value)
-                   (inc acc)
-                   acc)) 0 data))
+;; (defn get-count-yes
+;;   "Returns total number of elements with positive value of output variable"
+;;   [data out yes-value]
+;;   (reduce (fn [acc element]
+;;             (if (= (out element) yes-value)
+;;               (inc acc)
+;;               acc)) 0 data))
+
+;; (defn entropy
+;;   [data out yes-value]
+;;   (let [total (count data)
+;;         count-yes (get-count-yes data out yes-value)
+;;         count-no (- total count-yes)
+;;         probability-yes (/ count-yes total)
+;;         probability-no (/ count-no total)]
+;;     (* -1 (+ (* probability-yes (log2 probability-yes))
+;;              (* probability-no (log2 probability-no))))))
+
+;; (entropy testpodaci :otplata "da")
+
 (defn entropy 
-  [data out yes-value]
-  (let [total (count data)
-        count-yes (get-count-yes data out yes-value)
-        count-no (- total count-yes)
-        probability-yes (/ count-yes total) 
-        probability-no (/ count-no total)]
-    (* -1 (+ (* probability-yes (log2 probability-yes))
-             (* probability-no (log2 probability-no)))
-    )
-  ))
+  "Calcuates entropy of a given column.
+   As an input parameter expects only one column for which the entropy needs to be calculated."
+  [data]
+  (let [value-counts (frequencies data)
+        values (keys value-counts)
+        counts (vals value-counts)
+        total-count (apply + counts)
+        probabilities (map #(/ % total-count) counts)]
+    (->> (map #(* % (log2 %)) probabilities)
+         (reduce +)
+         (* -1))))
 
-(entropy testpodaci :otplata "da")
+(defn extract-column
+  "Extracts values only for the column of the entered attribute"
+  [data attribute]
+  (map #(get % attribute) data))
+
+(entropy (extract-column testpodaci :otplata))
 
 
+;; (def datatest (map #(get % :otplata) testpodaci))
+;; (def value-counts (frequencies datatest))
+;; (def values (keys value-counts)) 
+;; (def counts (vals value-counts)) 
+;; (def total-count (apply + counts))
+;; (def probabilities (map #(/ % total-count) counts))
 
+;; (->>
+;;  (map #(* % (log2 %)) probabilities)
+;;  (reduce +)
+;;  (* -1))
+
+
+(defn information-gain []
+  )
 
 
 
