@@ -8,7 +8,7 @@
                  [org.clojure/java.jdbc "0.7.12"]
                  [mysql/mysql-connector-java "8.0.33"]
                  [midje "1.10.9" :exclusions [org.clojure/tools.logging]]
-                 ]
+                 [org.clojure/tools.trace "0.7.9"]]
   :main ^:skip-aot clojureselect.business-logic
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all

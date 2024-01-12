@@ -10,7 +10,7 @@
 ;   - See https://calva.io/connect-sequences/
 ; 
 ; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:51674 ...
+; Using host:port 127.0.0.1:52427 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; TIPS:
@@ -26,7 +26,188 @@ clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
 clj꞉clojureselect.business-logic꞉> 
 ; Jack-in done.
 clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/best-attribute
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:stan {}}{:stan {}}{:zaduzenje {}}{:primanja {}}{:stan {}}{:zaduzenje {}}{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:stan {}}{:stan {}}{:zaduzenje {}}{:primanja {}}{:stan {}}{:zaduzenje {}}{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+("ne" "ne" "ne" "ne" "da" "da" "da" "ne" "da" "ne" "ne")
+clj꞉clojureselect.business-logic꞉> 
+("ne" "da")
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ArityException) at clojureselect.business-logic/eval7958 (form-init7388293743031155916.clj:470).
+; Wrong number of args (2) passed to: clojure.core/distinct
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ArityException) at clojureselect.business-logic/eval7960 (form-init7388293743031155916.clj:470).
+; Wrong number of args (2) passed to: clojure.core/distinct
+clj꞉clojureselect.business-logic꞉> 
+2
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:469:18).
+; Unable to resolve symbol: data in this context
+clj꞉clojureselect.business-logic꞉> 
+"ne"
+clj꞉clojureselect.business-logic꞉> 
+"ne"
+clj꞉clojureselect.business-logic꞉> 
+:zaduzenje
+clj꞉clojureselect.business-logic꞉> 
+(nil)
+clj꞉clojureselect.business-logic꞉> 
+(nil)
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/best-att
+clj꞉clojureselect.business-logic꞉> 
+("kriticno" "prihvatljivo" "povoljno")
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/subdata
+clj꞉clojureselect.business-logic꞉> 
+({:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"}
+ {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"}
+ {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"}
+ {:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"})
+clj꞉clojureselect.business-logic꞉> 
+"ne"
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/tree
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}, :stan {"ne" {:zaduzenje {}}}}
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}, :stan {"ne" "ne"}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:stan {}}{:stan {}}{:zaduzenje {}}{:primanja {}}{:stan {}}{:zaduzenje {}}{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:52677 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.business-logic꞉> 
+clj꞉clojureselect.business-logic꞉> 
+; Jack-in done.
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:stan {}}{:stan {}}{:zaduzenje {}}{:primanja {}}{:stan {}}{:zaduzenje {}}{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+TRACE t8241: (id3 [{:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"} {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"} {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"} {:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"} {:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}] :otplata [:zaduzenje :primanja :stan])
+TRACE t8242: | (id3 ({:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"} {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"} {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"} {:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"}) :otplata (:primanja :stan))
+TRACE t8242: | => "ne"
+{:zaduzenje {}}TRACE t8243: | (id3 ({:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"}) :otplata (:primanja :stan))
+TRACE t8244: | | (id3 ({:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"} {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"}) :otplata (:primanja))
+TRACE t8244: | | => "da"
+{:stan {}}TRACE t8245: | | (id3 ({:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"}) :otplata (:primanja))
+TRACE t8245: | | => "ne"
+{:stan {}}TRACE t8243: | => {:stan {}}
+{:zaduzenje {}}TRACE t8246: | (id3 ({:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}) :otplata (:primanja :stan))
+TRACE t8247: | | (id3 ({:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}) :otplata (:primanja))
+TRACE t8248: | | | (id3 ({:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"} {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}) :otplata ())
+TRACE t8248: | | | => "ne"
+{:primanja {}}TRACE t8247: | | => {:primanja {}}
+{:stan {}}TRACE t8246: | => {:stan {}}
+{:zaduzenje {}}TRACE t8241: => {:zaduzenje {}}
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {kriticno ne}}{:stan {da da}}{:stan {ne ne}}{:zaduzenje {prihvatljivo nil}}{:primanja {niska ne}}{:stan {ne nil}}{:zaduzenje {povoljno nil}}nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {"kriticno" "ne"}} next.. {:stan {"da" "da"}} next.. {:stan {"ne" "ne"}} next.. {:zaduzenje {"prihvatljivo" nil}} next.. {:primanja {"niska" "ne"}} next.. {:stan {"ne" nil}} next.. {:zaduzenje {"povoljno" nil}} next.. nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/id3 (form-init8797117139228131424.clj:464).
+; Key must be integer
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:stan {}}{:stan {}}{:zaduzenje {}}{:primanja {}}{:stan {}}{:zaduzenje {}}nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:stan {}}{:stan {}}{:zaduzenje {}}{:primanja {}}{:stan {}}{:zaduzenje {}}nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {kriticno ne}}{:stan {da da}}{:stan {ne ne}}{:zaduzenje {prihvatljivo nil}}{:primanja {niska ne}}{:stan {ne nil}}{:zaduzenje {povoljno nil}}nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:zaduzenje {kriticno ne}}{:stan {}}{:stan {da da}}{:stan {}}{:stan {ne ne}}{:zaduzenje {}}{:zaduzenje {prihvatljivo nil}}{:primanja {}}{:primanja {niska ne}}{:stan {}}{:stan {ne nil}}{:zaduzenje {}}{:zaduzenje {povoljno nil}}nil
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:459:7).
+; Unable to resolve symbol: new-tree in this context
+clj꞉clojureselect.business-logic꞉> 
+303
+clj꞉clojureselect.business-logic꞉> 
+3303
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
 clj꞉clojureselect.business-logic꞉> 
 [{:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"}
  {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"}
@@ -40,62 +221,143 @@ clj꞉clojureselect.business-logic꞉> 
  {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}
  {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}]
 clj꞉clojureselect.business-logic꞉> 
-; Execution error (IllegalArgumentException) at clojureselect.business-logic/best-attribute (form-init7258247459059838323.clj:431).
-; Don't know how to create ISeq from: clojure.lang.Keyword
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (IllegalArgumentException) at clojureselect.business-logic/best-attribute (form-init7258247459059838323.clj:431).
-; Don't know how to create ISeq from: java.lang.Double
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/best-attribute
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (IllegalArgumentException) at clojureselect.business-logic/best-attribute (form-init7258247459059838323.clj:431).
-; Don't know how to create ISeq from: java.lang.Double
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/attributes
-clj꞉clojureselect.business-logic꞉> 
-(0.4002057591460948 0.0034304885460694212 0.14976144076759756)
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/information-gains
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (IllegalArgumentException) at clojureselect.business-logic/eval8069 (form-init7258247459059838323.clj:444).
-; Don't know how to create ISeq from: java.lang.Double
-clj꞉clojureselect.business-logic꞉> 
-0.4002057591460948
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/my-array
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/index-of-max
-clj꞉clojureselect.business-logic꞉> 
-3
-clj꞉clojureselect.business-logic꞉> 
-#function[clojure.core/map-indexed/fn--8634]
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/index-of-max
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/index-of-max
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/my-array
-clj꞉clojureselect.business-logic꞉> 
-3
-clj꞉clojureselect.business-logic꞉> 
-0
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/best-attribute
-clj꞉clojureselect.business-logic꞉> 
-:zaduzenje
-clj꞉clojureselect.business-logic꞉> 
-#'clojureselect.business-logic/id3
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/index-of-max (form-init7258247459059838323.clj:409).
-; Wrong number of args (1) passed to: clojure.core/max-key
-clj꞉clojureselect.business-logic꞉> 
-; Execution error (ArityException) at clojureselect.business-logic/index-of-max (form-init7258247459059838323.clj:409).
-; Wrong number of args (1) passed to: clojure.core/max-key
-clj꞉clojureselect.business-logic꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:451:40).
-; Unable to resolve symbol: target-attribute in this context
+"dusan"
 clj꞉clojureselect.business-logic꞉> 
 #'clojureselect.business-logic/id3
 clj꞉clojureselect.business-logic꞉> 
 {:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+"dusan"
+clj꞉clojureselect.business-logic꞉> 
+"dusan"
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:472:1).
+; Unable to resolve symbol: id3 in this context
+clj꞉user꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:472:1).
+; Unable to resolve symbol: id3 in this context
+clj꞉user꞉> 
+; Syntax error compiling if at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:452:5).
+; Too many arguments to if
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {kriticno ne}}{:stan {da da}}{:stan {ne ne}}{:zaduzenje {prihvatljivo {:stan {}}}}{:primanja {niska ne}}{:stan {ne {:primanja {}}}}{:zaduzenje {povoljno {:stan {}}}}{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:primanja {"niska" "ne"},
+ :stan {"ne" {:primanja {"niska" "ne"}}},
+ :zaduzenje {"povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3-nodef
+clj꞉clojureselect.business-logic꞉> 
+nil
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3-nodef
+clj꞉clojureselect.business-logic꞉> 
+{:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:primanja {"niska" "ne"},
+ :stan {"ne" {:primanja {"niska" "ne"}}},
+ :zaduzenje {"povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/id3 (form-init8797117139228131424.clj:462).
+; Don't know how to create ISeq from: clojure.core$partial$fn__5912
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/id3 (form-init8797117139228131424.clj:462).
+; Don't know how to create ISeq from: clojure.core$partial$fn__5912
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/id3 (form-init8797117139228131424.clj:462).
+; Don't know how to create ISeq from: clojure.core$partial$fn__5912
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:primanja {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (IllegalArgumentException) at clojureselect.business-logic/id3 (form-init8797117139228131424.clj:462).
+; Don't know how to create ISeq from: clojure.core$partial$fn__5912
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:primanja {"niska" "ne"},
+ :stan {"ne" {:primanja {"niska" "ne"}}},
+ :zaduzenje {"povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error (ClassCastException) compiling fn* at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:508:25).
+; clojure.lang.Symbol cannot be cast to clojure.lang.IPersistentVector
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3-nodef2
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {#function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}},
+  #function[clojureselect.business-logic/id3-nodef2/value--10554] {:value {:stan {}}}}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3-nodef2
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {"kriticno" "ne",
+  "prihvatljivo" {:stan {"da" "da", "ne" "ne"}},
+  "povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
 clj꞉clojureselect.business-logic꞉> 

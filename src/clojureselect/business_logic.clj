@@ -443,7 +443,60 @@
 
 (best-attribute testpodaci :otplata [:zaduzenje :primanja :stan])
 
+(require 'clojure.tools.trace)
 
+(defn id3 [data out attributes]
+  (if (= 1 (count (distinct (extract-column data out))))
+    (first (distinct (extract-column data out)))
+    (if (empty? attributes)
+      (let [unique-target-values (map #(get % out) data)
+            counts (frequencies unique-target-values)
+            majority-class (->> counts
+                                (apply max-key second)
+                                first)]
+        majority-class)
+      (let [best-attribute (best-attribute data out attributes) 
+            attributes (remove #(= % best-attribute) attributes)]
+        (def tree {best-attribute {}})
+        (doseq [value (distinct (map #(get % best-attribute) data))]
+          (let [sub-data (filter #(= value (get % best-attribute)) data)
+                subtree (id3 sub-data out attributes)]
+            (def tree (assoc-in tree [best-attribute value] subtree)))
+          tree
+            )
+        tree
+          ))))
+
+
+(defn id3-nodef [data out attributes]
+  (if (= 1 (count (distinct (extract-column data out))))
+    (first (distinct (extract-column data out)))
+    (if (empty? attributes)
+      (let [unique-target-values (map #(get % out) data)
+            counts (frequencies unique-target-values)
+            majority-class (->> counts
+                                (apply max-key second)
+                                first)]
+        majority-class)
+      (let [best-attribute (best-attribute data out attributes)
+            attributes (remove #(= % best-attribute) attributes)]
+        (->> (distinct (map #(get % best-attribute) data))
+             (reduce (fn [tree value]
+                       (let [sub-data (filter #(= value (get % best-attribute)) data)
+                             subtree (id3 sub-data out attributes)]
+                         (assoc-in tree [best-attribute value] subtree)))
+                     {best-attribute {}}))))))
+
+
+(def attributes [:zaduzenje :primanja :stan])
+(id3 testpodaci :otplata [:zaduzenje :primanja :stan])
+(id3-nodef testpodaci :otplata [:zaduzenje :primanja :stan])
+(clojure.tools.trace/dotrace [id3] (id3 testpodaci :otplata [:zaduzenje :primanja :stan]))
+
+;; {:zaduzenje
+;;  {"kriticno" "ne",
+;;   "prihvatljivo" {:stan {"da" "da", "ne" "ne"}},
+;;   "povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
 
 
 
