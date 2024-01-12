@@ -296,7 +296,7 @@
 ;                    STABLO ODLUCIVANJA
 ;***********************************************************
 
-(def testpodaci [{:zaduzenje "kriticno"
+(def training-data [{:zaduzenje "kriticno"
                   :primanja "visoka"
                   :stan "da"
                   :otplata "ne"},
@@ -368,7 +368,7 @@
 ;;     (* -1 (+ (* probability-yes (log2 probability-yes))
 ;;              (* probability-no (log2 probability-no))))))
 
-;; (entropy testpodaci :otplata "da")
+;; (entropy training-data :otplata "da")
 
 (defn entropy 
   "Calcuates entropy of a given column.
@@ -388,10 +388,10 @@
   [data attribute]
   (map #(get % attribute) data))
 
-(entropy (extract-column testpodaci :otplata))
+(entropy (extract-column training-data :otplata))
 
 
-;; (def datatest (map #(get % :otplata) testpodaci))
+;; (def datatest (map #(get % :otplata) training-data))
 ;; (def value-counts (frequencies datatest))
 ;; (def values (keys value-counts)) 
 ;; (def counts (vals value-counts)) 
@@ -431,19 +431,48 @@
       (- total-entropy conditional-entropy))))
 
 
-(information-gain testpodaci :stan :otplata)
+(information-gain training-data :stan :otplata)
 
 (defn best-attribute
   [data out attributes]
-  (let [information-gains (map #(information-gain data % out) attributes)
-        best-attribute-index (index-of-max information-gains)
-        best-attribute (nth attributes best-attribute-index)]
-    best-attribute))
+ (let [information-gains (map #(information-gain data % out) attributes)
+       best-attribute-index (index-of-max information-gains)
+       best-attribute (nth attributes best-attribute-index)]
+   (if (every? (fn [x] (= x 0.0)) information-gains)
+     nil
+     best-attribute)))
 
-
-(best-attribute testpodaci :otplata [:zaduzenje :primanja :stan])
-
+;; (def sub-data (filter #(= "povoljno" (get % :zaduzenje)) training-data))
+;; (information-gain sub-data :stan :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
+;; (information-gain sub-data :primanja :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
+;; (every? (fn [x] (= x 0.0)) [0.0 0.0 0.0])
+  
+(best-attribute training-data :otplata [:zaduzenje :primanja :stan])
 (require 'clojure.tools.trace)
+
+;; (defn id3 [data out attributes]
+;;   (if (= 1 (count (distinct (extract-column data out))))
+;;     (first (distinct (extract-column data out)))
+;;     (if (empty? attributes)
+;;       (let [unique-target-values (map #(get % out) data)
+;;             counts (frequencies unique-target-values)
+;;             majority-class (->> counts
+;;                                 (apply max-key second)
+;;                                 first)]
+;;         majority-class)
+;;       (let [best-attribute (best-attribute data out attributes) 
+;;             attributes (remove #(= % best-attribute) attributes)]
+;;         (def tree {best-attribute {}})
+;;         (doseq [value (distinct (map #(get % best-attribute) data))]
+;;           (let [sub-data (filter #(= value (get % best-attribute)) data)
+;;                 subtree (id3 sub-data out attributes)]
+;;             (def tree (assoc-in tree [best-attribute value] subtree)))
+;;           tree
+;;             )
+;;         tree
+;;           ))))
+
+
 
 (defn id3 [data out attributes]
   (if (= 1 (count (distinct (extract-column data out))))
@@ -455,48 +484,29 @@
                                 (apply max-key second)
                                 first)]
         majority-class)
-      (let [best-attribute (best-attribute data out attributes) 
-            attributes (remove #(= % best-attribute) attributes)]
-        (def tree {best-attribute {}})
-        (doseq [value (distinct (map #(get % best-attribute) data))]
-          (let [sub-data (filter #(= value (get % best-attribute)) data)
-                subtree (id3 sub-data out attributes)]
-            (def tree (assoc-in tree [best-attribute value] subtree)))
-          tree
-            )
-        tree
-          ))))
+      (let [best-attribute (best-attribute data out attributes)]
+        (if (= best-attribute nil)
+           ;ako ne radimo dalje grananje, onda racunamo verovatnoce
+          (let [unique-target-values (map #(get % out) data)
+                counts (frequencies unique-target-values)
+                majority-class (->> counts
+                                    (apply max-key second)
+                                    first)]
+            majority-class)
+          (let [attributes (remove #(= % best-attribute) attributes)]
+            (->> (distinct (map #(get % best-attribute) data))
+                 (reduce (fn [tree value]
+                           (let [sub-data (filter #(= value (get % best-attribute)) data)
+                                 subtree (id3 sub-data out attributes)]
+                             (assoc-in tree [best-attribute value] subtree)))
+                         {best-attribute {}}))))))))
 
 
-(defn id3-nodef [data out attributes]
-  (if (= 1 (count (distinct (extract-column data out))))
-    (first (distinct (extract-column data out)))
-    (if (empty? attributes)
-      (let [unique-target-values (map #(get % out) data)
-            counts (frequencies unique-target-values)
-            majority-class (->> counts
-                                (apply max-key second)
-                                first)]
-        majority-class)
-      (let [best-attribute (best-attribute data out attributes)
-            attributes (remove #(= % best-attribute) attributes)]
-        (->> (distinct (map #(get % best-attribute) data))
-             (reduce (fn [tree value]
-                       (let [sub-data (filter #(= value (get % best-attribute)) data)
-                             subtree (id3 sub-data out attributes)]
-                         (assoc-in tree [best-attribute value] subtree)))
-                     {best-attribute {}}))))))
+(id3 training-data :otplata [:zaduzenje :primanja :stan])
 
-
-(def attributes [:zaduzenje :primanja :stan])
-(id3 testpodaci :otplata [:zaduzenje :primanja :stan])
-(id3-nodef testpodaci :otplata [:zaduzenje :primanja :stan])
-(clojure.tools.trace/dotrace [id3] (id3 testpodaci :otplata [:zaduzenje :primanja :stan]))
-
-;; {:zaduzenje
-;;  {"kriticno" "ne",
-;;   "prihvatljivo" {:stan {"da" "da", "ne" "ne"}},
-;;   "povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
+;; {:zaduzenje {"kriticno" "ne", 
+;;              "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, 
+;;              "povoljno" "ne"}}
 
 
 

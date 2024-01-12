@@ -361,3 +361,118 @@ clj꞉clojureselect.business-logic꞉> 
   "prihvatljivo" {:stan {"da" "da", "ne" "ne"}},
   "povoljno" {:primanja {"niska" "ne"}, :stan {"ne" {:primanja {"niska" "ne"}}}}}}
 clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" {:stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" {:stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" {:stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3-nodef
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" {:stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje
+ {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" {:stan {"ne" {:primanja {"niska" "ne"}}}}}}
+clj꞉clojureselect.business-logic꞉> 
+({:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"})
+clj꞉clojureselect.business-logic꞉> 
+0.14976144076759756
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:494:1).
+; Unable to resolve symbol: sub-data in this context
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/sub-data
+clj꞉clojureselect.business-logic꞉> 
+0.0
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling if at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:443:1).
+; Too few arguments to if
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:443:1).
+; Unable to resolve symbol: all in this context
+clj꞉clojureselect.business-logic꞉> 
+#function[clojureselect.business-logic/eval10855/fn--10856]
+clj꞉clojureselect.business-logic꞉> 
+true
+clj꞉clojureselect.business-logic꞉> 
+false
+clj꞉clojureselect.business-logic꞉> 
+false
+clj꞉clojureselect.business-logic꞉> 
+true
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/best-attribute
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" nil}}
+clj꞉clojureselect.business-logic꞉> 
+0.0
+clj꞉clojureselect.business-logic꞉> 
+0.0
+clj꞉clojureselect.business-logic꞉> 
+0.0
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/data
+clj꞉clojureselect.business-logic꞉> 
+({:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}
+ {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"})
+clj꞉clojureselect.business-logic꞉> 
+()
+clj꞉clojureselect.business-logic꞉> 
+()
+clj꞉clojureselect.business-logic꞉> 
+()
+clj꞉clojureselect.business-logic꞉> 
+()
+clj꞉clojureselect.business-logic꞉> 
+("da" "ne")
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/unique-target-values
+clj꞉clojureselect.business-logic꞉> 
+("da" "ne" "ne")
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/counts
+clj꞉clojureselect.business-logic꞉> 
+{"da" 1, "ne" 2}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/majority-class
+clj꞉clojureselect.business-logic꞉> 
+["ne" 2]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/majority-class
+clj꞉clojureselect.business-logic꞉> 
+"ne"
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ClassCastException) at clojureselect.business-logic/id3 (form-init8797117139228131424.clj:493).
+; java.lang.String cannot be cast to clojure.lang.IFn
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/id3
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" "ne"}}
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:505:1).
+; Unable to resolve symbol: training-data in this context
+clj꞉clojureselect.business-logic꞉> 
+; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\src\clojureselect\business_logic.clj:505:1).
+; Unable to resolve symbol: training-data in this context
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/training-data
+clj꞉clojureselect.business-logic꞉> 
+{:zaduzenje {"kriticno" "ne", "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, "povoljno" "ne"}}
+clj꞉clojureselect.business-logic꞉> 
