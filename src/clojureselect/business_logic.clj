@@ -504,9 +504,34 @@
 
 (id3 training-data :otplata [:zaduzenje :primanja :stan])
 
-;; {:zaduzenje {"kriticno" "ne", 
-;;              "prihvatljivo" {:stan {"da" "da", "ne" "ne"}}, 
-;;              "povoljno" "ne"}}
+
+(defn id3-predict [tree entity]
+  (if (map? tree)
+    (let [attribute (first (keys tree))
+          attribute-value (get entity attribute)]
+      (id3-predict (get (get tree attribute) attribute-value) entity))
+    tree))
+
+
+;test
+(let [tree (id3 training-data :otplata [:zaduzenje :primanja :stan])
+      test-entity {:zaduzenje "kriticno"
+                   :primanja "visoka"
+                   :stan "da"}]
+  (id3-predict tree test-entity))
+
+(let [tree (id3 training-data :otplata [:zaduzenje :primanja :stan])
+      test-entity {:zaduzenje "kriticno"
+                   :primanja "niska"
+                   :stan "ne"}]
+  (id3-predict tree test-entity))
+
+(let [tree (id3 training-data :otplata [:zaduzenje :primanja :stan])
+      test-entity {:zaduzenje "povoljno"
+                   :primanja "niska"
+                   :stan "da"}]
+  (id3-predict tree test-entity))
+
 
 
 
