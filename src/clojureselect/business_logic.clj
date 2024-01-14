@@ -28,7 +28,7 @@
   (/ (Math/log x) (Math/log 2)))
 
 
-(defn entropy 
+(defn entropy
   "Calcuates entropy of a given column.
    As an input parameter expects only one column for which the entropy needs to be calculated."
   [data]
@@ -48,7 +48,7 @@
 
 
 
-(defn index-of-max 
+(defn index-of-max
   "Returns an index of the greatest number element in an array."
   [arr]
   (let [max-index (apply max-key (fn [i] (nth arr i)) (range (count arr)))]
@@ -82,18 +82,17 @@
   "Returns the attribute that has the highest significance for making predictions. 
    If no attribute provides supplementary information for prediction returns nil."
   [data out attributes]
- (let [information-gains (map #(information-gain data % out) attributes)
-       best-attribute-index (index-of-max information-gains)
-       best-attribute (nth attributes best-attribute-index)]
-   (if (every? (fn [x] (= x 0.0)) information-gains)
-     nil
-     best-attribute)))
+  (let [information-gains (map #(information-gain data % out) attributes)
+        best-attribute-index (index-of-max information-gains)
+        best-attribute (nth attributes best-attribute-index)]
+    (if (every? (fn [x] (= x 0.0)) information-gains)
+      nil
+      best-attribute)))
 
 ;; (def sub-data (filter #(= "povoljno" (get % :zaduzenje)) training-data))
 ;; (information-gain sub-data :stan :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
 ;; (information-gain sub-data :primanja :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
 ;; (every? (fn [x] (= x 0.0)) [0.0 0.0 0.0])
-  
 ;; (require 'clojure.tools.trace)
 
 
@@ -158,15 +157,14 @@
         training-test-array (split-at index data)
         training-data (into [] (get training-test-array 0))
         validation-data (into [] (get training-test-array 1))]
-    [training-data validation-data]
-    ))
+    [training-data validation-data]))
 
 
 ;***********************************************************
 ;              EVALUACIJA MODELA - ACCURACY
 ;***********************************************************
 
-(defn calculate-accuracy 
+(defn calculate-accuracy
   "Evaluates the accuracy of predictions by comparing the predicted values with the actual values, 
    returning the percentage of correct predictions"
   [actuals predictions]
@@ -175,16 +173,6 @@
         accuracy (double (/ (count correct-predictions) total-predictions))]
     accuracy))
 
-
-;***********************************************************
-;          UCITAVANJE PERZISTENTNIH PODATAKA IZ BAZE
-;***********************************************************
-
-(def candidates (repository/get-candidates))
-(def jobs (repository/get-jobs))
-(def qualifications (repository/get-qualifications))
-(def criteria (repository/get-criteria))
-(def ratings (repository/get-ratings))
 
 ;***********************************************************
 ;                     OSNOVNE FUNKCIJE 
@@ -276,14 +264,14 @@
 (defn get-normalized-ratings-of-criteria
   "Calculates normalized values of ratings according to a specific criteria"
   ([job-id qualification-id]
-  (into [] (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (sum-of-all-ratings job-id qualification-id)))) (get-ratings-of-criteria job-id qualification-id))))
+   (into [] (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (sum-of-all-ratings job-id qualification-id)))) (get-ratings-of-criteria job-id qualification-id))))
   ([job-id qualification-id ratings]
    (into [] (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (sum-of-all-ratings job-id qualification-id ratings)))) (get-ratings-of-criteria job-id qualification-id ratings)))))
 
 (defn get-normalized-rating
   "Returns a rating with added field :normalized-value"
   ([rating]
-  (into {} (assoc rating :normalized-value (/ (double (:value rating)) (sum-of-all-ratings (:job-id rating) (:qualification-id rating))))))
+   (into {} (assoc rating :normalized-value (/ (double (:value rating)) (sum-of-all-ratings (:job-id rating) (:qualification-id rating))))))
   ([rating ratings]
    (into {} (assoc rating :normalized-value (/ (double (:value rating)) (sum-of-all-ratings (:job-id rating) (:qualification-id rating) ratings))))))
 
@@ -334,24 +322,24 @@
   "Applies the method of multi-criteria decision-making and provides
    advices for the most suitable candidates for a specific job"
   ([job-id]
-  (let [candidates (get-candidates job-id)]
-    (into [] (sort-by :final-score (comparator >) (map (fn [row] (aggregate-candidate (:id row))) candidates)))))
-    ([job-id candidates ratings criteria]
+   (let [candidates (get-candidates job-id)]
+     (into [] (sort-by :final-score (comparator >) (map (fn [row] (aggregate-candidate (:id row))) candidates)))))
+  ([job-id candidates ratings criteria]
    (let [candidates-for-job (get-candidates job-id candidates)]
      (into [] (sort-by :final-score (comparator >) (map (fn [row] (aggregate-candidate (:id row) candidates ratings criteria)) candidates-for-job))))))
 
 (defn round-to-decimal-places [num places]
   (Double/parseDouble (format (str "%." places "f") num)))
 
-(defn selection-advice 
+(defn selection-advice
   "Gives advice for the top two most suitable candidates for a specific job"
   ([job-id]
-  (let [rated-candidates (decision-support job-id)]
-    (let [first-candidate (get rated-candidates 0)
-          second-candidate (get rated-candidates 1)]
-      [(str "Top rated Candidate for " (get-jobs-name job-id) ": " (:firstname first-candidate) " " (:lastname first-candidate) " with final score of " (round-to-decimal-places (:final-score first-candidate) 4))
-      (str "You should also consider " (:firstname second-candidate) " " (:lastname second-candidate) " with final score of " (round-to-decimal-places (:final-score second-candidate) 4) " for " (get-jobs-name job-id))])))
-   ([job-id candidates ratings criteria jobs]
+   (let [rated-candidates (decision-support job-id)]
+     (let [first-candidate (get rated-candidates 0)
+           second-candidate (get rated-candidates 1)]
+       [(str "Top rated Candidate for " (get-jobs-name job-id) ": " (:firstname first-candidate) " " (:lastname first-candidate) " with final score of " (round-to-decimal-places (:final-score first-candidate) 4))
+        (str "You should also consider " (:firstname second-candidate) " " (:lastname second-candidate) " with final score of " (round-to-decimal-places (:final-score second-candidate) 4) " for " (get-jobs-name job-id))])))
+  ([job-id candidates ratings criteria jobs]
    (let [rated-candidates (decision-support job-id candidates ratings criteria)]
      (let [first-candidate (get rated-candidates 0)
            second-candidate (get rated-candidates 1)]
@@ -364,43 +352,22 @@
 ;***********************************************************
 ; u okviru ahp-ponders nalaze se preference donosilaca odluka 
 
-
-(def ahp-ponders [{:job-id 1
-                   :qualification-id-base 1
-                   :qualification-id-reference 2 
-                   :position [0,1]
-                   :significance 3},
-                  {:job-id 1
-                   :qualification-id-base 1
-                   :qualification-id-reference 3
-                   :position [0,2]
-                   :significance 2},
-                  {:job-id 1
-                   :qualification-id-base 2
-                   :qualification-id-reference 3 
-                   :position [1,2]
-                   :significance 0.5}]) ;treba da se cuva u bazi
-
-
-(defn inverse-ponders 
+(defn inverse-ponders
   "Inverts AHP ponders. If significance value on a specific position is x, then significance value on inverted position must be 1/x"
   [raw-ponders]
   (into [] (map (fn [obj] (let [position1 (get (:position obj) 0)
-                       position2 (get (:position obj) 1)] (assoc obj :position [position2, position1] :significance (/ 1 (:significance obj))))) raw-ponders)))
+                                position2 (get (:position obj) 1)] (assoc obj :position [position2, position1] :significance (/ 1 (:significance obj))))) raw-ponders)))
 
-(defn add-inverse-ponders 
+(defn add-inverse-ponders
   "Adds inverted ponders to an array of initially created ponders"
   [raw-ponders]
-  (into [] (concat ahp-ponders (inverse-ponders raw-ponders))))
+  (into [] (concat raw-ponders (inverse-ponders raw-ponders))))
 
 (defn get-ahp-ponders
   "Returns ahp ponders for a specific job"
-  [job-id]
+  [job-id ahp-ponders]
   (into [] (filter (fn [row] (= (:job-id row) job-id)) ahp-ponders)))
 
-(defn get-nth-ahp-ponder [job-id n]
-  (let [ponders (get-ahp-ponders job-id)]
-  (into {} (filter (fn [ponder] (= (:number ponder) n)) ponders))))
 
 (defn create-matrix
   "Creates a matrix with specific number of rows and columns, initially filled with ones"
@@ -421,7 +388,7 @@
     (let [current-ponder (first ponders)]
       (assoc-in matrix [(get (:position current-ponder) 0) (get (:position current-ponder) 1)] (:significance current-ponder)))))
 
-(defn print-matrix 
+(defn print-matrix
   "Prints a matrix in a readable format"
   [matrix]
   (doseq [row matrix]
@@ -429,118 +396,24 @@
 
 (defn create-ahp-matrix
   "Creates AHP matrix of assessments for a specific job"
-  [job-id]
-  (let [raw-ponders (get-ahp-ponders job-id)
+  [job-id ahp-ponders]
+  (let [raw-ponders (get-ahp-ponders job-id ahp-ponders)
         final-ponders (add-inverse-ponders raw-ponders)
         rows-cols-count (count ahp-ponders)
         init-matrix (create-matrix rows-cols-count)]
     (modify-ahp-matrix init-matrix final-ponders)))
 
-
-(create-ahp-matrix 1)
-
 (defn calculate-total-array
   "Calculates total array of weights for all criteria using AHP methodology"
-  [job-id]
-  (let [ahp-matrix (create-ahp-matrix job-id)
+  [job-id ahp-ponders]
+  (let [ahp-matrix (create-ahp-matrix job-id ahp-ponders)
         array-sums (into [] (map (fn [arr] (reduce + arr)) ahp-matrix))
         total-sum (reduce + array-sums)]
-    (into [] (map (fn [element] (/ element total-sum)) array-sums)))) 
-
-(calculate-total-array 1)
+    (into [] (map (fn [element] (/ element total-sum)) array-sums))))
 
 (defn calculate-ahp
   "Calculates total ahp weights for criteria"
-  [job-id]
-  (let [ahp-array (calculate-total-array job-id)
+  [job-id ahp-ponders]
+  (let [ahp-array (calculate-total-array job-id ahp-ponders)
         criteria (get-jobs-criteria job-id)]
-    (into [] (map (fn [element] (assoc element :ahp-ponder (get ahp-array (.indexOf criteria element)))) criteria))
-      ))
-
-(calculate-ahp 1)
-
-
-;***********************************************************
-;                 SIMULACIJA PODATAKA U BAZI 
-;***********************************************************
-; koristi se iskljucivo za potrebe testiranja funkcija
-
-(def candidates-sim [{:id 1
-                    :firstname "mario"
-                    :lastname "tavic"
-                    :active true
-                    :email "dusantavic1@gmail.com"
-                    :status "rated"
-                    :job-id 1},
-                   {:id 2
-                    :firstname "nenad"
-                    :lastname "panovic"
-                    :active true
-                    :email "nenadpann@gmail.com"
-                    :status "rated"
-                    :job-id 1},
-                   {:id 3
-                    :firstname "arsenije"
-                    :lastname "pavlovic"
-                    :active true
-                    :email "arseenijee00@gmail.com"
-                    :status "unrated"
-                    :job-id 1}])
-
-(def jobs-sim [{:id 1
-              :name "C# Junior Developer"
-              :active true
-              :positions 1}])
-
-(def qualifications-sim [{:id 1
-                        :name "C# Test"},
-                       {:id 2
-                        :name "Education"},
-                       {:id 3
-                        :name "Abstract thinking"}])
-
-(def criteria-sim [{:job-id 1
-                  :qualification-id 1
-                  :ponder 0.5},
-                 {:job-id 1
-                  :qualification-id 2
-                  :ponder 0.3},
-                 {:job-id 1
-                  :qualification-id 3
-                  :ponder 0.2}])
-
-
-(def ratings-sim [{:id 1
-                 :candidate-id 1
-                 :job-id 1
-                 :qualification-id 1
-                 :value 10},
-                {:id 2
-                 :candidate-id 1
-                 :job-id 1
-                 :qualification-id 2
-                 :value 10},
-                {:id 3
-                 :candidate-id 1
-                 :job-id 1
-                 :qualification-id 3
-                 :value 10},
-
-                {:id 4
-                 :candidate-id 2
-                 :job-id 1
-                 :qualification-id 1
-                 :value 8},
-                {:id 5
-                 :candidate-id 2
-                 :job-id 1
-                 :qualification-id 2
-                 :value 9.1},
-                {:id 6
-                 :candidate-id 2
-                 :job-id 1
-                 :qualification-id 3
-                 :value 7}])
-
-
-
+    (into [] (map (fn [element] (assoc element :ahp-ponder (get ahp-array (.indexOf criteria element)))) criteria))))

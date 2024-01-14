@@ -1604,7 +1604,10 @@
                         {:job-id 1
                          :qualification-id 3
                          :ponder 0.2}]
-          ]
+           jobs-sim [{:id 1
+                      :name "C# Junior Developer"
+                      :active true
+                      :positions 1}]]
       (is (= (selection-advice 1 candidates-sim ratings-sim criteria-sim jobs-sim) ["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.3743"
                                                                                     "You should also consider Milos Milovanovic with final score of 0.3216 for C# Junior Developer"])))))
 
@@ -1696,6 +1699,211 @@
 
 (selection-advice-test-2)
 
+;***********************************************************
+;                     AHP - TESTOVI
+;***********************************************************
+
+(deftest inverse-ponders-test
+  (testing "Testing inverse-ponders function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]
+          expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]] 
+      (is (= (inverse-ponders ahp-ponders) expected)))))
+
+(inverse-ponders-test)
+
+(deftest inverse-ponders-test-2
+  (testing "Testing inverse-ponders function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 6},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 8},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 1/8}]
+          expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/6}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/8}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 8}]]
+      (is (= (inverse-ponders ahp-ponders) expected)))))
+
+(inverse-ponders-test-2)
+
+(deftest add-inverse-ponders-test
+   (testing "Testing add-inverse-ponders function"
+     (let [ahp-ponders [{:job-id 1
+                         :qualification-id-base 1
+                         :qualification-id-reference 2
+                         :position [0,1]
+                         :significance 3},
+                        {:job-id 1
+                         :qualification-id-base 1
+                         :qualification-id-reference 3
+                         :position [0,2]
+                         :significance 2},
+                        {:job-id 1
+                         :qualification-id-base 2
+                         :qualification-id-reference 3
+                         :position [1,2]
+                         :significance 0.5}]
+           expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
+                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
+                     {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
+                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
+                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
+                     {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]]
+       (is (= (add-inverse-ponders ahp-ponders) expected)))))
+
+(add-inverse-ponders-test)
+
+(deftest add-inverse-ponders-test-2
+  (testing "Testing add-inverse-ponders function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 6},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 8},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]
+          expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 6}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 8}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/6}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/8}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]]
+      (is (= (add-inverse-ponders ahp-ponders) expected)))))
+
+(add-inverse-ponders-test-2)
+
+(deftest get-ponders-test
+  (testing "Testing get-ahp-ponders function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]
+          expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}]]
+      (is (= (get-ahp-ponders 1 ahp-ponders) expected)))))
+
+(get-ponders-test)
+
+(deftest create-matrix-test
+  (testing "Testing create-matrix function"
+    (is (= (create-matrix 3) [[1 1 1] [1 1 1] [1 1 1]]))))
+
+(deftest create-matrix-test-2
+  (testing "Testing create-matrix function"
+    (is (= (create-matrix 4 7) [[1 1 1 1 1 1 1] [1 1 1 1 1 1 1] [1 1 1 1 1 1 1] [1 1 1 1 1 1 1]]))))
+
+(create-matrix-test)
+(create-matrix-test-2)
+
+(deftest create-ahp-matrix-test
+  (testing "Testing create-ahp-matrix function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]]
+     (is (= (create-ahp-matrix 1 ahp-ponders) [[1 3 2] [1/3 1 0.5] [1/2 2.0 1]])))))
+
+(create-ahp-matrix-test)
+
+(deftest calculate-total-array-test
+  (testing "Testing calculate-total-array function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]]
+    (is (= (calculate-total-array 1 ahp-ponders) [0.5294117647058824 0.16176470588235292 0.3088235294117647])))))
+
+(calculate-total-array-test)
+
+(deftest calculate-ahp-test
+  (testing "Testing calculate-ahp function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]]
+      (is (= (calculate-ahp 1 ahp-ponders) [{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+                                            {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.16176470588235292}
+                                            {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}])))))
+
+(calculate-ahp-test)
 
 ;***********************************************************
 ;              TESTOVI ZA UCITAVANJE IZ BAZE
