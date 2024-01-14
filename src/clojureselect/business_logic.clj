@@ -512,7 +512,8 @@
 
 
 (defn tree-predict
-  "Returns the prediction of an output variable for the entered entity, using created decision tree."
+  "Returns the prediction of an output variable for the entered entity, using created decision tree.
+   If return value is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
   [tree entity]
   (if (map? tree)
     (let [attribute (first (keys tree))
@@ -539,6 +540,39 @@
                    :primanja "niska"
                    :stan "da"}]
   (tree-predict tree test-entity))
+
+
+;***********************************************************
+;               EXCEL PODACI - ZA TESTOVE
+;***********************************************************
+
+(use 'dk.ative.docjure.spreadsheet)
+
+
+
+(let [attributes [:education, :work-experience, :technical-skills, :soft-skills, 
+                  :references, :communication-skills, :problem-solving-ability, 
+                  :cultural-fit, :learning-ability]
+      data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                         (select-sheet "candidates")
+                         (select-columns {:A :education, :B :work-experience,
+                                          :C :technical-skills, :D :soft-skills,
+                                          :E :references, :F :communication-skills,
+                                          :G :problem-solving-ability, :H :cultural-fit,
+                                          :I :learning-ability, :J :job-fit})
+                         rest))
+      tree (create-tree data :job-fit attributes)
+      entity {:education "High School", 
+              :work-experience "Beginner", 
+              :technical-skills "Intermediate", 
+              :soft-skills "Medium", 
+              :references "Yes", 
+              :communication-skills "Excellent", 
+              :problem-solving-ability "Low", 
+              :cultural-fit "High Fit", 
+              :learning-ability "High"}]
+  (tree-predict tree entity))
+
 
 
 
