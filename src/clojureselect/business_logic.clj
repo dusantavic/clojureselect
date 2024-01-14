@@ -190,73 +190,76 @@
 ;                     OSNOVNE FUNKCIJE 
 ;***********************************************************
 
-(defn get-candidate 
+(defn get-candidate
   "Returns the candidate's object that contains all relevant information, 
    based on the entered id."
-  [candidate-id]
-  (into {} (filter (fn [candidate] (= (:id candidate) candidate-id)) candidates)))
+  ([candidate-id]
+   (into {} (filter (fn [candidate] (= (:id candidate) candidate-id)) (repository/get-candidates))))
+  ([candidate-id candidates]
+   (into {} (filter (fn [candidate] (= (:id candidate) candidate-id)) candidates))))
 
 (defn get-ratings
   "Returns all of the candidate's ratings. 
    Candidates are rated based on selection criteria defined for the job."
-  [candidate-id]
-  (into [] (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings)))
-
-(get-ratings 1)
-(get-ratings 2)
-
+  ([candidate-id]
+   (into [] (filter (fn [rating] (= (:candidate-id rating) candidate-id)) (repository/get-ratings))))
+  ([candidate-id ratings]
+   (into [] (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings))))
 
 (defn get-candidates
   "Returns all candidates who applied for a specific job"
-  [job-id]
-  (into [] (filter (fn [candidate] (= (:job-id candidate) job-id)) candidates)))
+  ([job-id]
+   (into [] (filter (fn [candidate] (= (:job-id candidate) job-id)) (repository/get-candidates))))
+  ([job-id candidates]
+   (into [] (filter (fn [candidate] (= (:job-id candidate) job-id)) candidates))))
 
-(get-candidates 1)
+(defn get-jobs-criteria
+  "Returns all selection criteria for a specific job"
+  ([job-id]
+   (into [] (filter (fn [criteria] (= (:job-id criteria) job-id)) (repository/get-criteria))))
+  ([job-id criteria]
+   (into [] (filter (fn [criteria] (= (:job-id criteria) job-id)) criteria))))
 
-(defn get-jobs-criteria 
-  "Returns all selection criteria for a spec
-   ific job"
-  [job-id]
-  (into [] (filter (fn [criteria] (= (:job-id criteria) job-id)) criteria)))
-
-(get-jobs-criteria 1)
-
-(defn get-jobs-name 
+(defn get-jobs-name
   "Returns the job name based on the entered id"
-  [job-id]
-  (:name (into {} (filter (fn [job] (= (:id job) job-id)) jobs))))
-
-(get-jobs-name 1)
+  ([job-id]
+   (:name (into {} (filter (fn [job] (= (:id job) job-id)) (repository/get-jobs)))))
+  ([job-id jobs]
+   (:name (into {} (filter (fn [job] (= (:id job) job-id)) jobs)))))
 
 (defn get-ponder
   "Returns a ponder value (criteria weight) for a specific criteria"
-  [job-id qualification-id]
-  (if (or (<= job-id 0) (<= qualification-id 0))
-    (str "error." " please insert valid id values")
-    (double (:ponder (into {} (filter (fn [criteria] (and (= (:job-id criteria) job-id) (= (:qualification-id criteria) qualification-id))) criteria))))))
-
-(get-ponder 1 1)
+  ([job-id qualification-id]
+   (if (or (<= job-id 0) (<= qualification-id 0))
+     (str "error." " please insert valid id values")
+     (double (:ponder (into {} (filter (fn [criteria] (and (= (:job-id criteria) job-id) (= (:qualification-id criteria) qualification-id))) (repository/get-criteria)))))))
+  ([job-id qualification-id criteria]
+   (if (or (<= job-id 0) (<= qualification-id 0))
+     (str "error." " please insert valid id values")
+     (double (:ponder (into {} (filter (fn [criteria] (and (= (:job-id criteria) job-id) (= (:qualification-id criteria) qualification-id))) criteria)))))))
 
 ;criteria-id = job-id + qualification-id
 (defn get-ratings-of-criteria
   "Gets ratings of all candidates for a specific criteria"
-  [job-id qualification-id]
-  (into [] (filter (fn [rating] (and (= (:job-id rating) job-id) (= (:qualification-id rating) qualification-id))) ratings)))
-
-(get-ratings-of-criteria 1 1)
+  ([job-id qualification-id]
+   (into [] (filter (fn [rating] (and (= (:job-id rating) job-id) (= (:qualification-id rating) qualification-id))) (repository/get-ratings))))
+  ([job-id qualification-id ratings]
+   (into [] (filter (fn [rating] (and (= (:job-id rating) job-id) (= (:qualification-id rating) qualification-id))) ratings))))
 
 
 (defn get-ratings-of-job
   "Gets ratings of all candidates according to all criteria for a specific job"
-  [job-id]
-  (into [] (filter (fn [rating] (= (:job-id rating) job-id)) ratings)))
-
-(get-ratings-of-job 1)
+  ([job-id]
+   (into [] (filter (fn [rating] (= (:job-id rating) job-id)) (repository/get-ratings))))
+  ([job-id ratings]
+   (into [] (filter (fn [rating] (= (:job-id rating) job-id)) ratings))))
 
 (defn get-qualification
   "Returns a specific qualification"
-  [qualification-id]
-  (into {} (filter (fn [qual] (= (:id qual) qualification-id)) qualifications)))
+  ([qualification-id]
+   (into {} (filter (fn [qual] (= (:id qual) qualification-id)) (repository/get-qualifications))))
+  ([qualification-id qualifications]
+   (into {} (filter (fn [qual] (= (:id qual) qualification-id)) qualifications))))
 
 
 ;***********************************************************
@@ -265,35 +268,33 @@
 
 (defn sum-of-all-ratings
   "Calculates sum of ratings of all candidates who have applied for a specific job according to a specific criteria"
-  [job-id qualification-id]
-  (reduce + (map :value (get-ratings-of-criteria job-id qualification-id))))
-
-(sum-of-all-ratings 1 1)
-(sum-of-all-ratings 1 2)
-(sum-of-all-ratings 1 3)
+  ([job-id qualification-id]
+   (reduce + (map :value (get-ratings-of-criteria job-id qualification-id))))
+  ([job-id qualification-id ratings]
+   (reduce + (map :value (get-ratings-of-criteria job-id qualification-id ratings)))))
 
 (defn get-normalized-ratings-of-criteria
   "Calculates normalized values of ratings according to a specific criteria"
-  [job-id qualification-id]
+  ([job-id qualification-id]
   (into [] (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (sum-of-all-ratings job-id qualification-id)))) (get-ratings-of-criteria job-id qualification-id))))
-
-(get-normalized-ratings-of-criteria 1 1)
-(get-normalized-ratings-of-criteria 1 2)
-(get-normalized-ratings-of-criteria 1 3)
+  ([job-id qualification-id ratings]
+   (into [] (map (fn [row] (assoc row :normalized-value (/ (double (:value row)) (sum-of-all-ratings job-id qualification-id ratings)))) (get-ratings-of-criteria job-id qualification-id ratings)))))
 
 (defn get-normalized-rating
   "Returns a rating with added field :normalized-value"
-  [rating]
+  ([rating]
   (into {} (assoc rating :normalized-value (/ (double (:value rating)) (sum-of-all-ratings (:job-id rating) (:qualification-id rating))))))
+  ([rating ratings]
+   (into {} (assoc rating :normalized-value (/ (double (:value rating)) (sum-of-all-ratings (:job-id rating) (:qualification-id rating) ratings))))))
 
-
-(defn normalize-job-ratings 
+(defn normalize-job-ratings
   "Normalizes all ratings of all candidates for a specific job"
-  [job-id] 
-  (let [ratings (get-ratings-of-job job-id)]
-    (map (fn [row] (get-normalized-rating row)) ratings)))
-
-(normalize-job-ratings 1)
+  ([job-id]
+   (let [ratings (get-ratings-of-job job-id)]
+     (map (fn [row] (get-normalized-rating row)) ratings)))
+  ([job-id ratings]
+   (let [ratings-of-job (get-ratings-of-job job-id ratings)]
+     (map (fn [row] (get-normalized-rating row ratings)) ratings-of-job))))
 
 
 ;***********************************************************
@@ -302,25 +303,26 @@
 
 (defn add-ponder-to-normalized-ratings
   "Adds a ponder to the normalized ratings of all candidates who applied for a specific job"
-  [job-id]
-  (let [normalized-ratings (normalize-job-ratings job-id)]
-    (into [] (map (fn [row] (assoc row :ponder (get-ponder job-id (:qualification-id row)))) normalized-ratings))))
-
-(add-ponder-to-normalized-ratings 1)
+  ([job-id]
+   (let [normalized-ratings (normalize-job-ratings job-id)]
+     (into [] (map (fn [row] (assoc row :ponder (get-ponder job-id (:qualification-id row)))) normalized-ratings))))
+  ([job-id ratings criteria]
+   (let [normalized-ratings (normalize-job-ratings job-id ratings)]
+     (into [] (map (fn [row] (assoc row :ponder (get-ponder job-id (:qualification-id row) criteria))) normalized-ratings)))))
 
 ;; (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) 1)) (add-ponder-to-normalized-ratings 1)))
 
 
-(defn aggregate-candidate 
+(defn aggregate-candidate
   "Aggregates the overall rating of the candidate by using a weighted sum"
-  [candidate-id]
-  (let [candidate (get-candidate candidate-id)
-        ratings (add-ponder-to-normalized-ratings (:job-id candidate))]
-    (let [candidates-ratings (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings)]
-      (assoc candidate :final-score (double (reduce + (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings))))))))
-
-(aggregate-candidate 1)
-(aggregate-candidate 2)
+  ([candidate-id]
+   (let [candidate (get-candidate candidate-id)
+         ratings (add-ponder-to-normalized-ratings (:job-id candidate))]
+     (assoc candidate :final-score (double (reduce + (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) candidate-id)) ratings)))))))
+  ([candidate-id candidates ratings criteria]
+   (let [candidate (get-candidate candidate-id candidates)
+         normalized-ratings (add-ponder-to-normalized-ratings (:job-id candidate) ratings criteria)]
+     (assoc candidate :final-score (double (reduce + (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) candidate-id)) normalized-ratings))))))))
 
 
 ;***********************************************************

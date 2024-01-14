@@ -4401,3 +4401,457 @@ clj꞉clojureselect.core-test꞉> 
 clj꞉clojureselect.core-test꞉> 
 nil
 clj꞉clojureselect.core-test꞉> 
+18.0
+clj꞉clojureselect.business-logic꞉> 
+19.1
+clj꞉clojureselect.business-logic꞉> 
+17.0
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-candidate
+clj꞉clojureselect.business-logic꞉> 
+{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status 0, :job-id 1}
+clj꞉clojureselect.business-logic꞉> 
+{:id 1, :firstname "mario", :lastname "tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ratings
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-jobs-criteria
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ponder
+clj꞉clojureselect.business-logic꞉> 
+; Execution error (ArityException) at clojureselect.business-logic/eval8505 (form-init3915518148177417350.clj:241).
+; Wrong number of args (1) passed to: clojureselect.business-logic/get-ponder
+clj꞉clojureselect.business-logic꞉> 
+0.5
+clj꞉clojureselect.business-logic꞉> 
+0.5
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ratings-of-criteria
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-ratings-of-job
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-qualification
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-qualification
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/sum-of-all-ratings
+clj꞉clojureselect.business-logic꞉> 
+18.0
+clj꞉clojureselect.business-logic꞉> 
+19.1
+clj꞉clojureselect.business-logic꞉> 
+17.0
+clj꞉clojureselect.business-logic꞉> 
+18
+clj꞉clojureselect.business-logic꞉> 
+19.1
+clj꞉clojureselect.business-logic꞉> 
+17
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/sum-of-ratings-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/sum-of-ratings-test
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/sum-of-ratings-test
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/sum-of-ratings-test-2
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/sum-of-ratings-test-3
+clj꞉clojureselect.core-test꞉> 
+
+FAIL in (sum-of-ratings-test-3) (form-init3915518148177417350.clj:928)
+Testing function that summarize all of ratings for candidates
+expected: (= (sum-of-all-ratings 1 1 ratings-sim) 17)
+  actual: (not (= 18 17))
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/sum-of-ratings-test-3
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.business-logic/get-normalized-ratings-of-criteria
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0, :normalized-value 0.5555555555555556}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0, :normalized-value 0.4444444444444444}]
+clj꞉clojureselect.business-logic꞉> 
+[{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0, :normalized-value 0.5235602094240838}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}]
+clj꞉clojureselect.business-logic꞉> 
+[{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529}]
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}]
+clj꞉clojureselect.business-logic꞉> 
+[{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}]
+clj꞉clojureselect.business-logic꞉> 
+[{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/normalized-ratings-test
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/normalized-ratings-test-2
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/normalized-ratings-test-3
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.business-logic/get-normalized-rating
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/normalize-job-ratings
+clj꞉clojureselect.business-logic꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0, :normalized-value 0.5555555555555556}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0, :normalized-value 0.5235602094240838}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0, :normalized-value 0.4444444444444444}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529})
+clj꞉clojureselect.business-logic꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/normalize-job-ratings-test
+clj꞉clojureselect.core-test꞉> 
+
+ERROR in (normalize-job-ratings-test) (form-init3915518148177417350.clj:1078)
+Testing normalize-job-ratings function
+expected: (= ((normalize-job-ratings 1 ratings-sim)) ({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529}))
+  actual: java.lang.ClassCastException: clojure.lang.LazySeq cannot be cast to clojure.lang.IFn
+ at clojureselect.core_test$fn__8682.invokeStatic (form-init3915518148177417350.clj:1078)
+    clojureselect.core_test/fn (form-init3915518148177417350.clj:1045)
+    clojure.test$test_var$fn__9856.invoke (test.clj:717)
+    clojure.test$test_var.invokeStatic (test.clj:717)
+    clojure.test$test_var.invoke (test.clj:708)
+    clojureselect.core_test$normalize_job_ratings_test.invokeStatic (form-init3915518148177417350.clj:1045)
+    clojureselect.core_test$eval8687.invokeStatic (form-init3915518148177417350.clj:1085)
+    clojureselect.core_test$eval8687.invoke (form-init3915518148177417350.clj:1085)
+    clojure.lang.Compiler.eval (Compiler.java:7194)
+    clojure.lang.Compiler.eval (Compiler.java:7149)
+    clojure.core$eval.invokeStatic (core.clj:3215)
+    clojure.core$eval.invoke (core.clj:3211)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269$fn__1270.invoke (interruptible_eval.clj:87)
+    clojure.lang.AFn.applyToHelper (AFn.java:152)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$with_bindings_STAR_.invokeStatic (core.clj:1990)
+    clojure.core$with_bindings_STAR_.doInvoke (core.clj:1990)
+    clojure.lang.RestFn.invoke (RestFn.java:425)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269.invoke (interruptible_eval.clj:87)
+    clojure.main$repl$read_eval_print__9206$fn__9209.invoke (main.clj:437)
+    clojure.main$repl$read_eval_print__9206.invoke (main.clj:437)
+    clojure.main$repl$fn__9215.invoke (main.clj:458)
+    clojure.main$repl.invokeStatic (main.clj:458)
+    nrepl.middleware.interruptible_eval$evaluate.invokeStatic (interruptible_eval.clj:115)
+    nrepl.middleware.interruptible_eval$interruptible_eval$fn__1302$fn__1306.invoke (interruptible_eval.clj:150)
+    clojure.lang.AFn.run (AFn.java:22)
+    nrepl.middleware.session$session_exec$main_loop__1372$fn__1376.invoke (session.clj:218)
+    nrepl.middleware.session$session_exec$main_loop__1372.invoke (session.clj:217)
+    clojure.lang.AFn.run (AFn.java:22)
+    java.lang.Thread.run (:-1)
+nil
+clj꞉clojureselect.core-test꞉> 
+
+ERROR in () (form-init3915518148177417350.clj:1078)
+Testing normalize-job-ratings function
+expected: (= ((normalize-job-ratings 1 ratings-sim) ({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})))
+  actual: java.lang.ClassCastException: clojure.lang.LazySeq cannot be cast to clojure.lang.IFn
+ at clojureselect.core_test$eval8689.invokeStatic (form-init3915518148177417350.clj:1078)
+    clojureselect.core_test$eval8689.invoke (form-init3915518148177417350.clj:1046)
+    clojure.lang.Compiler.eval (Compiler.java:7194)
+    clojure.lang.Compiler.eval (Compiler.java:7149)
+    clojure.core$eval.invokeStatic (core.clj:3215)
+    clojure.core$eval.invoke (core.clj:3211)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269$fn__1270.invoke (interruptible_eval.clj:87)
+    clojure.lang.AFn.applyToHelper (AFn.java:152)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$with_bindings_STAR_.invokeStatic (core.clj:1990)
+    clojure.core$with_bindings_STAR_.doInvoke (core.clj:1990)
+    clojure.lang.RestFn.invoke (RestFn.java:425)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269.invoke (interruptible_eval.clj:87)
+    clojure.main$repl$read_eval_print__9206$fn__9209.invoke (main.clj:437)
+    clojure.main$repl$read_eval_print__9206.invoke (main.clj:437)
+    clojure.main$repl$fn__9215.invoke (main.clj:458)
+    clojure.main$repl.invokeStatic (main.clj:458)
+    nrepl.middleware.interruptible_eval$evaluate.invokeStatic (interruptible_eval.clj:115)
+    nrepl.middleware.interruptible_eval$interruptible_eval$fn__1302$fn__1306.invoke (interruptible_eval.clj:150)
+    clojure.lang.AFn.run (AFn.java:22)
+    nrepl.middleware.session$session_exec$main_loop__1372$fn__1376.invoke (session.clj:218)
+    nrepl.middleware.session$session_exec$main_loop__1372.invoke (session.clj:217)
+    clojure.lang.AFn.run (AFn.java:22)
+    java.lang.Thread.run (:-1)
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/normalize-job-ratings-test
+clj꞉clojureselect.core-test꞉> 
+
+ERROR in (normalize-job-ratings-test) (form-init3915518148177417350.clj:1078)
+Testing normalize-job-ratings function
+expected: (= ((normalize-job-ratings 1 ratings-sim) ({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529})))
+  actual: java.lang.ClassCastException: clojure.lang.LazySeq cannot be cast to clojure.lang.IFn
+ at clojureselect.core_test$fn__8693.invokeStatic (form-init3915518148177417350.clj:1078)
+    clojureselect.core_test/fn (form-init3915518148177417350.clj:1045)
+    clojure.test$test_var$fn__9856.invoke (test.clj:717)
+    clojure.test$test_var.invokeStatic (test.clj:717)
+    clojure.test$test_var.invoke (test.clj:708)
+    clojureselect.core_test$normalize_job_ratings_test.invokeStatic (form-init3915518148177417350.clj:1045)
+    clojureselect.core_test$eval8698.invokeStatic (form-init3915518148177417350.clj:1086)
+    clojureselect.core_test$eval8698.invoke (form-init3915518148177417350.clj:1086)
+    clojure.lang.Compiler.eval (Compiler.java:7194)
+    clojure.lang.Compiler.eval (Compiler.java:7149)
+    clojure.core$eval.invokeStatic (core.clj:3215)
+    clojure.core$eval.invoke (core.clj:3211)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269$fn__1270.invoke (interruptible_eval.clj:87)
+    clojure.lang.AFn.applyToHelper (AFn.java:152)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$with_bindings_STAR_.invokeStatic (core.clj:1990)
+    clojure.core$with_bindings_STAR_.doInvoke (core.clj:1990)
+    clojure.lang.RestFn.invoke (RestFn.java:425)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269.invoke (interruptible_eval.clj:87)
+    clojure.main$repl$read_eval_print__9206$fn__9209.invoke (main.clj:437)
+    clojure.main$repl$read_eval_print__9206.invoke (main.clj:437)
+    clojure.main$repl$fn__9215.invoke (main.clj:458)
+    clojure.main$repl.invokeStatic (main.clj:458)
+    nrepl.middleware.interruptible_eval$evaluate.invokeStatic (interruptible_eval.clj:115)
+    nrepl.middleware.interruptible_eval$interruptible_eval$fn__1302$fn__1306.invoke (interruptible_eval.clj:150)
+    clojure.lang.AFn.run (AFn.java:22)
+    nrepl.middleware.session$session_exec$main_loop__1372$fn__1376.invoke (session.clj:218)
+    nrepl.middleware.session$session_exec$main_loop__1372.invoke (session.clj:217)
+    clojure.lang.AFn.run (AFn.java:22)
+    java.lang.Thread.run (:-1)
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/normalize-job-ratings-test
+clj꞉clojureselect.core-test꞉> 
+
+ERROR in (normalize-job-ratings-test) (AFn.java:429)
+Testing normalize-job-ratings function
+expected: (= (normalize-job-ratings 1 ratings-sim) ({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529}))
+  actual: clojure.lang.ArityException: Wrong number of args (5) passed to: clojure.lang.PersistentArrayMap
+ at clojure.lang.AFn.throwArity (AFn.java:429)
+    clojure.lang.AFn.invoke (AFn.java:48)
+    clojureselect.core_test$fn__8700.invokeStatic (form-init3915518148177417350.clj:1078)
+    clojureselect.core_test/fn (form-init3915518148177417350.clj:1045)
+    clojure.test$test_var$fn__9856.invoke (test.clj:717)
+    clojure.test$test_var.invokeStatic (test.clj:717)
+    clojure.test$test_var.invoke (test.clj:708)
+    clojureselect.core_test$normalize_job_ratings_test.invokeStatic (form-init3915518148177417350.clj:1045)
+    clojureselect.core_test$eval8705.invokeStatic (form-init3915518148177417350.clj:1086)
+    clojureselect.core_test$eval8705.invoke (form-init3915518148177417350.clj:1086)
+    clojure.lang.Compiler.eval (Compiler.java:7194)
+    clojure.lang.Compiler.eval (Compiler.java:7149)
+    clojure.core$eval.invokeStatic (core.clj:3215)
+    clojure.core$eval.invoke (core.clj:3211)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269$fn__1270.invoke (interruptible_eval.clj:87)
+    clojure.lang.AFn.applyToHelper (AFn.java:152)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$with_bindings_STAR_.invokeStatic (core.clj:1990)
+    clojure.core$with_bindings_STAR_.doInvoke (core.clj:1990)
+    clojure.lang.RestFn.invoke (RestFn.java:425)
+    nrepl.middleware.interruptible_eval$evaluate$fn__1269.invoke (interruptible_eval.clj:87)
+    clojure.main$repl$read_eval_print__9206$fn__9209.invoke (main.clj:437)
+    clojure.main$repl$read_eval_print__9206.invoke (main.clj:437)
+    clojure.main$repl$fn__9215.invoke (main.clj:458)
+    clojure.main$repl.invokeStatic (main.clj:458)
+    nrepl.middleware.interruptible_eval$evaluate.invokeStatic (interruptible_eval.clj:115)
+    nrepl.middleware.interruptible_eval$interruptible_eval$fn__1302$fn__1306.invoke (interruptible_eval.clj:150)
+    clojure.lang.AFn.run (AFn.java:22)
+    nrepl.middleware.session$session_exec$main_loop__1372$fn__1376.invoke (session.clj:218)
+    nrepl.middleware.session$session_exec$main_loop__1372.invoke (session.clj:217)
+    clojure.lang.AFn.run (AFn.java:22)
+    java.lang.Thread.run (:-1)
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/normalize-job-ratings-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+[{:id 1,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 1,
+  :value 10.0,
+  :normalized-value 0.5555555555555556,
+  :ponder 0.5}
+ {:id 2,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 2,
+  :value 10.0,
+  :normalized-value 0.5235602094240838,
+  :ponder 0.3}
+ {:id 3,
+  :candidate-id 1,
+  :job-id 1,
+  :qualification-id 3,
+  :value 10.0,
+  :normalized-value 0.5882352941176471,
+  :ponder 0.2}
+ {:id 4,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 1,
+  :value 8.0,
+  :normalized-value 0.4444444444444444,
+  :ponder 0.5}
+ {:id 5,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 2,
+  :value 9.1,
+  :normalized-value 0.4764397905759162,
+  :ponder 0.3}
+ {:id 6,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 3,
+  :value 7.0,
+  :normalized-value 0.4117647058823529,
+  :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/add-ponder-to-normalized-ratings
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5}
+ {:id 5,
+  :candidate-id 2,
+  :job-id 1,
+  :qualification-id 2,
+  :value 9.1,
+  :normalized-value 0.4764397905759162,
+  :ponder 0.3}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.2}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/add-ponder-to-normalized-ratings-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/add-ponder-to-normalized-ratings-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/add-ponder-to-normalized-ratings-test
+clj꞉clojureselect.core-test꞉> 
+
+FAIL in (add-ponder-to-normalized-ratings-test) (form-init3915518148177417350.clj:1134)
+Testing add-ponder-to-normalized-ratings function
+expected: (= (add-ponder-to-normalized-ratings 1 ratings-sim criteria-sim) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162, :ponder 0.3} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.7}])
+  actual: (not (= [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162, :ponder 0.3} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.2}] [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5} {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3} {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2} {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5} {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162, :ponder 0.3} {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.7}]))
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/add-ponder-to-normalized-ratings-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.business-logic/aggregate-candidate
+clj꞉clojureselect.business-logic꞉> 
+{:id 1,
+ :firstname "Dusan",
+ :lastname "Tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :status 0,
+ :job-id 1,
+ :final-score 0.5524928994285323}
+clj꞉clojureselect.business-logic꞉> 
+{:id 2,
+ :firstname "Nenad",
+ :lastname "Panovic",
+ :active true,
+ :email "nenadpann@gmail.com",
+ :status 0,
+ :job-id 1,
+ :final-score 0.44750710057146764}
+clj꞉clojureselect.business-logic꞉> 
+{:id 1,
+ :firstname "mario",
+ :lastname "tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.5524928994285323}
+clj꞉clojureselect.business-logic꞉> 
+{:id 2,
+ :firstname "nenad",
+ :lastname "panovic",
+ :active true,
+ :email "nenadpann@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.44750710057146764}
+clj꞉clojureselect.business-logic꞉> 
+{:id 1,
+ :firstname "mario",
+ :lastname "tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.5524928994285323}
+clj꞉clojureselect.business-logic꞉> 
+{:id 2,
+ :firstname "nenad",
+ :lastname "panovic",
+ :active true,
+ :email "nenadpann@gmail.com",
+ :status "rated",
+ :job-id 1,
+ :final-score 0.44750710057146764}
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/aggregate-candidate-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/aggregate-candidate-test-2
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+[{:id 1,
+  :firstname "Dusan",
+  :lastname "Tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "Nenad",
+  :lastname "Panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.0}]
+clj꞉clojureselect.business-logic꞉> 

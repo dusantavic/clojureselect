@@ -735,72 +735,563 @@
 
 (index-of-max-test)
 
+;***********************************************************
+;                 NORMALIZACIJA - TESTOVI
+;***********************************************************\
+
+(deftest sum-of-ratings-test
+  (testing "Testing function that summarize all of ratings for candidates"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (sum-of-all-ratings 1 1 ratings-sim) 18)))))
+
+(sum-of-ratings-test)
 
 
+(deftest sum-of-ratings-test-2
+  (testing "Testing function that summarize all of ratings for candidates"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
 
-(def data [{:zaduzenje "kriticno"
-                                   :primanja "visoka"
-                                   :stan "da"
-                                   :otplata "ne"},
-                                  {:zaduzenje "kriticno"
-                                   :primanja "srednja"
-                                   :stan "ne"
-                                   :otplata "ne"},
-                                  {:zaduzenje "kriticno"
-                                   :primanja "niska"
-                                   :stan "da"
-                                   :otplata "ne"},
-                                  {:zaduzenje "kriticno"
-                                   :primanja "visoka"
-                                   :stan "ne"
-                                   :otplata "ne"},
-                                  {:zaduzenje "prihvatljivo"
-                                   :primanja "visoka"
-                                   :stan "da"
-                                   :otplata "da"},
-                                  {:zaduzenje "prihvatljivo"
-                                   :primanja "niska"
-                                   :stan "da"
-                                   :otplata "da"},
-                                  {:zaduzenje "prihvatljivo"
-                                   :primanja "srednja"
-                                   :stan "da"
-                                   :otplata "da"},
-                                  {:zaduzenje "prihvatljivo"
-                                   :primanja "srednja"
-                                   :stan "ne"
-                                   :otplata "ne"},
-                                  {:zaduzenje "povoljno"
-                                   :primanja "niska"
-                                   :stan "ne"
-                                   :otplata "da"},
-                                  {:zaduzenje "povoljno"
-                                   :primanja "niska"
-                                   :stan "ne"
-                                   :otplata "ne"},
-                                  {:zaduzenje "povoljno"
-                                   :primanja "niska"
-                                   :stan "ne"
-                                   :otplata "ne"}])
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (sum-of-all-ratings 1 2 ratings-sim) 19.1)))))
+
+(sum-of-ratings-test-2)
+
+(deftest sum-of-ratings-test-3
+  (testing "Testing function that summarize all of ratings for candidates"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (sum-of-all-ratings 1 3 ratings-sim) 17)))))
+
+(sum-of-ratings-test-3)
 
 
+(deftest normalized-ratings-test
+  (testing "Testing get-normalized-ratings-of-criteria function"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
 
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (get-normalized-ratings-of-criteria 1 1 ratings-sim) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
+                                                                   {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}])))))
 
+(deftest normalized-ratings-test-2
+  (testing "Testing get-normalized-ratings-of-criteria function"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
 
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (get-normalized-ratings-of-criteria 1 2 ratings-sim) [{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
+                                                                  {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}])))))
 
+(deftest normalized-ratings-test-3
+  (testing "Testing get-normalized-ratings-of-criteria function"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
 
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (get-normalized-ratings-of-criteria 1 3 ratings-sim) [{:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
+                                                                   {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529}])))))
 
+(normalized-ratings-test)
+(normalized-ratings-test-2)
+(normalized-ratings-test-3)
 
+(deftest normalize-job-ratings-test
+  (testing "Testing normalize-job-ratings function"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
 
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]]
+      (is (= (normalize-job-ratings 1 ratings-sim) `({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556}
+                                                     {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
+                                                     {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471}
+                                                     {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444}
+                                                     {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
+                                                     {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529}))))))
 
-
-
-
-
+(normalize-job-ratings-test)
 
 
 ;***********************************************************
-;                     OSNOVNE FUNKCIJE 
+;               AGREGACIJA OCENA - TESTOVI
+;***********************************************************
+
+(def candidates-sim [{:id 1
+                      :firstname "mario"
+                      :lastname "tavic"
+                      :active true
+                      :email "dusantavic1@gmail.com"
+                      :status "rated"
+                      :job-id 1},
+                     {:id 2
+                      :firstname "nenad"
+                      :lastname "panovic"
+                      :active true
+                      :email "nenadpann@gmail.com"
+                      :status "rated"
+                      :job-id 1},
+                     {:id 3
+                      :firstname "arsenije"
+                      :lastname "pavlovic"
+                      :active true
+                      :email "arseenijee00@gmail.com"
+                      :status "unrated"
+                      :job-id 1}])
+
+(def jobs-sim [{:id 1
+                :name "C# Junior Developer"
+                :active true
+                :positions 1}])
+
+(def qualifications-sim [{:id 1
+                          :name "C# Test"},
+                         {:id 2
+                          :name "Education"},
+                         {:id 3
+                          :name "Abstract thinking"}])
+
+(def criteria-sim [{:job-id 1
+                    :qualification-id 1
+                    :ponder 0.5},
+                   {:job-id 1
+                    :qualification-id 2
+                    :ponder 0.3},
+                   {:job-id 1
+                    :qualification-id 3
+                    :ponder 0.2}])
+
+
+(def ratings-sim [{:id 1
+                   :candidate-id 1
+                   :job-id 1
+                   :qualification-id 1
+                   :value 10},
+                  {:id 2
+                   :candidate-id 1
+                   :job-id 1
+                   :qualification-id 2
+                   :value 10},
+                  {:id 3
+                   :candidate-id 1
+                   :job-id 1
+                   :qualification-id 3
+                   :value 10},
+
+                  {:id 4
+                   :candidate-id 2
+                   :job-id 1
+                   :qualification-id 1
+                   :value 8},
+                  {:id 5
+                   :candidate-id 2
+                   :job-id 1
+                   :qualification-id 2
+                   :value 9.1},
+                  {:id 6
+                   :candidate-id 2
+                   :job-id 1
+                   :qualification-id 3
+                   :value 7}])
+
+
+(deftest add-ponder-to-normalized-ratings-test
+  (testing "Testing add-ponder-to-normalized-ratings function"
+    (let [ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]]
+      (is (= (add-ponder-to-normalized-ratings 1 ratings-sim criteria-sim) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10, :normalized-value 0.5555555555555556, :ponder 0.5}
+                                                                            {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838, :ponder 0.3}
+                                                                            {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10, :normalized-value 0.5882352941176471, :ponder 0.2}
+                                                                            {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8, :normalized-value 0.4444444444444444, :ponder 0.5}
+                                                                            {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162, :ponder 0.3}
+                                                                            {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7, :normalized-value 0.4117647058823529, :ponder 0.2}])))))
+
+(add-ponder-to-normalized-ratings-test)
+
+
+(deftest aggregate-candidate-test
+  (testing "Testing aggregate-candidate function"
+    (let [candidates-sim [{:id 1
+                           :firstname "mario"
+                           :lastname "tavic"
+                           :active true
+                           :email "dusantavic1@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 2
+                           :firstname "nenad"
+                           :lastname "panovic"
+                           :active true
+                           :email "nenadpann@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 3
+                           :firstname "arsenije"
+                           :lastname "pavlovic"
+                           :active true
+                           :email "arseenijee00@gmail.com"
+                           :status "unrated"
+                           :job-id 1}]
+          ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]]
+      (is (= (aggregate-candidate 1 candidates-sim ratings-sim criteria-sim) {:id 1,
+                                                                              :firstname "mario",
+                                                                              :lastname "tavic",
+                                                                              :active true,
+                                                                              :email "dusantavic1@gmail.com",
+                                                                              :status "rated",
+                                                                              :job-id 1,
+                                                                              :final-score 0.5524928994285323})))))
+
+
+(deftest aggregate-candidate-test-2
+  (testing "Testing aggregate-candidate function"
+    (let [candidates-sim [{:id 1
+                           :firstname "mario"
+                           :lastname "tavic"
+                           :active true
+                           :email "dusantavic1@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 2
+                           :firstname "nenad"
+                           :lastname "panovic"
+                           :active true
+                           :email "nenadpann@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 3
+                           :firstname "arsenije"
+                           :lastname "pavlovic"
+                           :active true
+                           :email "arseenijee00@gmail.com"
+                           :status "unrated"
+                           :job-id 1}]
+          ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]]
+      (is (= (aggregate-candidate 2 candidates-sim ratings-sim criteria-sim) {:id 2,
+                                                                              :firstname "nenad",
+                                                                              :lastname "panovic",
+                                                                              :active true,
+                                                                              :email "nenadpann@gmail.com",
+                                                                              :status "rated",
+                                                                              :job-id 1,
+                                                                              :final-score 0.44750710057146764})))))
+
+(aggregate-candidate-test)
+(aggregate-candidate-test-2)
+
+
+;***********************************************************
+;              TESTOVI ZA UCITAVANJE IZ BAZE
 ;***********************************************************
 
 (deftest rating-test
