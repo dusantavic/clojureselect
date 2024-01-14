@@ -1120,3 +1120,139 @@ clj꞉clojureselect.business-logic꞉> 
 clj꞉clojureselect.business-logic꞉> 
 "Good Fit"
 clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/tree-predict-many
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/tree-predict-set
+clj꞉clojureselect.business-logic꞉> 
+[{:work-experience "Beginner",
+  :soft-skills "Medium",
+  :references "Yes",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit "Good Fit",
+  :education "High School",
+  :cultural-fit "High Fit",
+  :technical-skills "Intermediate",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit "Low Fit",
+  :education "Bachelor's degree",
+  :cultural-fit "High Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Good",
+  :learning-ability "High",
+  :job-fit "Low Fit",
+  :education "High School",
+  :cultural-fit "Low Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/tree-predict-many
+clj꞉clojureselect.business-logic꞉> 
+[{:work-experience "Beginner",
+  :soft-skills "Medium",
+  :references "Yes",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit "Good Fit",
+  :education "High School",
+  :cultural-fit "High Fit",
+  :technical-skills "Intermediate",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit "Low Fit",
+  :education "Bachelor's degree",
+  :cultural-fit "High Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Good",
+  :learning-ability "High",
+  :job-fit "Low Fit",
+  :education "High School",
+  :cultural-fit "Low Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/move-column-to-last
+clj꞉clojureselect.business-logic꞉> 
+({:work-experience "Beginner",
+  :soft-skills "Medium",
+  :references "Yes",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit nil,
+  :education "High School",
+  :cultural-fit "High Fit",
+  :technical-skills "Intermediate",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit nil,
+  :education "Bachelor's degree",
+  :cultural-fit "High Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Good",
+  :learning-ability "High",
+  :job-fit nil,
+  :education "High School",
+  :cultural-fit "Low Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"})
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/move-column-to-last
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/move-column-to-last
+clj꞉clojureselect.business-logic꞉> 
+({:work-experience "Beginner",
+  :soft-skills "Medium",
+  :references "Yes",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit "Good Fit",
+  :education "High School",
+  :cultural-fit "High Fit",
+  :technical-skills "Intermediate",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Excellent",
+  :learning-ability "High",
+  :job-fit "Low Fit",
+  :education "Bachelor's degree",
+  :cultural-fit "High Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"}
+ {:work-experience "Beginner",
+  :soft-skills "Low",
+  :references "No",
+  :communication-skills "Good",
+  :learning-ability "High",
+  :job-fit "Low Fit",
+  :education "High School",
+  :cultural-fit "Low Fit",
+  :technical-skills "Beginner",
+  :problem-solving-ability "Low"})
+clj꞉clojureselect.business-logic꞉> 

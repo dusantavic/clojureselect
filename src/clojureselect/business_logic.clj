@@ -521,6 +521,12 @@
       (tree-predict (get (get tree attribute) attribute-value) entity))
     tree))
 
+(defn tree-predict-many
+  "Returns the prediction of an output variable for all entities in entered array, using created decision tree.
+   If value of output attribute is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
+  [tree entities]
+  (into [] (map (fn [row] (assoc row :job-fit (tree-predict tree row))) entities)))
+
 
 ;test
 (let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
@@ -574,7 +580,46 @@
   (tree-predict tree entity))
 
 
-
+(let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
+                  :references, :communication-skills, :problem-solving-ability,
+                  :cultural-fit, :learning-ability]
+      data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                         (select-sheet "candidates")
+                         (select-columns {:A :education, :B :work-experience,
+                                          :C :technical-skills, :D :soft-skills,
+                                          :E :references, :F :communication-skills,
+                                          :G :problem-solving-ability, :H :cultural-fit,
+                                          :I :learning-ability, :J :job-fit})
+                         rest))
+      tree (create-tree data :job-fit attributes)
+      entities [{:education "High School",
+                 :work-experience "Beginner",
+                 :technical-skills "Intermediate",
+                 :soft-skills "Medium",
+                 :references "Yes",
+                 :communication-skills "Excellent",
+                 :problem-solving-ability "Low",
+                 :cultural-fit "High Fit",
+                 :learning-ability "High"},
+                {:education "Bachelor's degree",
+                 :work-experience "Beginner",
+                 :technical-skills "Beginner",
+                 :soft-skills "Low",
+                 :references "No",
+                 :communication-skills "Excellent",
+                 :problem-solving-ability "Low",
+                 :cultural-fit "High Fit",
+                 :learning-ability "High"},
+                {:education "High School",
+                 :work-experience "Beginner",
+                 :technical-skills "Beginner",
+                 :soft-skills "Low",
+                 :references "No",
+                 :communication-skills "Good",
+                 :problem-solving-ability "Low",
+                 :cultural-fit "Low Fit",
+                 :learning-ability "High"}]]
+  (tree-predict-many tree entities))
 
 
 ;***********************************************************
