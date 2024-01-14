@@ -528,6 +528,28 @@
   (into [] (map (fn [row] (assoc row :job-fit (tree-predict tree row))) entities)))
 
 
+(defn remove-column
+  "Returns entered data withoud entered column"
+  [data column-to-remove]
+  (into [] (map #(dissoc % column-to-remove) data)))
+
+(defn training-and-validation
+  "Splits the dataset into two segments based on the provided proportion.
+   If the proportion is 0.8, the training data will represent 80% of the data."
+  [data proportion]
+  (let [count (count data)
+        index (Math/round (* proportion count))
+        training-test-array (split-at index data)
+        training-data (into [] (get training-test-array 0))
+        validation-data (into [] (get training-test-array 1))]
+    [training-data validation-data]
+    ))
+
+
+
+
+
+
 ;test
 (let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
       test-entity {:zaduzenje "kriticno"
@@ -546,6 +568,19 @@
                    :primanja "niska"
                    :stan "da"}]
   (tree-predict tree test-entity))
+
+;***********************************************************
+;              EVALUACIJA MODELA - ACCURACY
+;***********************************************************
+
+(defn calculate-accuracy 
+  "Evaluates the accuracy of predictions by comparing the predicted values with the actual values, 
+   returning the percentage of correct predictions"
+  [actuals predictions]
+  (let [correct-predictions (into [] (filter (fn [prediction] (let [actual (get actuals (.indexOf predictions prediction))] (= actual prediction))) predictions))
+        total-predictions (count actuals)
+        accuracy (double (/ (count correct-predictions) total-predictions))]
+    accuracy))
 
 
 ;***********************************************************
@@ -620,6 +655,56 @@
                  :cultural-fit "Low Fit",
                  :learning-ability "High"}]]
   (tree-predict-many tree entities))
+
+(let [data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                                       (select-sheet "candidates")
+                                       (select-columns {:A :education, :B :work-experience,
+                                                        :C :technical-skills, :D :soft-skills,
+                                                        :E :references, :F :communication-skills,
+                                                        :G :problem-solving-ability, :H :cultural-fit,
+                                                        :I :learning-ability, :J :job-fit})))
+      training-and-validation (training-and-validation data 0.8)
+      training-data (get training-and-validation 0)
+      validation-data (get training-and-validation 1)
+      attributes [:education, :work-experience, :technical-skills, :soft-skills,
+                   :references, :communication-skills, :problem-solving-ability,
+                   :cultural-fit, :learning-ability]
+      tree (create-tree training-data :job-fit attributes) 
+      predictions (tree-predict-many tree (remove-column validation-data :job-fit))
+      ]
+(calculate-accuracy validation-data predictions))
+
+
+
+;remove column test
+(let [entities [{:education "High School",
+           :work-experience "Beginner",
+           :technical-skills "Intermediate",
+           :soft-skills "Medium",
+           :references "Yes",
+           :communication-skills "Excellent",
+           :problem-solving-ability "Low",
+           :cultural-fit "High Fit",
+           :learning-ability "High"},
+          {:education "Bachelor's degree",
+           :work-experience "Beginner",
+           :technical-skills "Beginner",
+           :soft-skills "Low",
+           :references "No",
+           :communication-skills "Excellent",
+           :problem-solving-ability "Low",
+           :cultural-fit "High Fit",
+           :learning-ability "High"},
+          {:education "High School",
+           :work-experience "Beginner",
+           :technical-skills "Beginner",
+           :soft-skills "Low",
+           :references "No",
+           :communication-skills "Good",
+           :problem-solving-ability "Low",
+           :cultural-fit "Low Fit",
+           :learning-ability "High"}]]
+(remove-column entities :soft-skills))
 
 
 ;***********************************************************
