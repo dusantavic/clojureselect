@@ -474,7 +474,9 @@
 
 
 
-(defn id3 [data out attributes]
+(defn create-tree
+  "Creates a decision tree according to training data using ID3 algorithm."
+  [data out attributes]
   (if (= 1 (count (distinct (extract-column data out))))
     (first (distinct (extract-column data out)))
     (if (empty? attributes)
@@ -497,40 +499,42 @@
             (->> (distinct (map #(get % best-attribute) data))
                  (reduce (fn [tree value]
                            (let [sub-data (filter #(= value (get % best-attribute)) data)
-                                 subtree (id3 sub-data out attributes)]
+                                 subtree (create-tree sub-data out attributes)]
                              (assoc-in tree [best-attribute value] subtree)))
                          {best-attribute {}}))))))))
 
 
-(id3 training-data :otplata [:zaduzenje :primanja :stan])
+(create-tree training-data :otplata [:zaduzenje :primanja :stan])
 
 
-(defn id3-predict [tree entity]
+(defn tree-predict
+  "Returns the prediction of an output variable for the entered entity, using created decision tree."
+  [tree entity]
   (if (map? tree)
     (let [attribute (first (keys tree))
           attribute-value (get entity attribute)]
-      (id3-predict (get (get tree attribute) attribute-value) entity))
+      (tree-predict (get (get tree attribute) attribute-value) entity))
     tree))
 
 
 ;test
-(let [tree (id3 training-data :otplata [:zaduzenje :primanja :stan])
+(let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
       test-entity {:zaduzenje "kriticno"
                    :primanja "visoka"
                    :stan "da"}]
-  (id3-predict tree test-entity))
+  (tree-predict tree test-entity))
 
-(let [tree (id3 training-data :otplata [:zaduzenje :primanja :stan])
+(let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
       test-entity {:zaduzenje "kriticno"
                    :primanja "niska"
                    :stan "ne"}]
-  (id3-predict tree test-entity))
+  (tree-predict tree test-entity))
 
-(let [tree (id3 training-data :otplata [:zaduzenje :primanja :stan])
+(let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
       test-entity {:zaduzenje "povoljno"
                    :primanja "niska"
                    :stan "da"}]
-  (id3-predict tree test-entity))
+  (tree-predict tree test-entity))
 
 
 
