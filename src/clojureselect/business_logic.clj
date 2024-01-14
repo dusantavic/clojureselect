@@ -19,51 +19,6 @@
 ;***********************************************************
 
 
-(def training-data [{:zaduzenje "kriticno"
-            :primanja "visoka"
-            :stan "da"
-            :otplata "ne"},
-           {:zaduzenje "kriticno"
-            :primanja "srednja"
-            :stan "ne"
-            :otplata "ne"},
-           {:zaduzenje "kriticno"
-            :primanja "niska"
-            :stan "da"
-            :otplata "ne"},
-           {:zaduzenje "kriticno"
-            :primanja "visoka"
-            :stan "ne"
-            :otplata "ne"},
-           {:zaduzenje "prihvatljivo"
-            :primanja "visoka"
-            :stan "da"
-            :otplata "da"},
-           {:zaduzenje "prihvatljivo"
-            :primanja "niska"
-            :stan "da"
-            :otplata "da"},
-           {:zaduzenje "prihvatljivo"
-            :primanja "srednja"
-            :stan "da"
-            :otplata "da"},
-           {:zaduzenje "prihvatljivo"
-            :primanja "srednja"
-            :stan "ne"
-            :otplata "ne"},
-           {:zaduzenje "povoljno"
-            :primanja "niska"
-            :stan "ne"
-            :otplata "da"},
-           {:zaduzenje "povoljno"
-            :primanja "niska"
-            :stan "ne"
-            :otplata "ne"},
-           {:zaduzenje "povoljno"
-            :primanja "niska"
-            :stan "ne"
-            :otplata "ne"}])
-
 (defn frequencies-map [data attribute]
   (let [values (map attribute data)]
     (frequencies values)))
