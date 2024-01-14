@@ -4855,3 +4855,224 @@ clj꞉clojureselect.core-test꞉> 
   :job-id 1,
   :final-score 0.0}]
 clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-candidates
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/decision-support
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1,
+  :firstname "Dusan",
+  :lastname "Tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "Nenad",
+  :lastname "Panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 4,
+  :firstname "Arsenije",
+  :lastname "Pavlovic",
+  :active true,
+  :email "arsenijee00@yahoo.com",
+  :status 0,
+  :job-id 1,
+  :final-score 0.0}]
+clj꞉clojureselect.business-logic꞉> 
+[{:id 1,
+  :firstname "mario",
+  :lastname "tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.5524928994285323}
+ {:id 2,
+  :firstname "nenad",
+  :lastname "panovic",
+  :active true,
+  :email "nenadpann@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.44750710057146764}
+ {:id 3,
+  :firstname "arsenije",
+  :lastname "pavlovic",
+  :active true,
+  :email "arseenijee00@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.0}]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/aggregate-candidate-test-2
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/decision-support-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.business-logic/selection-advice
+clj꞉clojureselect.business-logic꞉> 
+["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.5525"
+ "You should also consider Nenad Panovic with final score of 0.4475 for C# Junior Developer"]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/get-jobs-name
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.business-logic/selection-advice
+clj꞉clojureselect.business-logic꞉> 
+["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.5525"
+ "You should also consider Nenad Panovic with final score of 0.4475 for C# Junior Developer"]
+clj꞉clojureselect.business-logic꞉> 
+["Top rated Candidate for C# Junior Developer: mario tavic with final score of 0.5525"
+ "You should also consider nenad panovic with final score of 0.4475 for C# Junior Developer"]
+clj꞉clojureselect.business-logic꞉> 
+#'clojureselect.core-test/decision-support-test
+clj꞉clojureselect.core-test꞉> 
+
+FAIL in (decision-support-test) (form-init3915518148177417350.clj:1374)
+Testing aggregate-candidate function
+expected: (= (decision-support 1 candidates-sim ratings-sim criteria-sim) [{:id 1, :firstname "mario", :lastname "tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1, :final-score 0.5524928994285323} {:id 2, :firstname "nenad", :lastname "panovic", :active true, :email "nenadpann@gmail.com", :status "rated", :job-id 1, :final-score 0.44750710057146764} {:id 3, :firstname "arsenije", :lastname "pavlovic", :active true, :email "arseenijee00@gmail.com", :status "unrated", :job-id 1, :final-score 0.0}])
+  actual: (not (= [{:id 1, :firstname "mario", :lastname "tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1, :final-score 0.37426177928497706} {:id 3, :firstname "arsenije", :lastname "pavlovic", :active true, :email "arseenijee00@gmail.com", :status "unrated", :job-id 1, :final-score 0.321608309105797} {:id 2, :firstname "nenad", :lastname "panovic", :active true, :email "nenadpann@gmail.com", :status "rated", :job-id 1, :final-score 0.3041299116092259}] [{:id 1, :firstname "mario", :lastname "tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1, :final-score 0.5524928994285323} {:id 2, :firstname "nenad", :lastname "panovic", :active true, :email "nenadpann@gmail.com", :status "rated", :job-id 1, :final-score 0.44750710057146764} {:id 3, :firstname "arsenije", :lastname "pavlovic", :active true, :email "arseenijee00@gmail.com", :status "unrated", :job-id 1, :final-score 0.0}]))
+nil
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/decision-support-test
+clj꞉clojureselect.core-test꞉> 
+
+FAIL in (decision-support-test) (form-init3915518148177417350.clj:1374)
+Testing aggregate-candidate function
+expected: (= (decision-support 1 candidates-sim ratings-sim criteria-sim) [{:id 1, :firstname "mario", :lastname "tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1, :final-score 0.5524928994285323} {:id 2, :firstname "nenad", :lastname "panovic", :active true, :email "nenadpann@gmail.com", :status "rated", :job-id 1, :final-score 0.44750710057146764} {:id 3, :firstname "arsenije", :lastname "pavlovic", :active true, :email "arseenijee00@gmail.com", :status "unrated", :job-id 1, :final-score 0.0}])
+  actual: (not (= [{:id 1, :firstname "Dusan", :lastname "Tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1, :final-score 0.37426177928497706} {:id 3, :firstname "Milos", :lastname "Milovanovic", :active true, :email "milosmm@gmail.com", :status "unrated", :job-id 1, :final-score 0.321608309105797} {:id 2, :firstname "Nenad", :lastname "Milosevic", :active true, :email "nenadmiloss@gmail.com", :status "rated", :job-id 1, :final-score 0.3041299116092259}] [{:id 1, :firstname "mario", :lastname "tavic", :active true, :email "dusantavic1@gmail.com", :status "rated", :job-id 1, :final-score 0.5524928994285323} {:id 2, :firstname "nenad", :lastname "panovic", :active true, :email "nenadpann@gmail.com", :status "rated", :job-id 1, :final-score 0.44750710057146764} {:id 3, :firstname "arsenije", :lastname "pavlovic", :active true, :email "arseenijee00@gmail.com", :status "unrated", :job-id 1, :final-score 0.0}]))
+nil
+clj꞉clojureselect.core-test꞉> 
+[{:id 1,
+  :firstname "Dusan",
+  :lastname "Tavic",
+  :active true,
+  :email "dusantavic1@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.37426177928497706}
+ {:id 3,
+  :firstname "Milos",
+  :lastname "Milovanovic",
+  :active true,
+  :email "milosmm@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.321608309105797}
+ {:id 2,
+  :firstname "Nenad",
+  :lastname "Milosevic",
+  :active true,
+  :email "nenadmiloss@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.3041299116092259}]
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/decision-support-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.3743"
+ "You should also consider Milos Milovanovic with final score of 0.3216 for C# Junior Developer"]
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/selection-advice-test
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+["Top rated Candidate for C# Junior Developer: Dragana Mirkovic with final score of 0.363"
+ "You should also consider Maja Petrovic with final score of 0.3328 for C# Junior Developer"]
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/selection-advice-test-2
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+[{:id 2,
+  :firstname "Dragana",
+  :lastname "Mirkovic",
+  :active true,
+  :email "gaga@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.3629946185501741}
+ {:id 3,
+  :firstname "Maja",
+  :lastname "Petrovic",
+  :active true,
+  :email "mayapetrovic@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.33284425451092114}
+ {:id 1,
+  :firstname "Marko",
+  :lastname "Radovic",
+  :active true,
+  :email "marko@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.30416112693890474}]
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/decision-support-test-2
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+[{:id 2,
+  :firstname "Leo",
+  :lastname "Tavic",
+  :active true,
+  :email "leo.tavic@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.38115487827637023}
+ {:id 1,
+  :firstname "Marija",
+  :lastname "Obrenovic",
+  :active true,
+  :email "marijaobrenovic@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.3221147478425299}
+ {:id 3,
+  :firstname "Tea",
+  :lastname "Marjanovic",
+  :active true,
+  :email "marjanovictea@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.29673037388109985}]
+clj꞉clojureselect.core-test꞉> 
+[{:id 2,
+  :firstname "Leo",
+  :lastname "Tavic",
+  :active true,
+  :email "leo.tavic@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.4214352085480055}
+ {:id 3,
+  :firstname "Tea",
+  :lastname "Marjanovic",
+  :active true,
+  :email "marjanovictea@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.2906448524516188}
+ {:id 1,
+  :firstname "Marija",
+  :lastname "Obrenovic",
+  :active true,
+  :email "marijaobrenovic@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.2879199390003757}]
+clj꞉clojureselect.core-test꞉> 
+true
+clj꞉clojureselect.core-test꞉> 
+#'clojureselect.core-test/decision-support-test-3
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 

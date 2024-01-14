@@ -1011,84 +1011,6 @@
 ;               AGREGACIJA OCENA - TESTOVI
 ;***********************************************************
 
-(def candidates-sim [{:id 1
-                      :firstname "mario"
-                      :lastname "tavic"
-                      :active true
-                      :email "dusantavic1@gmail.com"
-                      :status "rated"
-                      :job-id 1},
-                     {:id 2
-                      :firstname "nenad"
-                      :lastname "panovic"
-                      :active true
-                      :email "nenadpann@gmail.com"
-                      :status "rated"
-                      :job-id 1},
-                     {:id 3
-                      :firstname "arsenije"
-                      :lastname "pavlovic"
-                      :active true
-                      :email "arseenijee00@gmail.com"
-                      :status "unrated"
-                      :job-id 1}])
-
-(def jobs-sim [{:id 1
-                :name "C# Junior Developer"
-                :active true
-                :positions 1}])
-
-(def qualifications-sim [{:id 1
-                          :name "C# Test"},
-                         {:id 2
-                          :name "Education"},
-                         {:id 3
-                          :name "Abstract thinking"}])
-
-(def criteria-sim [{:job-id 1
-                    :qualification-id 1
-                    :ponder 0.5},
-                   {:job-id 1
-                    :qualification-id 2
-                    :ponder 0.3},
-                   {:job-id 1
-                    :qualification-id 3
-                    :ponder 0.2}])
-
-
-(def ratings-sim [{:id 1
-                   :candidate-id 1
-                   :job-id 1
-                   :qualification-id 1
-                   :value 10},
-                  {:id 2
-                   :candidate-id 1
-                   :job-id 1
-                   :qualification-id 2
-                   :value 10},
-                  {:id 3
-                   :candidate-id 1
-                   :job-id 1
-                   :qualification-id 3
-                   :value 10},
-
-                  {:id 4
-                   :candidate-id 2
-                   :job-id 1
-                   :qualification-id 1
-                   :value 8},
-                  {:id 5
-                   :candidate-id 2
-                   :job-id 1
-                   :qualification-id 2
-                   :value 9.1},
-                  {:id 6
-                   :candidate-id 2
-                   :job-id 1
-                   :qualification-id 3
-                   :value 7}])
-
-
 (deftest add-ponder-to-normalized-ratings-test
   (testing "Testing add-ponder-to-normalized-ratings function"
     (let [ratings-sim [{:id 1
@@ -1288,6 +1210,491 @@
 
 (aggregate-candidate-test)
 (aggregate-candidate-test-2)
+
+
+;***********************************************************
+;            PODRSKA U ODLUCIVANJU - TESTOVI
+;***********************************************************
+
+(deftest decision-support-test
+  (testing "Testing decision-support function"
+    (let [candidates-sim [{:id 1
+                           :firstname "Dusan"
+                           :lastname "Tavic"
+                           :active true
+                           :email "dusantavic1@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 2
+                           :firstname "Nenad"
+                           :lastname "Milosevic"
+                           :active true
+                           :email "nenadmiloss@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 3
+                           :firstname "Milos"
+                           :lastname "Milovanovic"
+                           :active true
+                           :email "milosmm@gmail.com"
+                           :status "unrated"
+                           :job-id 1}]
+          ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7},
+                       {:id 7
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8.7},
+                       {:id 8
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 2
+                        :value 7.8},
+                       {:id 9
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 3
+                        :value 9.5}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]]
+      (is (= (decision-support 1 candidates-sim ratings-sim criteria-sim) [{:id 1,
+                                                                            :firstname "Dusan",
+                                                                            :lastname "Tavic",
+                                                                            :active true,
+                                                                            :email "dusantavic1@gmail.com",
+                                                                            :status "rated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.37426177928497706}
+                                                                           {:id 3,
+                                                                            :firstname "Milos",
+                                                                            :lastname "Milovanovic",
+                                                                            :active true,
+                                                                            :email "milosmm@gmail.com",
+                                                                            :status "unrated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.321608309105797}
+                                                                           {:id 2,
+                                                                            :firstname "Nenad",
+                                                                            :lastname "Milosevic",
+                                                                            :active true,
+                                                                            :email "nenadmiloss@gmail.com",
+                                                                            :status "rated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.3041299116092259}])))))
+(decision-support-test)
+
+(deftest decision-support-test-2
+  (testing "Testing decision-support function"
+    (let  [candidates-sim [{:id 1
+                           :firstname "Marko"
+                           :lastname "Radovic"
+                           :active true
+                           :email "marko@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 2
+                           :firstname "Dragana"
+                           :lastname "Mirkovic"
+                           :active true
+                           :email "gaga@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 3
+                           :firstname "Maja"
+                           :lastname "Petrovic"
+                           :active true
+                           :email "mayapetrovic@gmail.com"
+                           :status "unrated"
+                           :job-id 1}]
+          ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 7},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 8.1},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7.8},
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 9.5},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 6.1},
+                       {:id 7
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 1
+                        :value 7.8},
+                       {:id 8
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 2
+                        :value 7.9},
+                       {:id 9
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 3
+                        :value 9.5}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]]
+      (is (= (decision-support 1 candidates-sim ratings-sim criteria-sim) [{:id 2,
+                                                                            :firstname "Dragana",
+                                                                            :lastname "Mirkovic",
+                                                                            :active true,
+                                                                            :email "gaga@gmail.com",
+                                                                            :status "rated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.3629946185501741}
+                                                                           {:id 3,
+                                                                            :firstname "Maja",
+                                                                            :lastname "Petrovic",
+                                                                            :active true,
+                                                                            :email "mayapetrovic@gmail.com",
+                                                                            :status "unrated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.33284425451092114}
+                                                                           {:id 1,
+                                                                            :firstname "Marko",
+                                                                            :lastname "Radovic",
+                                                                            :active true,
+                                                                            :email "marko@gmail.com",
+                                                                            :status "rated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.30416112693890474}])))))
+
+(decision-support-test-2)
+
+(deftest decision-support-test-3
+  (testing "Testing decision-support function"
+    (let  [candidates-sim [{:id 1
+                            :firstname "Marija"
+                            :lastname "Obrenovic"
+                            :active true
+                            :email "marijaobrenovic@gmail.com"
+                            :status "rated"
+                            :job-id 1},
+                           {:id 2
+                            :firstname "Leo"
+                            :lastname "Tavic"
+                            :active true
+                            :email "leo.tavic@gmail.com"
+                            :status "rated"
+                            :job-id 1},
+                           {:id 3
+                            :firstname "Tea"
+                            :lastname "Marjanovic"
+                            :active true
+                            :email "marjanovictea@gmail.com"
+                            :status "unrated"
+                            :job-id 1}]
+           ratings-sim [{:id 1
+                         :candidate-id 1
+                         :job-id 1
+                         :qualification-id 1
+                         :value 6.8},
+                        {:id 2
+                         :candidate-id 1
+                         :job-id 1
+                         :qualification-id 2
+                         :value 5.6},
+                        {:id 3
+                         :candidate-id 1
+                         :job-id 1
+                         :qualification-id 3
+                         :value 7.7},
+                        {:id 4
+                         :candidate-id 2
+                         :job-id 1
+                         :qualification-id 1
+                         :value 9.5},
+                        {:id 5
+                         :candidate-id 2
+                         :job-id 1
+                         :qualification-id 2
+                         :value 9.7},
+                        {:id 6
+                         :candidate-id 2
+                         :job-id 1
+                         :qualification-id 3
+                         :value 9.9},
+                        {:id 7
+                         :candidate-id 3
+                         :job-id 1
+                         :qualification-id 1
+                         :value 7.3},
+                        {:id 8
+                         :candidate-id 3
+                         :job-id 1
+                         :qualification-id 2
+                         :value 6.0},
+                        {:id 9
+                         :candidate-id 3
+                         :job-id 1
+                         :qualification-id 3
+                         :value 6.1}]
+           criteria-sim [{:job-id 1
+                          :qualification-id 1
+                          :ponder 0.5},
+                         {:job-id 1
+                          :qualification-id 2
+                          :ponder 0.3},
+                         {:job-id 1
+                          :qualification-id 3
+                          :ponder 0.2}]]
+      (is (= (decision-support 1 candidates-sim ratings-sim criteria-sim) [{:id 2,
+                                                                            :firstname "Leo",
+                                                                            :lastname "Tavic",
+                                                                            :active true,
+                                                                            :email "leo.tavic@gmail.com",
+                                                                            :status "rated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.4214352085480055}
+                                                                           {:id 3,
+                                                                            :firstname "Tea",
+                                                                            :lastname "Marjanovic",
+                                                                            :active true,
+                                                                            :email "marjanovictea@gmail.com",
+                                                                            :status "unrated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.2906448524516188}
+                                                                           {:id 1,
+                                                                            :firstname "Marija",
+                                                                            :lastname "Obrenovic",
+                                                                            :active true,
+                                                                            :email "marijaobrenovic@gmail.com",
+                                                                            :status "rated",
+                                                                            :job-id 1,
+                                                                            :final-score 0.2879199390003757}])))))
+
+(decision-support-test-3)
+
+(deftest selection-advice-test
+  (testing "Testing selection-advice function"
+    (let [candidates-sim [{:id 1
+                           :firstname "Dusan"
+                           :lastname "Tavic"
+                           :active true
+                           :email "dusantavic1@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 2
+                           :firstname "Nenad"
+                           :lastname "Milosevic"
+                           :active true
+                           :email "nenadmiloss@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 3
+                           :firstname "Milos"
+                           :lastname "Milovanovic"
+                           :active true
+                           :email "milosmm@gmail.com"
+                           :status "unrated"
+                           :job-id 1}]
+          ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 10},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 10},
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 9.1},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7},
+                       {:id 7
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 1
+                        :value 8.7},
+                       {:id 8
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 2
+                        :value 7.8},
+                       {:id 9
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 3
+                        :value 9.5}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]
+          ]
+      (is (= (selection-advice 1 candidates-sim ratings-sim criteria-sim jobs-sim) ["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.3743"
+                                                                                    "You should also consider Milos Milovanovic with final score of 0.3216 for C# Junior Developer"])))))
+
+(selection-advice-test)
+
+(deftest selection-advice-test-2
+  (testing "Testing selection-advice function"
+    (let [candidates-sim [{:id 1
+                           :firstname "Marko"
+                           :lastname "Radovic"
+                           :active true
+                           :email "marko@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 2
+                           :firstname "Dragana"
+                           :lastname "Mirkovic"
+                           :active true
+                           :email "gaga@gmail.com"
+                           :status "rated"
+                           :job-id 1},
+                          {:id 3
+                           :firstname "Maja"
+                           :lastname "Petrovic"
+                           :active true
+                           :email "mayapetrovic@gmail.com"
+                           :status "unrated"
+                           :job-id 1}]
+          ratings-sim [{:id 1
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 1
+                        :value 7},
+                       {:id 2
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 2
+                        :value 8.1},
+                       {:id 3
+                        :candidate-id 1
+                        :job-id 1
+                        :qualification-id 3
+                        :value 7.8},
+                       {:id 4
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 1
+                        :value 9.5},
+                       {:id 5
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 2
+                        :value 10},
+                       {:id 6
+                        :candidate-id 2
+                        :job-id 1
+                        :qualification-id 3
+                        :value 6.1},
+                       {:id 7
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 1
+                        :value 7.8},
+                       {:id 8
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 2
+                        :value 7.9},
+                       {:id 9
+                        :candidate-id 3
+                        :job-id 1
+                        :qualification-id 3
+                        :value 9.5}]
+          criteria-sim [{:job-id 1
+                         :qualification-id 1
+                         :ponder 0.5},
+                        {:job-id 1
+                         :qualification-id 2
+                         :ponder 0.3},
+                        {:job-id 1
+                         :qualification-id 3
+                         :ponder 0.2}]
+          jobs-sim [{:id 1
+                     :name "C# Junior Developer"
+                     :active true
+                     :positions 1}]]
+      (is (= (selection-advice 1 candidates-sim ratings-sim criteria-sim jobs-sim) ["Top rated Candidate for C# Junior Developer: Dragana Mirkovic with final score of 0.363"
+                                                                                    "You should also consider Maja Petrovic with final score of 0.3328 for C# Junior Developer"])))))
+
+(selection-advice-test-2)
 
 
 ;***********************************************************

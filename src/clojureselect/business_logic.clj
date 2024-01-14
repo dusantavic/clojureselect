@@ -333,25 +333,30 @@
 (defn decision-support
   "Applies the method of multi-criteria decision-making and provides
    advices for the most suitable candidates for a specific job"
-  [job-id]
+  ([job-id]
   (let [candidates (get-candidates job-id)]
     (into [] (sort-by :final-score (comparator >) (map (fn [row] (aggregate-candidate (:id row))) candidates)))))
-
-(decision-support 1)
+    ([job-id candidates ratings criteria]
+   (let [candidates-for-job (get-candidates job-id candidates)]
+     (into [] (sort-by :final-score (comparator >) (map (fn [row] (aggregate-candidate (:id row) candidates ratings criteria)) candidates-for-job))))))
 
 (defn round-to-decimal-places [num places]
   (Double/parseDouble (format (str "%." places "f") num)))
 
 (defn selection-advice 
   "Gives advice for the top two most suitable candidates for a specific job"
-  [job-id]
+  ([job-id]
   (let [rated-candidates (decision-support job-id)]
     (let [first-candidate (get rated-candidates 0)
           second-candidate (get rated-candidates 1)]
       [(str "Top rated Candidate for " (get-jobs-name job-id) ": " (:firstname first-candidate) " " (:lastname first-candidate) " with final score of " (round-to-decimal-places (:final-score first-candidate) 4))
       (str "You should also consider " (:firstname second-candidate) " " (:lastname second-candidate) " with final score of " (round-to-decimal-places (:final-score second-candidate) 4) " for " (get-jobs-name job-id))])))
-
-(selection-advice 1)
+   ([job-id candidates ratings criteria jobs]
+   (let [rated-candidates (decision-support job-id candidates ratings criteria)]
+     (let [first-candidate (get rated-candidates 0)
+           second-candidate (get rated-candidates 1)]
+       [(str "Top rated Candidate for " (get-jobs-name job-id jobs) ": " (:firstname first-candidate) " " (:lastname first-candidate) " with final score of " (round-to-decimal-places (:final-score first-candidate) 4))
+        (str "You should also consider " (:firstname second-candidate) " " (:lastname second-candidate) " with final score of " (round-to-decimal-places (:final-score second-candidate) 4) " for " (get-jobs-name job-id jobs))]))))
 
 
 ;***********************************************************
