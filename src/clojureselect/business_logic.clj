@@ -409,7 +409,8 @@
   (let [max-index (apply max-key (fn [i] (nth arr i)) (range (count arr)))]
     max-index))
 
-(defn conditional-entropy 
+(defn conditional-entropy
+  "Returns the conditional entropy for a set or subset of data."
   [data attribute out values counts]
   (reduce +
           (map (fn [i]
@@ -421,7 +422,8 @@
                (range (count values)))))
 
 
-(defn information-gain 
+(defn information-gain
+  "Determines the significance of the input attribute in predicting the output attribute."
   [data attribute out]
   (let [total-entropy (entropy (extract-column data out))]
     (let [values-counts (frequencies (extract-column data attribute))
@@ -434,6 +436,8 @@
 (information-gain training-data :stan :otplata)
 
 (defn best-attribute
+  "Returns the attribute that has the highest significance for making predictions. 
+   If no attribute provides supplementary information for prediction returns nil."
   [data out attributes]
  (let [information-gains (map #(information-gain data % out) attributes)
        best-attribute-index (index-of-max information-gains)
