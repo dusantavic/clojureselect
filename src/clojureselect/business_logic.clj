@@ -14,6 +14,211 @@
 ;                         2023/3801                        *
 ;***********************************************************
 
+;***********************************************************
+;                    STABLO ODLUCIVANJA
+;***********************************************************
+
+
+(def training-data [{:zaduzenje "kriticno"
+            :primanja "visoka"
+            :stan "da"
+            :otplata "ne"},
+           {:zaduzenje "kriticno"
+            :primanja "srednja"
+            :stan "ne"
+            :otplata "ne"},
+           {:zaduzenje "kriticno"
+            :primanja "niska"
+            :stan "da"
+            :otplata "ne"},
+           {:zaduzenje "kriticno"
+            :primanja "visoka"
+            :stan "ne"
+            :otplata "ne"},
+           {:zaduzenje "prihvatljivo"
+            :primanja "visoka"
+            :stan "da"
+            :otplata "da"},
+           {:zaduzenje "prihvatljivo"
+            :primanja "niska"
+            :stan "da"
+            :otplata "da"},
+           {:zaduzenje "prihvatljivo"
+            :primanja "srednja"
+            :stan "da"
+            :otplata "da"},
+           {:zaduzenje "prihvatljivo"
+            :primanja "srednja"
+            :stan "ne"
+            :otplata "ne"},
+           {:zaduzenje "povoljno"
+            :primanja "niska"
+            :stan "ne"
+            :otplata "da"},
+           {:zaduzenje "povoljno"
+            :primanja "niska"
+            :stan "ne"
+            :otplata "ne"},
+           {:zaduzenje "povoljno"
+            :primanja "niska"
+            :stan "ne"
+            :otplata "ne"}])
+
+(defn frequencies-map [data attribute]
+  (let [values (map attribute data)]
+    (frequencies values)))
+;keys vals
+
+(defn log2 [x]
+  (/ (Math/log x) (Math/log 2)))
+
+
+(defn entropy 
+  "Calcuates entropy of a given column.
+   As an input parameter expects only one column for which the entropy needs to be calculated."
+  [data]
+  (let [value-counts (frequencies data)
+        values (keys value-counts)
+        counts (vals value-counts)
+        total-count (apply + counts)
+        probabilities (map #(/ % total-count) counts)]
+    (->> (map #(* % (log2 %)) probabilities)
+         (reduce +)
+         (* -1))))
+
+(defn extract-column
+  "Extracts values only for the column of the entered attribute"
+  [data attribute]
+  (map #(get % attribute) data))
+
+
+
+(defn index-of-max 
+  "Returns an index of the greatest number element in an array."
+  [arr]
+  (let [max-index (apply max-key (fn [i] (nth arr i)) (range (count arr)))]
+    max-index))
+
+(defn conditional-entropy
+  "Returns the conditional entropy for a set or subset of data."
+  [data attribute out values counts]
+  (reduce +
+          (map (fn [i]
+                 (let [value (nth values i)
+                       subset (->> data
+                                   (filter #(= value (get % attribute))))
+                       subset-entropy (entropy (extract-column subset out))]
+                   (* (/ (nth counts i) (apply + counts)) subset-entropy)))
+               (range (count values)))))
+
+
+(defn information-gain
+  "Determines the significance of the input attribute in predicting the output attribute."
+  [data attribute out]
+  (let [total-entropy (entropy (extract-column data out))]
+    (let [values-counts (frequencies (extract-column data attribute))
+          values (keys values-counts)
+          counts (vals values-counts)
+          conditional-entropy (conditional-entropy data attribute out values counts)]
+      (- total-entropy conditional-entropy))))
+
+
+(defn best-attribute
+  "Returns the attribute that has the highest significance for making predictions. 
+   If no attribute provides supplementary information for prediction returns nil."
+  [data out attributes]
+ (let [information-gains (map #(information-gain data % out) attributes)
+       best-attribute-index (index-of-max information-gains)
+       best-attribute (nth attributes best-attribute-index)]
+   (if (every? (fn [x] (= x 0.0)) information-gains)
+     nil
+     best-attribute)))
+
+;; (def sub-data (filter #(= "povoljno" (get % :zaduzenje)) training-data))
+;; (information-gain sub-data :stan :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
+;; (information-gain sub-data :primanja :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
+;; (every? (fn [x] (= x 0.0)) [0.0 0.0 0.0])
+  
+;; (require 'clojure.tools.trace)
+
+
+(defn create-tree
+  "Creates a decision tree according to training data using ID3 algorithm."
+  [data out attributes]
+  (if (= 1 (count (distinct (extract-column data out))))
+    (first (distinct (extract-column data out)))
+    (if (empty? attributes)
+      (let [unique-target-values (map #(get % out) data)
+            counts (frequencies unique-target-values)
+            majority-class (->> counts
+                                (apply max-key second)
+                                first)]
+        majority-class)
+      (let [best-attribute (best-attribute data out attributes)]
+        (if (= best-attribute nil)
+           ;ako ne radimo dalje grananje, onda racunamo verovatnoce
+          (let [unique-target-values (map #(get % out) data)
+                counts (frequencies unique-target-values)
+                majority-class (->> counts
+                                    (apply max-key second)
+                                    first)]
+            majority-class)
+          (let [attributes (remove #(= % best-attribute) attributes)]
+            (->> (distinct (map #(get % best-attribute) data))
+                 (reduce (fn [tree value]
+                           (let [sub-data (filter #(= value (get % best-attribute)) data)
+                                 subtree (create-tree sub-data out attributes)]
+                             (assoc-in tree [best-attribute value] subtree)))
+                         {best-attribute {}}))))))))
+
+
+(defn tree-predict
+  "Returns the prediction of an output variable for the entered entity, using created decision tree.
+   If return value is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
+  [tree entity]
+  (if (map? tree)
+    (let [attribute (first (keys tree))
+          attribute-value (get entity attribute)]
+      (tree-predict (get (get tree attribute) attribute-value) entity))
+    tree))
+
+(defn tree-predict-many
+  "Returns the prediction of an output variable for all entities in entered array, using created decision tree.
+   If value of output attribute is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
+  [tree entities]
+  (into [] (map (fn [row] (assoc row :job-fit (tree-predict tree row))) entities)))
+
+
+(defn remove-column
+  "Returns entered data withoud entered column"
+  [data column-to-remove]
+  (into [] (map #(dissoc % column-to-remove) data)))
+
+(defn training-and-validation
+  "Splits the dataset into two segments based on the provided proportion.
+   If the proportion is 0.8, the training data will represent 80% of the data."
+  [data proportion]
+  (let [count (count data)
+        index (Math/round (* proportion count))
+        training-test-array (split-at index data)
+        training-data (into [] (get training-test-array 0))
+        validation-data (into [] (get training-test-array 1))]
+    [training-data validation-data]
+    ))
+
+
+;***********************************************************
+;              EVALUACIJA MODELA - ACCURACY
+;***********************************************************
+
+(defn calculate-accuracy 
+  "Evaluates the accuracy of predictions by comparing the predicted values with the actual values, 
+   returning the percentage of correct predictions"
+  [actuals predictions]
+  (let [correct-predictions (into [] (filter (fn [prediction] (let [actual (get actuals (.indexOf predictions prediction))] (= actual prediction))) predictions))
+        total-predictions (count actuals)
+        accuracy (double (/ (count correct-predictions) total-predictions))]
+    accuracy))
 
 
 ;***********************************************************
@@ -291,420 +496,6 @@
       ))
 
 (calculate-ahp 1)
-
-;***********************************************************
-;                    STABLO ODLUCIVANJA
-;***********************************************************
-
-(def training-data [{:zaduzenje "kriticno"
-                  :primanja "visoka"
-                  :stan "da"
-                  :otplata "ne"},
-                 {:zaduzenje "kriticno"
-                  :primanja "srednja"
-                  :stan "ne"
-                  :otplata "ne"},
-                 {:zaduzenje "kriticno"
-                  :primanja "niska"
-                  :stan "da"
-                  :otplata "ne"},
-                 {:zaduzenje "kriticno"
-                  :primanja "visoka"
-                  :stan "ne"
-                  :otplata "ne"},
-                 {:zaduzenje "prihvatljivo"
-                  :primanja "visoka"
-                  :stan "da"
-                  :otplata "da"},
-                 {:zaduzenje "prihvatljivo"
-                  :primanja "niska"
-                  :stan "da"
-                  :otplata "da"},
-                 {:zaduzenje "prihvatljivo"
-                  :primanja "srednja"
-                  :stan "da"
-                  :otplata "da"},
-                 {:zaduzenje "prihvatljivo"
-                  :primanja "srednja"
-                  :stan "ne"
-                  :otplata "ne"},
-                 {:zaduzenje "povoljno"
-                  :primanja "niska"
-                  :stan "ne"
-                  :otplata "da"},
-                 {:zaduzenje "povoljno"
-                  :primanja "niska"
-                  :stan "ne"
-                  :otplata "ne"},
-                 {:zaduzenje "povoljno"
-                  :primanja "niska"
-                  :stan "ne"
-                  :otplata "ne"}])
-
-
-(defn frequencies-map [data attribute]
-  (let [values (map attribute data)]
-    (frequencies values)))
-;keys vals
-
-(defn log2 [x]
-  (/ (Math/log x) (Math/log 2)))
-
-;; (defn get-count-yes
-;;   "Returns total number of elements with positive value of output variable"
-;;   [data out yes-value]
-;;   (reduce (fn [acc element]
-;;             (if (= (out element) yes-value)
-;;               (inc acc)
-;;               acc)) 0 data))
-
-;; (defn entropy
-;;   [data out yes-value]
-;;   (let [total (count data)
-;;         count-yes (get-count-yes data out yes-value)
-;;         count-no (- total count-yes)
-;;         probability-yes (/ count-yes total)
-;;         probability-no (/ count-no total)]
-;;     (* -1 (+ (* probability-yes (log2 probability-yes))
-;;              (* probability-no (log2 probability-no))))))
-
-;; (entropy training-data :otplata "da")
-
-(defn entropy 
-  "Calcuates entropy of a given column.
-   As an input parameter expects only one column for which the entropy needs to be calculated."
-  [data]
-  (let [value-counts (frequencies data)
-        values (keys value-counts)
-        counts (vals value-counts)
-        total-count (apply + counts)
-        probabilities (map #(/ % total-count) counts)]
-    (->> (map #(* % (log2 %)) probabilities)
-         (reduce +)
-         (* -1))))
-
-(defn extract-column
-  "Extracts values only for the column of the entered attribute"
-  [data attribute]
-  (map #(get % attribute) data))
-
-(entropy (extract-column training-data :otplata))
-
-
-;; (def datatest (map #(get % :otplata) training-data))
-;; (def value-counts (frequencies datatest))
-;; (def values (keys value-counts)) 
-;; (def counts (vals value-counts)) 
-;; (def total-count (apply + counts))
-;; (def probabilities (map #(/ % total-count) counts))
-
-;; (->>
-;;  (map #(* % (log2 %)) probabilities)
-;;  (reduce +)
-;;  (* -1))
-
-(defn index-of-max 
-  "Returns an index of the greatest number element in an array."
-  [arr]
-  (let [max-index (apply max-key (fn [i] (nth arr i)) (range (count arr)))]
-    max-index))
-
-(defn conditional-entropy
-  "Returns the conditional entropy for a set or subset of data."
-  [data attribute out values counts]
-  (reduce +
-          (map (fn [i]
-                 (let [value (nth values i)
-                       subset (->> data
-                                   (filter #(= value (get % attribute))))
-                       subset-entropy (entropy (extract-column subset out))]
-                   (* (/ (nth counts i) (apply + counts)) subset-entropy)))
-               (range (count values)))))
-
-
-(defn information-gain
-  "Determines the significance of the input attribute in predicting the output attribute."
-  [data attribute out]
-  (let [total-entropy (entropy (extract-column data out))]
-    (let [values-counts (frequencies (extract-column data attribute))
-          values (keys values-counts)
-          counts (vals values-counts)
-          conditional-entropy (conditional-entropy data attribute out values counts)]
-      (- total-entropy conditional-entropy))))
-
-
-(information-gain training-data :stan :otplata)
-
-(defn best-attribute
-  "Returns the attribute that has the highest significance for making predictions. 
-   If no attribute provides supplementary information for prediction returns nil."
-  [data out attributes]
- (let [information-gains (map #(information-gain data % out) attributes)
-       best-attribute-index (index-of-max information-gains)
-       best-attribute (nth attributes best-attribute-index)]
-   (if (every? (fn [x] (= x 0.0)) information-gains)
-     nil
-     best-attribute)))
-
-;; (def sub-data (filter #(= "povoljno" (get % :zaduzenje)) training-data))
-;; (information-gain sub-data :stan :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
-;; (information-gain sub-data :primanja :otplata) ;AKO JE INFORMACIONA DOBIT = 0, ONDA NE RADIMO DALJE GRANANJE
-;; (every? (fn [x] (= x 0.0)) [0.0 0.0 0.0])
-  
-(best-attribute training-data :otplata [:zaduzenje :primanja :stan])
-(require 'clojure.tools.trace)
-
-;; (defn id3 [data out attributes]
-;;   (if (= 1 (count (distinct (extract-column data out))))
-;;     (first (distinct (extract-column data out)))
-;;     (if (empty? attributes)
-;;       (let [unique-target-values (map #(get % out) data)
-;;             counts (frequencies unique-target-values)
-;;             majority-class (->> counts
-;;                                 (apply max-key second)
-;;                                 first)]
-;;         majority-class)
-;;       (let [best-attribute (best-attribute data out attributes) 
-;;             attributes (remove #(= % best-attribute) attributes)]
-;;         (def tree {best-attribute {}})
-;;         (doseq [value (distinct (map #(get % best-attribute) data))]
-;;           (let [sub-data (filter #(= value (get % best-attribute)) data)
-;;                 subtree (id3 sub-data out attributes)]
-;;             (def tree (assoc-in tree [best-attribute value] subtree)))
-;;           tree
-;;             )
-;;         tree
-;;           ))))
-
-
-
-(defn create-tree
-  "Creates a decision tree according to training data using ID3 algorithm."
-  [data out attributes]
-  (if (= 1 (count (distinct (extract-column data out))))
-    (first (distinct (extract-column data out)))
-    (if (empty? attributes)
-      (let [unique-target-values (map #(get % out) data)
-            counts (frequencies unique-target-values)
-            majority-class (->> counts
-                                (apply max-key second)
-                                first)]
-        majority-class)
-      (let [best-attribute (best-attribute data out attributes)]
-        (if (= best-attribute nil)
-           ;ako ne radimo dalje grananje, onda racunamo verovatnoce
-          (let [unique-target-values (map #(get % out) data)
-                counts (frequencies unique-target-values)
-                majority-class (->> counts
-                                    (apply max-key second)
-                                    first)]
-            majority-class)
-          (let [attributes (remove #(= % best-attribute) attributes)]
-            (->> (distinct (map #(get % best-attribute) data))
-                 (reduce (fn [tree value]
-                           (let [sub-data (filter #(= value (get % best-attribute)) data)
-                                 subtree (create-tree sub-data out attributes)]
-                             (assoc-in tree [best-attribute value] subtree)))
-                         {best-attribute {}}))))))))
-
-
-(create-tree training-data :otplata [:zaduzenje :primanja :stan])
-
-
-(defn tree-predict
-  "Returns the prediction of an output variable for the entered entity, using created decision tree.
-   If return value is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
-  [tree entity]
-  (if (map? tree)
-    (let [attribute (first (keys tree))
-          attribute-value (get entity attribute)]
-      (tree-predict (get (get tree attribute) attribute-value) entity))
-    tree))
-
-(defn tree-predict-many
-  "Returns the prediction of an output variable for all entities in entered array, using created decision tree.
-   If value of output attribute is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
-  [tree entities]
-  (into [] (map (fn [row] (assoc row :job-fit (tree-predict tree row))) entities)))
-
-
-(defn remove-column
-  "Returns entered data withoud entered column"
-  [data column-to-remove]
-  (into [] (map #(dissoc % column-to-remove) data)))
-
-(defn training-and-validation
-  "Splits the dataset into two segments based on the provided proportion.
-   If the proportion is 0.8, the training data will represent 80% of the data."
-  [data proportion]
-  (let [count (count data)
-        index (Math/round (* proportion count))
-        training-test-array (split-at index data)
-        training-data (into [] (get training-test-array 0))
-        validation-data (into [] (get training-test-array 1))]
-    [training-data validation-data]
-    ))
-
-
-
-
-
-
-;test
-(let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
-      test-entity {:zaduzenje "kriticno"
-                   :primanja "visoka"
-                   :stan "da"}]
-  (tree-predict tree test-entity))
-
-(let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
-      test-entity {:zaduzenje "kriticno"
-                   :primanja "niska"
-                   :stan "ne"}]
-  (tree-predict tree test-entity))
-
-(let [tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
-      test-entity {:zaduzenje "povoljno"
-                   :primanja "niska"
-                   :stan "da"}]
-  (tree-predict tree test-entity))
-
-;***********************************************************
-;              EVALUACIJA MODELA - ACCURACY
-;***********************************************************
-
-(defn calculate-accuracy 
-  "Evaluates the accuracy of predictions by comparing the predicted values with the actual values, 
-   returning the percentage of correct predictions"
-  [actuals predictions]
-  (let [correct-predictions (into [] (filter (fn [prediction] (let [actual (get actuals (.indexOf predictions prediction))] (= actual prediction))) predictions))
-        total-predictions (count actuals)
-        accuracy (double (/ (count correct-predictions) total-predictions))]
-    accuracy))
-
-
-;***********************************************************
-;               EXCEL PODACI - ZA TESTOVE
-;***********************************************************
-
-(use 'dk.ative.docjure.spreadsheet)
-
-
-
-(let [attributes [:education, :work-experience, :technical-skills, :soft-skills, 
-                  :references, :communication-skills, :problem-solving-ability, 
-                  :cultural-fit, :learning-ability]
-      data (into [] (->> (load-workbook "resources/candidates.xlsx")
-                         (select-sheet "candidates")
-                         (select-columns {:A :education, :B :work-experience,
-                                          :C :technical-skills, :D :soft-skills,
-                                          :E :references, :F :communication-skills,
-                                          :G :problem-solving-ability, :H :cultural-fit,
-                                          :I :learning-ability, :J :job-fit})
-                         rest))
-      tree (create-tree data :job-fit attributes)
-      entity {:education "High School", 
-              :work-experience "Beginner", 
-              :technical-skills "Intermediate", 
-              :soft-skills "Medium", 
-              :references "Yes", 
-              :communication-skills "Excellent", 
-              :problem-solving-ability "Low", 
-              :cultural-fit "High Fit", 
-              :learning-ability "High"}]
-  (tree-predict tree entity))
-
-
-(let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
-                  :references, :communication-skills, :problem-solving-ability,
-                  :cultural-fit, :learning-ability]
-      data (into [] (->> (load-workbook "resources/candidates.xlsx")
-                         (select-sheet "candidates")
-                         (select-columns {:A :education, :B :work-experience,
-                                          :C :technical-skills, :D :soft-skills,
-                                          :E :references, :F :communication-skills,
-                                          :G :problem-solving-ability, :H :cultural-fit,
-                                          :I :learning-ability, :J :job-fit})
-                         rest))
-      tree (create-tree data :job-fit attributes)
-      entities [{:education "High School",
-                 :work-experience "Beginner",
-                 :technical-skills "Intermediate",
-                 :soft-skills "Medium",
-                 :references "Yes",
-                 :communication-skills "Excellent",
-                 :problem-solving-ability "Low",
-                 :cultural-fit "High Fit",
-                 :learning-ability "High"},
-                {:education "Bachelor's degree",
-                 :work-experience "Beginner",
-                 :technical-skills "Beginner",
-                 :soft-skills "Low",
-                 :references "No",
-                 :communication-skills "Excellent",
-                 :problem-solving-ability "Low",
-                 :cultural-fit "High Fit",
-                 :learning-ability "High"},
-                {:education "High School",
-                 :work-experience "Beginner",
-                 :technical-skills "Beginner",
-                 :soft-skills "Low",
-                 :references "No",
-                 :communication-skills "Good",
-                 :problem-solving-ability "Low",
-                 :cultural-fit "Low Fit",
-                 :learning-ability "High"}]]
-  (tree-predict-many tree entities))
-
-(let [data (into [] (->> (load-workbook "resources/candidates.xlsx")
-                                       (select-sheet "candidates")
-                                       (select-columns {:A :education, :B :work-experience,
-                                                        :C :technical-skills, :D :soft-skills,
-                                                        :E :references, :F :communication-skills,
-                                                        :G :problem-solving-ability, :H :cultural-fit,
-                                                        :I :learning-ability, :J :job-fit})))
-      training-and-validation (training-and-validation data 0.8)
-      training-data (get training-and-validation 0)
-      validation-data (get training-and-validation 1)
-      attributes [:education, :work-experience, :technical-skills, :soft-skills,
-                   :references, :communication-skills, :problem-solving-ability,
-                   :cultural-fit, :learning-ability]
-      tree (create-tree training-data :job-fit attributes) 
-      predictions (tree-predict-many tree (remove-column validation-data :job-fit))
-      ]
-(calculate-accuracy validation-data predictions))
-
-
-
-;remove column test
-(let [entities [{:education "High School",
-           :work-experience "Beginner",
-           :technical-skills "Intermediate",
-           :soft-skills "Medium",
-           :references "Yes",
-           :communication-skills "Excellent",
-           :problem-solving-ability "Low",
-           :cultural-fit "High Fit",
-           :learning-ability "High"},
-          {:education "Bachelor's degree",
-           :work-experience "Beginner",
-           :technical-skills "Beginner",
-           :soft-skills "Low",
-           :references "No",
-           :communication-skills "Excellent",
-           :problem-solving-ability "Low",
-           :cultural-fit "High Fit",
-           :learning-ability "High"},
-          {:education "High School",
-           :work-experience "Beginner",
-           :technical-skills "Beginner",
-           :soft-skills "Low",
-           :references "No",
-           :communication-skills "Good",
-           :problem-solving-ability "Low",
-           :cultural-fit "Low Fit",
-           :learning-ability "High"}]]
-(remove-column entities :soft-skills))
 
 
 ;***********************************************************
