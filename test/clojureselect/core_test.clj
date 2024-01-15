@@ -56,7 +56,7 @@
                         :primanja "niska"
                         :stan "ne"
                         :otplata "ne"}]]
-(is (= (round-to-decimal-places (entropy (extract-column training-data :otplata)) 4) 0.9457))))
+    (is (= (round-to-decimal-places (entropy (extract-column training-data :otplata)) 4) 0.9457))))
 
 (entropy-test-1)
 
@@ -107,8 +107,7 @@
                           :primanja "niska"
                           :stan "ne"
                           :otplata "ne"}]]
-      (is (= (round-to-decimal-places (information-gain training-data :stan :otplata) 4) 0.1498)))
-    ))
+      (is (= (round-to-decimal-places (information-gain training-data :stan :otplata) 4) 0.1498)))))
 
 (information-gain-test)
 
@@ -414,6 +413,94 @@
 
 (create-tree-test)
 
+
+(let [training-data [{:zaduzenje "kriticno"
+                      :primanja "visoka"
+                      :stan "da"
+                      :otplata "ne"},
+                     {:zaduzenje "kriticno"
+                      :primanja "srednja"
+                      :stan "ne"
+                      :otplata "ne"},
+                     {:zaduzenje "kriticno"
+                      :primanja "niska"
+                      :stan "da"
+                      :otplata "ne"},
+                     {:zaduzenje "kriticno"
+                      :primanja "visoka"
+                      :stan "ne"
+                      :otplata "ne"},
+                     {:zaduzenje "prihvatljivo"
+                      :primanja "visoka"
+                      :stan "da"
+                      :otplata "da"},
+                     {:zaduzenje "prihvatljivo"
+                      :primanja "niska"
+                      :stan "da"
+                      :otplata "da"},
+                     {:zaduzenje "prihvatljivo"
+                      :primanja "srednja"
+                      :stan "da"
+                      :otplata "da"},
+                     {:zaduzenje "prihvatljivo"
+                      :primanja "srednja"
+                      :stan "ne"
+                      :otplata "ne"},
+                     {:zaduzenje "povoljno"
+                      :primanja "niska"
+                      :stan "ne"
+                      :otplata "da"},
+                     {:zaduzenje "povoljno"
+                      :primanja "niska"
+                      :stan "ne"
+                      :otplata "ne"},
+                     {:zaduzenje "povoljno"
+                      :primanja "niska"
+                      :stan "ne"
+                      :otplata "ne"}]
+      tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])]
+  (print-tree tree 0))
+
+
+(let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
+                      :references, :communication-skills, :problem-solving-ability,
+                      :cultural-fit, :learning-ability]
+          data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                             (select-sheet "candidates")
+                             (select-columns {:A :education, :B :work-experience,
+                                              :C :technical-skills, :D :soft-skills,
+                                              :E :references, :F :communication-skills,
+                                              :G :problem-solving-ability, :H :cultural-fit,
+                                              :I :learning-ability, :J :job-fit})
+                             rest))
+          tree (create-tree data :job-fit attributes)]
+  (print-tree tree 0))
+
+
+(let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
+                  :references, :communication-skills, :problem-solving-ability,
+                  :cultural-fit, :learning-ability]
+      data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                         (select-sheet "candidates")
+                         (select-columns {:A :education, :B :work-experience,
+                                          :C :technical-skills, :D :soft-skills,
+                                          :E :references, :F :communication-skills,
+                                          :G :problem-solving-ability, :H :cultural-fit,
+                                          :I :learning-ability, :J :job-fit})
+                         rest))
+      tree (create-tree data :job-fit attributes)
+      entity {:education "High School",
+              :work-experience "Beginner",
+              :technical-skills "Intermediate",
+              :soft-skills "Medium",
+              :references "Yes",
+              :communication-skills "Excellent",
+              :problem-solving-ability "Low",
+              :cultural-fit "High Fit",
+              :learning-ability "High"}]
+  (tree-predict tree entity))
+
+
 (deftest prediction-test-1
   (testing "Testing tree-predict function"
     (let [training-data [{:zaduzenje "kriticno"
@@ -460,10 +547,10 @@
                           :primanja "niska"
                           :stan "ne"
                           :otplata "ne"}]
-                          tree (create-tree training-data :otplata [:zaduzenje :primanja :stan]) 
-                          test-entity {:zaduzenje "kriticno"
-                                             :primanja "visoka"
-                                             :stan "da"}]
+          tree (create-tree training-data :otplata [:zaduzenje :primanja :stan])
+          test-entity {:zaduzenje "kriticno"
+                       :primanja "visoka"
+                       :stan "da"}]
       (is (= (tree-predict tree test-entity) "ne")))))
 
 (prediction-test-1)
@@ -579,60 +666,60 @@
 (deftest training-and-validation-test
   (testing "Testing training-and-validation function"
     (let [data [{:zaduzenje "kriticno"
-                          :primanja "visoka"
-                          :stan "da"
-                          :otplata "ne"},
-                         {:zaduzenje "kriticno"
-                          :primanja "srednja"
-                          :stan "ne"
-                          :otplata "ne"},
-                         {:zaduzenje "kriticno"
-                          :primanja "niska"
-                          :stan "da"
-                          :otplata "ne"},
-                         {:zaduzenje "kriticno"
-                          :primanja "visoka"
-                          :stan "ne"
-                          :otplata "ne"},
-                         {:zaduzenje "prihvatljivo"
-                          :primanja "visoka"
-                          :stan "da"
-                          :otplata "da"},
-                         {:zaduzenje "prihvatljivo"
-                          :primanja "niska"
-                          :stan "da"
-                          :otplata "da"},
-                         {:zaduzenje "prihvatljivo"
-                          :primanja "srednja"
-                          :stan "da"
-                          :otplata "da"},
-                         {:zaduzenje "prihvatljivo"
-                          :primanja "srednja"
-                          :stan "ne"
-                          :otplata "ne"},
-                         {:zaduzenje "povoljno"
-                          :primanja "niska"
-                          :stan "ne"
-                          :otplata "da"},
-                         {:zaduzenje "povoljno"
-                          :primanja "niska"
-                          :stan "ne"
-                          :otplata "ne"},
-                         {:zaduzenje "povoljno"
-                          :primanja "niska"
-                          :stan "ne"
-                          :otplata "ne"}]
-      expected [[{:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"}
-                 {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"}
-                 {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"}
-                 {:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"}
-                 {:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"}
-                 {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"}
-                 {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"}
-                 {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"}
-                 {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"}]
-                [{:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}
-                 {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}]]] 
+                 :primanja "visoka"
+                 :stan "da"
+                 :otplata "ne"},
+                {:zaduzenje "kriticno"
+                 :primanja "srednja"
+                 :stan "ne"
+                 :otplata "ne"},
+                {:zaduzenje "kriticno"
+                 :primanja "niska"
+                 :stan "da"
+                 :otplata "ne"},
+                {:zaduzenje "kriticno"
+                 :primanja "visoka"
+                 :stan "ne"
+                 :otplata "ne"},
+                {:zaduzenje "prihvatljivo"
+                 :primanja "visoka"
+                 :stan "da"
+                 :otplata "da"},
+                {:zaduzenje "prihvatljivo"
+                 :primanja "niska"
+                 :stan "da"
+                 :otplata "da"},
+                {:zaduzenje "prihvatljivo"
+                 :primanja "srednja"
+                 :stan "da"
+                 :otplata "da"},
+                {:zaduzenje "prihvatljivo"
+                 :primanja "srednja"
+                 :stan "ne"
+                 :otplata "ne"},
+                {:zaduzenje "povoljno"
+                 :primanja "niska"
+                 :stan "ne"
+                 :otplata "da"},
+                {:zaduzenje "povoljno"
+                 :primanja "niska"
+                 :stan "ne"
+                 :otplata "ne"},
+                {:zaduzenje "povoljno"
+                 :primanja "niska"
+                 :stan "ne"
+                 :otplata "ne"}]
+          expected [[{:zaduzenje "kriticno", :primanja "visoka", :stan "da", :otplata "ne"}
+                     {:zaduzenje "kriticno", :primanja "srednja", :stan "ne", :otplata "ne"}
+                     {:zaduzenje "kriticno", :primanja "niska", :stan "da", :otplata "ne"}
+                     {:zaduzenje "kriticno", :primanja "visoka", :stan "ne", :otplata "ne"}
+                     {:zaduzenje "prihvatljivo", :primanja "visoka", :stan "da", :otplata "da"}
+                     {:zaduzenje "prihvatljivo", :primanja "niska", :stan "da", :otplata "da"}
+                     {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "da", :otplata "da"}
+                     {:zaduzenje "prihvatljivo", :primanja "srednja", :stan "ne", :otplata "ne"}
+                     {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "da"}]
+                    [{:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}
+                     {:zaduzenje "povoljno", :primanja "niska", :stan "ne", :otplata "ne"}]]]
       (is (= (training-and-validation data 0.8) expected)))))
 
 (training-and-validation-test)
@@ -653,7 +740,7 @@
 (deftest extract-column-test
   (testing "Testing extract-column function"
     (is (= (extract-column [{:name "dusan"
-                             :age 23}, 
+                             :age 23},
                             {:name "nevena"
                              :age 23}
                             {:name "arsenije"
@@ -922,7 +1009,7 @@
                         :qualification-id 3
                         :value 7}]]
       (is (= (get-normalized-ratings-of-criteria 1 2 ratings-sim) [{:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10, :normalized-value 0.5235602094240838}
-                                                                  {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}])))))
+                                                                   {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}])))))
 
 (deftest normalized-ratings-test-3
   (testing "Testing get-normalized-ratings-of-criteria function"
@@ -1322,80 +1409,80 @@
 (deftest decision-support-test-2
   (testing "Testing decision-support function"
     (let  [candidates-sim [{:id 1
-                           :firstname "Marko"
-                           :lastname "Radovic"
-                           :active true
-                           :email "marko@gmail.com"
-                           :status "rated"
-                           :job-id 1},
-                          {:id 2
-                           :firstname "Dragana"
-                           :lastname "Mirkovic"
-                           :active true
-                           :email "gaga@gmail.com"
-                           :status "rated"
-                           :job-id 1},
-                          {:id 3
-                           :firstname "Maja"
-                           :lastname "Petrovic"
-                           :active true
-                           :email "mayapetrovic@gmail.com"
-                           :status "unrated"
-                           :job-id 1}]
-          ratings-sim [{:id 1
-                        :candidate-id 1
-                        :job-id 1
-                        :qualification-id 1
-                        :value 7},
-                       {:id 2
-                        :candidate-id 1
-                        :job-id 1
-                        :qualification-id 2
-                        :value 8.1},
-                       {:id 3
-                        :candidate-id 1
-                        :job-id 1
-                        :qualification-id 3
-                        :value 7.8},
-                       {:id 4
-                        :candidate-id 2
-                        :job-id 1
-                        :qualification-id 1
-                        :value 9.5},
-                       {:id 5
-                        :candidate-id 2
-                        :job-id 1
-                        :qualification-id 2
-                        :value 10},
-                       {:id 6
-                        :candidate-id 2
-                        :job-id 1
-                        :qualification-id 3
-                        :value 6.1},
-                       {:id 7
-                        :candidate-id 3
-                        :job-id 1
-                        :qualification-id 1
-                        :value 7.8},
-                       {:id 8
-                        :candidate-id 3
-                        :job-id 1
-                        :qualification-id 2
-                        :value 7.9},
-                       {:id 9
-                        :candidate-id 3
-                        :job-id 1
-                        :qualification-id 3
-                        :value 9.5}]
-          criteria-sim [{:job-id 1
+                            :firstname "Marko"
+                            :lastname "Radovic"
+                            :active true
+                            :email "marko@gmail.com"
+                            :status "rated"
+                            :job-id 1},
+                           {:id 2
+                            :firstname "Dragana"
+                            :lastname "Mirkovic"
+                            :active true
+                            :email "gaga@gmail.com"
+                            :status "rated"
+                            :job-id 1},
+                           {:id 3
+                            :firstname "Maja"
+                            :lastname "Petrovic"
+                            :active true
+                            :email "mayapetrovic@gmail.com"
+                            :status "unrated"
+                            :job-id 1}]
+           ratings-sim [{:id 1
+                         :candidate-id 1
+                         :job-id 1
                          :qualification-id 1
-                         :ponder 0.5},
-                        {:job-id 1
+                         :value 7},
+                        {:id 2
+                         :candidate-id 1
+                         :job-id 1
                          :qualification-id 2
-                         :ponder 0.3},
-                        {:job-id 1
+                         :value 8.1},
+                        {:id 3
+                         :candidate-id 1
+                         :job-id 1
                          :qualification-id 3
-                         :ponder 0.2}]]
+                         :value 7.8},
+                        {:id 4
+                         :candidate-id 2
+                         :job-id 1
+                         :qualification-id 1
+                         :value 9.5},
+                        {:id 5
+                         :candidate-id 2
+                         :job-id 1
+                         :qualification-id 2
+                         :value 10},
+                        {:id 6
+                         :candidate-id 2
+                         :job-id 1
+                         :qualification-id 3
+                         :value 6.1},
+                        {:id 7
+                         :candidate-id 3
+                         :job-id 1
+                         :qualification-id 1
+                         :value 7.8},
+                        {:id 8
+                         :candidate-id 3
+                         :job-id 1
+                         :qualification-id 2
+                         :value 7.9},
+                        {:id 9
+                         :candidate-id 3
+                         :job-id 1
+                         :qualification-id 3
+                         :value 9.5}]
+           criteria-sim [{:job-id 1
+                          :qualification-id 1
+                          :ponder 0.5},
+                         {:job-id 1
+                          :qualification-id 2
+                          :ponder 0.3},
+                         {:job-id 1
+                          :qualification-id 3
+                          :ponder 0.2}]]
       (is (= (decision-support 1 candidates-sim ratings-sim criteria-sim) [{:id 2,
                                                                             :firstname "Dragana",
                                                                             :lastname "Mirkovic",
@@ -1604,10 +1691,10 @@
                         {:job-id 1
                          :qualification-id 3
                          :ponder 0.2}]
-           jobs-sim [{:id 1
-                      :name "C# Junior Developer"
-                      :active true
-                      :positions 1}]]
+          jobs-sim [{:id 1
+                     :name "C# Junior Developer"
+                     :active true
+                     :positions 1}]]
       (is (= (selection-advice 1 candidates-sim ratings-sim criteria-sim jobs-sim) ["Top rated Candidate for C# Junior Developer: Dusan Tavic with final score of 0.3743"
                                                                                     "You should also consider Milos Milovanovic with final score of 0.3216 for C# Junior Developer"])))))
 
@@ -1722,7 +1809,7 @@
                         :significance 0.5}]
           expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
-                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]] 
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]]
       (is (= (inverse-ponders ahp-ponders) expected)))))
 
 (inverse-ponders-test)
@@ -1752,29 +1839,29 @@
 (inverse-ponders-test-2)
 
 (deftest add-inverse-ponders-test
-   (testing "Testing add-inverse-ponders function"
-     (let [ahp-ponders [{:job-id 1
-                         :qualification-id-base 1
-                         :qualification-id-reference 2
-                         :position [0,1]
-                         :significance 3},
-                        {:job-id 1
-                         :qualification-id-base 1
-                         :qualification-id-reference 3
-                         :position [0,2]
-                         :significance 2},
-                        {:job-id 1
-                         :qualification-id-base 2
-                         :qualification-id-reference 3
-                         :position [1,2]
-                         :significance 0.5}]
-           expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
-                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
-                     {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
-                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
-                     {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
-                     {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]]
-       (is (= (add-inverse-ponders ahp-ponders) expected)))))
+  (testing "Testing add-inverse-ponders function"
+    (let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]
+          expected [{:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [0 1], :significance 3}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [0 2], :significance 2}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [1 2], :significance 0.5}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 2, :position [1 0], :significance 1/3}
+                    {:job-id 1, :qualification-id-base 1, :qualification-id-reference 3, :position [2 0], :significance 1/2}
+                    {:job-id 1, :qualification-id-base 2, :qualification-id-reference 3, :position [2 1], :significance 2.0}]]
+      (is (= (add-inverse-ponders ahp-ponders) expected)))))
 
 (add-inverse-ponders-test)
 
@@ -1857,7 +1944,7 @@
                         :qualification-id-reference 3
                         :position [1,2]
                         :significance 0.5}]]
-     (is (= (create-ahp-matrix 1 ahp-ponders) [[1 3 2] [1/3 1 0.5] [1/2 2.0 1]])))))
+      (is (= (create-ahp-matrix 1 ahp-ponders) [[1 3 2] [1/3 1 0.5] [1/2 2.0 1]])))))
 
 (create-ahp-matrix-test)
 
@@ -1878,7 +1965,7 @@
                         :qualification-id-reference 3
                         :position [1,2]
                         :significance 0.5}]]
-    (is (= (calculate-total-array 1 ahp-ponders) [0.5294117647058824 0.16176470588235292 0.3088235294117647])))))
+      (is (= (calculate-total-array 1 ahp-ponders) [0.5294117647058824 0.16176470588235292 0.3088235294117647])))))
 
 (calculate-total-array-test)
 
@@ -1906,14 +1993,14 @@
 (calculate-ahp-test)
 
 ;***********************************************************
-;              TESTOVI ZA UCITAVANJE IZ BAZE
+;               OSNOVNE FUNKCIJE - TESTOVI
 ;***********************************************************
 
 (deftest rating-test
   (testing "Testing get-ratings function"
-  (is (= (get-ratings 1) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
-                          {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
-                          {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}]))))
+    (is (= (get-ratings 1) [{:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0}
+                            {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0}
+                            {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0}]))))
 
 
 (deftest rating-test2

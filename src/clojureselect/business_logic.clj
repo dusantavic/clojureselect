@@ -160,6 +160,14 @@
     [training-data validation-data]))
 
 
+(defn print-tree [tree depth]
+  (doseq [[key value] tree]
+    (if (= (type value) java.lang.String)
+      (println (str (apply str (repeat depth "  ")) key ": " value))
+      (println (str (apply str (repeat depth "  ")) key)))
+    (when (map? value)
+      (print-tree value (inc depth)))))
+
 ;***********************************************************
 ;              EVALUACIJA MODELA - ACCURACY
 ;***********************************************************
