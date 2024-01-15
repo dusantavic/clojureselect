@@ -47,7 +47,6 @@
   (map #(get % attribute) data))
 
 
-
 (defn index-of-max
   "Returns an index of the greatest number element in an array."
   [arr]

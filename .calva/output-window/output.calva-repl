@@ -1070,3 +1070,6 @@ clj꞉clojureselect.core-test꞉> 
 clj꞉clojureselect.core-test꞉> 
 nil
 clj꞉clojureselect.core-test꞉> 
+; nREPL connection failed: Error: read ECONNRESET
+; Failed connecting.
+; nREPL Connection was closed
