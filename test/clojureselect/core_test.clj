@@ -216,6 +216,33 @@
 
 (tree-test-2)
 
+(deftest tree-test-3
+  (testing "Testing decision tree and predictions"
+    (let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
+                      :references, :communication-skills, :problem-solving-ability,
+                      :cultural-fit, :learning-ability]
+          data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                             (select-sheet "candidates")
+                             (select-columns {:A :education, :B :work-experience,
+                                              :C :technical-skills, :D :soft-skills,
+                                              :E :references, :F :communication-skills,
+                                              :G :problem-solving-ability, :H :cultural-fit,
+                                              :I :learning-ability, :J :job-fit})
+                             rest))
+          tree (create-tree data :job-fit attributes)
+          entity {:education "Postgraduate Education",
+                  :work-experience "Senior",
+                  :technical-skills "Advanced",
+                  :soft-skills "Medium",
+                  :references "No",
+                  :communication-skills "Good",
+                  :problem-solving-ability "High",
+                  :cultural-fit "High Fit",
+                  :learning-ability "Medium"}]
+      (is (= (tree-predict tree entity) "High Fit")))))
+
+(tree-test-3)
+
 (deftest predict-many-test
   (testing "Testing function tree-predict-many"
     (let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
@@ -489,8 +516,8 @@
                                           :I :learning-ability, :J :job-fit})
                          rest))
       tree (create-tree data :job-fit attributes)
-      entity {:education "High School",
-              :work-experience "Beginner",
+      entity {:education "Postgraduate Education",
+              :work-experience "Senior",
               :technical-skills "Intermediate",
               :soft-skills "Medium",
               :references "Yes",
