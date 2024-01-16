@@ -4,7 +4,7 @@
             [dk.ative.docjure.spreadsheet :refer [load-workbook]]))
 
 ;***********************************************************
-;                 STABLO ODLUCIVANJA - TESTOVI
+;                 DECISION TREE - TESTS
 ;***********************************************************
 
 
@@ -970,7 +970,7 @@
 (index-of-max-test)
 
 ;***********************************************************
-;                 NORMALIZACIJA - TESTOVI
+;                 NORMALIZATION - TESTS
 ;***********************************************************\
 
 (deftest sum-of-ratings-test
@@ -1242,7 +1242,7 @@
 
 
 ;***********************************************************
-;               AGREGACIJA OCENA - TESTOVI
+;                 AGGREGATION - TESTS
 ;***********************************************************
 
 (deftest add-ponder-to-normalized-ratings-test
@@ -1447,7 +1447,7 @@
 
 
 ;***********************************************************
-;            PODRSKA U ODLUCIVANJU - TESTOVI
+;                DECISION SUPPORT - TESTS
 ;***********************************************************
 
 (deftest decision-support-test
@@ -2012,7 +2012,7 @@
 (selection-advice-test-2)
 
 ;***********************************************************
-;                     AHP - TESTOVI
+;                      AHP - TESTS
 ;***********************************************************
 
 (deftest inverse-ponders-test

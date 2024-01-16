@@ -15,7 +15,7 @@
 ;***********************************************************
 
 ;***********************************************************
-;                    STABLO ODLUCIVANJA
+;                      DECISION TREE
 ;***********************************************************
 
 
@@ -168,7 +168,7 @@
       (print-tree value (inc depth)))))
 
 ;***********************************************************
-;              EVALUACIJA MODELA - ACCURACY
+;              MODEL EVALUATION - ACCURACY
 ;***********************************************************
 
 (defn calculate-accuracy
@@ -183,7 +183,7 @@
 
 
 ;***********************************************************
-;                     OSNOVNE FUNKCIJE 
+;                     BASIC FUNCTIONS 
 ;***********************************************************
 
 (defn get-candidate
@@ -259,7 +259,7 @@
 
 
 ;***********************************************************
-;                     NORMALIZACIJA 
+;                     NORMALIZATION 
 ;***********************************************************
 
 (defn sum-of-all-ratings
@@ -294,7 +294,7 @@
 
 
 ;***********************************************************
-;                     AGREGACIJA OCENA 
+;                       AGGREGATION 
 ;***********************************************************
 
 (defn add-ponder-to-normalized-ratings
@@ -323,7 +323,7 @@
 
 
 ;***********************************************************
-;                   PODRSKA U ODLUCIVANJU 
+;                    DECISION SUPPORT
 ;***********************************************************
 
 
@@ -357,9 +357,9 @@
 
 
 ;***********************************************************
-;        AHP - ODREDJIVANJE VAZNOSTI KRITERIJUMA
+;      AHP - DETERMING THE SIGNIFICANCE OF CRITERIA
 ;***********************************************************
-; u okviru ahp-ponders nalaze se preference donosilaca odluka 
+
 
 (defn inverse-ponders
   "Inverts AHP ponders. If significance value on a specific position is x, then significance value on inverted position must be 1/x"
