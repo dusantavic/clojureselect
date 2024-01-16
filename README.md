@@ -25,7 +25,7 @@ Let’s assume we have a certain training dataset. In the image below, a portion
 
 Each candidate is described by nine attributes: Education, Work Experience, Technical Skills, Soft Skills, References, Communication Skills, Problem Solving Ability, Cultural Fit and Learning Ability. After a certain period of work, HR managers evaluated each candidate based on the output attribute Job Fit. Based on this data, the decision tree algorithm should infer certain patterns in the data, determining which set of input data leads to which value of the output attribute. This is intended to help HR managers decide about future candidates for whom the output attribute's value is unknown. In the following code the training data has been read from a CSV file. Based on loaded training data, a decision tree has been created.
 
-```
+```clojure
 (use 'dk.ative.docjure.spreadsheet)
 
 (let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
@@ -45,7 +45,7 @@ Each candidate is described by nine attributes: Education, Work Experience, Tech
 
 We can use the print-tree function for a visual representation of the decision tree. Given that this tree is complex, only a portion of the tree is shown below. 
 
-```
+```clojure
 :work-experience
   Medium
     :learning-ability
@@ -110,7 +110,7 @@ We can use the print-tree function for a visual representation of the decision t
 
 Based on the generated decision tree, we can predict the output attribute value for candidates whose output attribute value is unknown. Note that the predicted value of Job Fit attribute for first candidate is "High Fit", while for second candidate it is "Good Fit".
 
-```
+```clojure
 (use 'dk.ative.docjure.spreadsheet)
 
 (let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
@@ -137,7 +137,7 @@ Based on the generated decision tree, we can predict the output attribute value 
   (tree-predict tree entity))
 ```
 
-```
+```clojure
 (use 'dk.ative.docjure.spreadsheet)
 
 (let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
@@ -174,7 +174,7 @@ Let’s take a look at a simpler example. Let's say we want to predict whether a
 
 Each observation is described by 3 ordinal attributes: Debts, Income and Apartment. In Clojure Select system, we can generate a decision tree using this data. By calling the print-tree function, we will obtain the display of a tree shown below. 
 
-```
+```clojure
 (let [training-data [{:debts "critical"
                       :income "high"
                       :apartment "yes"
@@ -223,7 +223,7 @@ Each observation is described by 3 ordinal attributes: Debts, Income and Apartme
   (print-tree tree 0))
 ```
 
-```
+```clojure
 :debts
   critical: no
   acceptable
@@ -238,7 +238,7 @@ We can represent the created tree graphically, as shown in the image below.
 
 We can now make simple predictions for new entities, for which the value of the output attribute is unknown. Return value of the given code will be "no".
 
-```
+```clojure
 (let [training-data [{:debts "critical"
                       :income "high"
                       :apartment "yes"
@@ -312,7 +312,7 @@ Based on these values, it is necessary to **first perform the normalization of c
 
 The decision-support function will return a sorted list of candidates with final ratings, which we have called the composite indicators. The candidates in the returned list are sorted from the most suitable to the least suitable for the specific job.
 
-```
+```clojure
 (let  [candidates-sim [{:id 1
                         :firstname "Marko"
                         :lastname "Radovic"
@@ -392,7 +392,7 @@ The decision-support function will return a sorted list of candidates with final
 ```
 Let's look at the result of the above-mentioned code: 
 
-```
+```clojure
 [{:id 2,
   :firstname "Dragana",
   :lastname "Mirkovic",
@@ -441,7 +441,7 @@ The obtained matrix will be used to calculate the importance of each criterion. 
 
 Let's call calculate-ahp function:
 
-```
+```clojure
 (let [ahp-ponders [{:job-id 1
                         :qualification-id-base 1
                         :qualification-id-reference 2
@@ -462,7 +462,7 @@ Let's call calculate-ahp function:
 
 After calling calculate-ahp function, the Clojure Select system will return the criteria with new ponders obtained through the mentioned AHP method, as shown below:
 
-```
+```clojure
 [{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
  {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.16176470588235292}
  {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}]
