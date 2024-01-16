@@ -48,6 +48,126 @@
               :learning-ability "High"}]
   (tree-predict tree entity))
 
+(let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
+                  :references, :communication-skills, :problem-solving-ability,
+                  :cultural-fit, :learning-ability]
+      data (into [] (->> (load-workbook "resources/candidates.xlsx")
+                         (select-sheet "candidates")
+                         (select-columns {:A :education, :B :work-experience,
+                                          :C :technical-skills, :D :soft-skills,
+                                          :E :references, :F :communication-skills,
+                                          :G :problem-solving-ability, :H :cultural-fit,
+                                          :I :learning-ability, :J :job-fit})
+                         rest))
+      tree (create-tree data :job-fit attributes)
+      entity {:education "High School"
+              :work-experience "Beginner",
+              :technical-skills "Intermediate",
+              :soft-skills "Medium",
+              :references "Yes",
+              :communication-skills "Excellent",
+              :problem-solving-ability "Low",
+              :cultural-fit "High Fit",
+              :learning-ability "High"}]
+  (tree-predict tree entity))
+
+(let [training-data [{:debts "critical"
+                      :income "high"
+                      :apartment "yes"
+                      :loan-repayment "no"},
+                     {:debts "critical"
+                      :income "medium"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "critical"
+                      :income "low"
+                      :apartment "yes"
+                      :loan-repayment "no"},
+                     {:debts "critical"
+                      :income "high"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "acceptable"
+                      :income "high"
+                      :apartment "yes"
+                      :loan-repayment "yes"},
+                     {:debts "acceptable"
+                      :income "low"
+                      :apartment "yes"
+                      :loan-repayment "yes"},
+                     {:debts "acceptable"
+                      :income "medium"
+                      :apartment "yes"
+                      :loan-repayment "yes"},
+                     {:debts "acceptable"
+                      :income "medium"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "good"
+                      :income "low"
+                      :apartment "no"
+                      :loan-repayment "yes"},
+                     {:debts "good"
+                      :income "low"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "good"
+                      :income "low"
+                      :apartment "no"
+                      :loan-repayment "no"}]
+      tree (create-tree training-data :loan-repayment [:debts :income :apartment])]
+  (print-tree tree 0))
+
+
+(let [training-data [{:debts "critical"
+                      :income "high"
+                      :apartment "yes"
+                      :loan-repayment "no"},
+                     {:debts "critical"
+                      :income "medium"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "critical"
+                      :income "low"
+                      :apartment "yes"
+                      :loan-repayment "no"},
+                     {:debts "critical"
+                      :income "high"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "acceptable"
+                      :income "high"
+                      :apartment "yes"
+                      :loan-repayment "yes"},
+                     {:debts "acceptable"
+                      :income "low"
+                      :apartment "yes"
+                      :loan-repayment "yes"},
+                     {:debts "acceptable"
+                      :income "medium"
+                      :apartment "yes"
+                      :loan-repayment "yes"},
+                     {:debts "acceptable"
+                      :income "medium"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "good"
+                      :income "low"
+                      :apartment "no"
+                      :loan-repayment "yes"},
+                     {:debts "good"
+                      :income "low"
+                      :apartment "no"
+                      :loan-repayment "no"},
+                     {:debts "good"
+                      :income "low"
+                      :apartment "no"
+                      :loan-repayment "no"}]
+      tree (create-tree training-data :loan-repayment [:debts :income :apartment])
+      test-entity {:debts "critical"
+                   :income "high"
+                   :apartment "yes"}]
+  (tree-predict tree test-entity))
 
 (deftest entropy-test-1
   (testing "Testing entropy function")

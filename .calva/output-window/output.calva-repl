@@ -1,10 +1,31 @@
-:zaduzenje
-  kriticno: ne
-  prihvatljivo
-    :stan
-      da: da
-      ne: ne
-  povoljno: ne
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
+; Using host:port 127.0.0.1:62720 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉clojureselect.business-logic꞉>  ; Use `alt+enter` to evaluate
+clj꞉clojureselect.business-logic꞉> 
+; Jack-in done.
+clj꞉clojureselect.business-logic꞉> 
 nil
 clj꞉clojureselect.core-test꞉> 
 :work-experience
@@ -1032,44 +1053,30 @@ clj꞉clojureselect.core-test꞉> 
                   Good: Low Fit
 nil
 clj꞉clojureselect.core-test꞉> 
+"High Fit"
+clj꞉clojureselect.core-test꞉> 
 "Good Fit"
+clj꞉clojureselect.core-test꞉> 
+"ne"
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+nil
+clj꞉clojureselect.core-test꞉> 
+"no"
+clj꞉clojureselect.core-test꞉> 
+:debts
+  critical: no
+  acceptable
+    :apartment
+      yes: yes
+      no: no
+  good: no
+nil
 clj꞉clojureselect.core-test꞉> 
 "High Fit"
 clj꞉clojureselect.core-test꞉> 
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
-; Jacking in...
-; Connecting using "Leiningen" project type.
-; You can make Calva auto-select this.
-;   - See https://calva.io/connect-sequences/
-; 
-; Starting Jack-in Terminal: pushd c:\Users\Dusan Tavic\clojureselect & cmd.exe /d /c lein update-in :dependencies conj [nrepl,"1.0.0"] -- update-in :plugins conj [cider/cider-nrepl,"0.28.5"] -- update-in [:repl-options,:nrepl-middleware] conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless & popd
-; Using host:port 127.0.0.1:55504 ...
-; Hooking up nREPL sessions ...
-; Connected session: clj
-; TIPS:
-;   - You can edit the contents here. Use it as a REPL if you like.
-;   - `alt+enter` evaluates the current top level form.
-;   - `ctrl+enter` evaluates the current form.
-;   - `alt+up` and `alt+down` traverse up and down the REPL command history
-;      when the cursor is after the last contents at the prompt
-;   - Clojure lines in stack traces are peekable and clickable.
-; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
-nil
-clj꞉clojureselect.business-logic꞉> 
-clj꞉clojureselect.business-logic꞉> 
-; Jack-in done.
-clj꞉clojureselect.business-logic꞉> 
-; Syntax error compiling at (c:\Users\Dusan Tavic\clojureselect\test\clojureselect\core_test.clj:226:30).
-; Unable to resolve symbol: select-columns in this context
+"no"
 clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-#'clojureselect.core-test/tree-test-3
-clj꞉clojureselect.core-test꞉> 
-nil
-clj꞉clojureselect.core-test꞉> 
-; nREPL connection failed: Error: read ECONNRESET
-; Failed connecting.
-; nREPL Connection was closed
