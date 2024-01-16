@@ -1,32 +1,25 @@
 # clojureselect
 
-FIXME: description
+Clojure Select stands as a powerful ally for HR professionals, integrating sophisticated algorithms to streamline decision-making. By offering insightful predictions and multi-criteria analysis, the system optimizes the candidate selection process. It serves as a valuable support tool, combining mathematical precision with human expertise to elevate decision-making in the dynamic landscape of HR.
 
-## Installation
 
-Download from http://example.com/FIXME.
+## Components
 
-## Usage
+The Clojure Select system has three core components that collectively support the HR sector in decision-making. Those components are: 
+1. Decision Tree Algorithm 
+2. Multi-Criteria Decision Analysis Algorithms 
+3. AHP (Analytic Hierarchy Process) Algorithm
 
-FIXME: explanation
-
-    $ java -jar clojureselect-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
 
 ## Examples
 
-...
+# Decision Tree Example
 
-### Bugs
+Let’s assume we have a certain training dataset. In Figure below, a portion of this data is shown. Complete training dataset contains information about 1018 former candidates. Note that all the data is of qualitative ordinal type. 
 
-...
+![candidates](images/candidates.png?raw=true "Candidates Training Data")
 
-### Any Other Sections
-### That You Think
-### Might be Useful
+
 
 ## License
 

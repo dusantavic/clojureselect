@@ -5,7 +5,7 @@
 ;***********************************************************
 ;            ALATI I METODE VESTACKE INTELIGENCIJE         *
 ;                I SOFTVERSKOG INZENJERSTVA                *
-;                          2023.                           *
+;                        2023/2024.                        *
 ;             --------------------------------             *
 ;                      Clojure Select                      *
 ;              ~Decision Support Clojure App~              *
@@ -175,7 +175,8 @@
   "Evaluates the accuracy of predictions by comparing the predicted values with the actual values, 
    returning the percentage of correct predictions"
   [actuals predictions]
-  (let [correct-predictions (into [] (filter (fn [prediction] (let [actual (get actuals (.indexOf predictions prediction))] (= actual prediction))) predictions))
+  (let [correct-predictions (into [] (filter (fn [prediction] 
+                                               (let [actual (get actuals (.indexOf predictions prediction))] (= actual prediction))) predictions))
         total-predictions (count actuals)
         accuracy (double (/ (count correct-predictions) total-predictions))]
     accuracy))
@@ -305,9 +306,6 @@
    (let [normalized-ratings (normalize-job-ratings job-id ratings)]
      (into [] (map (fn [row] (assoc row :ponder (get-ponder job-id (:qualification-id row) criteria))) normalized-ratings)))))
 
-;; (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) 1)) (add-ponder-to-normalized-ratings 1)))
-
-
 (defn aggregate-candidate
   "Aggregates the overall rating of the candidate by using a weighted sum"
   ([candidate-id]
@@ -318,6 +316,10 @@
    (let [candidate (get-candidate candidate-id candidates)
          normalized-ratings (add-ponder-to-normalized-ratings (:job-id candidate) ratings criteria)]
      (assoc candidate :final-score (double (reduce + (map (fn [row] (* (:normalized-value row) (:ponder row))) (filter (fn [rating] (= (:candidate-id rating) candidate-id)) normalized-ratings))))))))
+
+(aggregate-candidate 1)
+
+(aggregate-candidate 2)
 
 
 ;***********************************************************
@@ -410,6 +412,7 @@
         init-matrix (create-matrix rows-cols-count)]
     (modify-ahp-matrix init-matrix final-ponders)))
 
+
 (defn calculate-total-array
   "Calculates total array of weights for all criteria using AHP methodology"
   [job-id ahp-ponders]
@@ -424,3 +427,4 @@
   (let [ahp-array (calculate-total-array job-id ahp-ponders)
         criteria (get-jobs-criteria job-id)]
     (into [] (map (fn [element] (assoc element :ahp-ponder (get ahp-array (.indexOf criteria element)))) criteria))))
+

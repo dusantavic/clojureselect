@@ -1655,6 +1655,7 @@
                                                                             :job-id 1,
                                                                             :final-score 0.30416112693890474}])))))
 
+
 (decision-support-test-2)
 
 (deftest decision-support-test-3
@@ -2114,6 +2115,7 @@
                         :significance 0.5}]]
       (is (= (calculate-total-array 1 ahp-ponders) [0.5294117647058824 0.16176470588235292 0.3088235294117647])))))
 
+
 (calculate-total-array-test)
 
 (deftest calculate-ahp-test
@@ -2136,6 +2138,23 @@
       (is (= (calculate-ahp 1 ahp-ponders) [{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
                                             {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.16176470588235292}
                                             {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}])))))
+
+(let [ahp-ponders [{:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 2
+                        :position [0,1]
+                        :significance 3},
+                       {:job-id 1
+                        :qualification-id-base 1
+                        :qualification-id-reference 3
+                        :position [0,2]
+                        :significance 2},
+                       {:job-id 1
+                        :qualification-id-base 2
+                        :qualification-id-reference 3
+                        :position [1,2]
+                        :significance 0.5}]]
+      (calculate-ahp 1 ahp-ponders))
 
 (calculate-ahp-test)
 

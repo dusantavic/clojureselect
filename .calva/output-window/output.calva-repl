@@ -1080,3 +1080,70 @@ clj꞉clojureselect.core-test꞉> 
 clj꞉clojureselect.core-test꞉> 
 "no"
 clj꞉clojureselect.core-test꞉> 
+({:id 1, :candidate-id 1, :job-id 1, :qualification-id 1, :value 10.0, :normalized-value 0.5555555555555556}
+ {:id 2, :candidate-id 1, :job-id 1, :qualification-id 2, :value 10.0, :normalized-value 0.5235602094240838}
+ {:id 3, :candidate-id 1, :job-id 1, :qualification-id 3, :value 10.0, :normalized-value 0.5882352941176471}
+ {:id 4, :candidate-id 2, :job-id 1, :qualification-id 1, :value 8.0, :normalized-value 0.4444444444444444}
+ {:id 5, :candidate-id 2, :job-id 1, :qualification-id 2, :value 9.1, :normalized-value 0.4764397905759162}
+ {:id 6, :candidate-id 2, :job-id 1, :qualification-id 3, :value 7.0, :normalized-value 0.4117647058823529})
+clj꞉clojureselect.business-logic꞉> 
+{:id 1,
+ :firstname "Dusan",
+ :lastname "Tavic",
+ :active true,
+ :email "dusantavic1@gmail.com",
+ :status 0,
+ :job-id 1,
+ :final-score 0.5524928994285323}
+clj꞉clojureselect.business-logic꞉> 
+{:id 2,
+ :firstname "Nenad",
+ :lastname "Panovic",
+ :active true,
+ :email "nenadpann@gmail.com",
+ :status 0,
+ :job-id 1,
+ :final-score 0.44750710057146764}
+clj꞉clojureselect.business-logic꞉> 
+[{:id 2,
+  :firstname "Dragana",
+  :lastname "Mirkovic",
+  :active true,
+  :email "gaga@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.3629946185501741}
+ {:id 3,
+  :firstname "Maja",
+  :lastname "Petrovic",
+  :active true,
+  :email "mayapetrovic@gmail.com",
+  :status "unrated",
+  :job-id 1,
+  :final-score 0.33284425451092114}
+ {:id 1,
+  :firstname "Marko",
+  :lastname "Radovic",
+  :active true,
+  :email "marko@gmail.com",
+  :status "rated",
+  :job-id 1,
+  :final-score 0.30416112693890474}]
+clj꞉clojureselect.core-test꞉> 
+["Top rated Candidate for C# Junior Developer: Dragana Mirkovic with final score of 0.363"
+ "You should also consider Maja Petrovic with final score of 0.3328 for C# Junior Developer"]
+clj꞉clojureselect.core-test꞉> 
+1	3	2
+1/3	1	0.5
+1/2	2.0	1
+nil
+clj꞉clojureselect.core-test꞉> 
+1	3	2
+1/3	1	0.5
+1/2	2.0	1
+nil
+clj꞉clojureselect.core-test꞉> 
+[{:job-id 1, :qualification-id 1, :ponder 0.5, :ahp-ponder 0.5294117647058824}
+ {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.16176470588235292}
+ {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}]
+clj꞉clojureselect.core-test꞉> 
