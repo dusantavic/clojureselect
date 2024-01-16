@@ -470,8 +470,6 @@ After calling calculate-ahp function, the Clojure Select system will return the 
 
 This way, we derived the relative significance of each criterion by employing a pairwise comparison method, simply assesing and expressing the importance of one criterion over another on a scale ranging from 1 to 9.
 
-# Final words
-
 Overall, the Clojure Select system stand as a valuable asset for decision-makers striving for clarity and objectivity in their decision processes. Clojure Select algorithms are designed to assist decision-makers in making quality decisions that rely both on their expertise and algorithmic precision.
 
 ## License
