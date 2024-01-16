@@ -138,8 +138,8 @@
 (defn tree-predict-many
   "Returns the prediction of an output variable for all entities in entered array, using created decision tree.
    If value of output attribute is nil, the tree cannot make prediction because the probabilies of all outcomes are equal."
-  [tree entities]
-  (into [] (map (fn [row] (assoc row :job-fit (tree-predict tree row))) entities)))
+  [tree entities out]
+  (into [] (map (fn [row] (assoc row out (tree-predict tree row))) entities)))
 
 
 (defn remove-column

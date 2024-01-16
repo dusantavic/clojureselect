@@ -7,7 +7,7 @@
 ;                 DECISION TREE - TESTS
 ;***********************************************************
 
-
+;IMPORTANT NOTE! Evaluate the expression below first!
 (use 'dk.ative.docjure.spreadsheet)
 
 (let [attributes [:education, :work-experience, :technical-skills, :soft-skills,
@@ -473,7 +473,7 @@
                      :cultural-fit "Low Fit",
                      :technical-skills "Beginner",
                      :problem-solving-ability "Low"}]]
-      (is (= (tree-predict-many tree entities) expected)))))
+      (is (= (tree-predict-many tree entities :job-fit) expected)))))
 
 (predict-many-test)
 
@@ -493,7 +493,7 @@
                       :references, :communication-skills, :problem-solving-ability,
                       :cultural-fit, :learning-ability]
           tree (create-tree training-data :job-fit attributes)
-          predictions (tree-predict-many tree (remove-column validation-data :job-fit))]
+          predictions (tree-predict-many tree (remove-column validation-data :job-fit) :job-fit)]
       (is (= (round-to-decimal-places (calculate-accuracy validation-data predictions) 1) 0.6)))))
 
 (accuracy-test)
@@ -2217,20 +2217,20 @@
                                             {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}])))))
 
 (let [ahp-ponders [{:job-id 1
-                        :qualification-id-base 1
-                        :qualification-id-reference 2
-                        :position [0,1]
-                        :significance 3},
-                       {:job-id 1
-                        :qualification-id-base 1
-                        :qualification-id-reference 3
-                        :position [0,2]
-                        :significance 2},
-                       {:job-id 1
-                        :qualification-id-base 2
-                        :qualification-id-reference 3
-                        :position [1,2]
-                        :significance 0.5}]]
-      (calculate-ahp 1 ahp-ponders))
+                    :qualification-id-base 1
+                    :qualification-id-reference 2
+                    :position [0,1]
+                    :significance 3},
+                   {:job-id 1
+                    :qualification-id-base 1
+                    :qualification-id-reference 3
+                    :position [0,2]
+                    :significance 2},
+                   {:job-id 1
+                    :qualification-id-base 2
+                    :qualification-id-reference 3
+                    :position [1,2]
+                    :significance 0.5}]]
+  (calculate-ahp 1 ahp-ponders))
 
 (calculate-ahp-test)
