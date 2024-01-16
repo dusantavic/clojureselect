@@ -108,7 +108,7 @@ We can use the print-tree function for a visual representation of the decision t
                   ...
 ```
 
-Based on the generated decision tree, we can predict the output attribute value for candidates whose output attribute value is unknown. Note that the predicted value of Job Fit attribute for first candidate is "High Fit", while for second candidate it is "Good Fit".
+Based on the generated decision tree, we can predict the output attribute value for candidates whose output attribute value is unknown. Note that the predicted value of Job Fit attribute for the first candidate is "High Fit", while for the second candidate it is "Good Fit".
 
 ```clojure
 (use 'dk.ative.docjure.spreadsheet)
@@ -134,7 +134,7 @@ Based on the generated decision tree, we can predict the output attribute value 
               :problem-solving-ability "Low",
               :cultural-fit "High Fit",
               :learning-ability "High"}]
-  (tree-predict tree entity))
+  (tree-predict tree entity)) => "High Fit"
 ```
 
 ```clojure
@@ -152,8 +152,8 @@ Based on the generated decision tree, we can predict the output attribute value 
                                           :I :learning-ability, :J :job-fit})
                          rest))
       tree (create-tree data :job-fit attributes)
-      entity {:education "Postgraduate Education",
-              :work-experience "Senior",
+      entity {:education "High School",
+              :work-experience "Beginner",
               :technical-skills "Intermediate",
               :soft-skills "Medium",
               :references "Yes",
@@ -161,7 +161,7 @@ Based on the generated decision tree, we can predict the output attribute value 
               :problem-solving-ability "Low",
               :cultural-fit "High Fit",
               :learning-ability "High"}]
-  (tree-predict tree entity))
+  (tree-predict tree entity)) => "Good Fit"
 ```
 
 By using presented algorithms, it is possible to make predictions about the success of candidates in future job performance, significantly facilitating the decision-making process in the HR sector.
@@ -467,6 +467,12 @@ After calling calculate-ahp function, the Clojure Select system will return the 
  {:job-id 1, :qualification-id 2, :ponder 0.3, :ahp-ponder 0.16176470588235292}
  {:job-id 1, :qualification-id 3, :ponder 0.2, :ahp-ponder 0.3088235294117647}]
 ```
+
+This way, we derived the relative significance of each criterion by employing a pairwise comparison method, simply assesing and expressing the importance of one criterion over another on a scale ranging from 1 to 9.
+
+# Final words
+
+Overall, the Clojure Select system stand as a valuable asset for decision-makers striving for clarity and objectivity in their decision processes. Clojure Select algorithms are designed to assist decision-makers in making quality decisions that rely both on their expertise and algorithmic precision.
 
 ## License
 
